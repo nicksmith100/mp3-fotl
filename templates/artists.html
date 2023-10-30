@@ -1,16 +1,13 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Artists</title>
-</head>
-<body>
+{% extends "base.html" %}
+{% block content %}
+
+<h2>Artists</h2>
+
     {% for artist in artists %}
         {{ artist.artist_name }}<br>
         {{ artist.artist_bio }}<br>
         <img src="{{ artist.artist_img }}" alt="{{ artist.artist_name }}"><br>
         <a href="{{ artist.artist_url }}" target="_blank">{{ artist.artist_name }} Website</a><br><br>
     {% endfor %}
-</body>
-</html>
+
+{% endblock %}
