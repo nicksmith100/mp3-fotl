@@ -1,110 +1,359 @@
-![CI logo](https://codeinstitute.s3.amazonaws.com/fullstack/ci_logo_small.png)
+# Folk on the Lawn Website
 
-Welcome USER_NAME,
+![Folk on the Lawn logo](readme_images/logo_static.png)
 
-This is the Code Institute student template for Gitpod. We have preinstalled all of the tools you need to get started. It's perfectly ok to use this template as the basis for your project submissions.
+This project creates a website for a musical festival called Folk on the Lawn. It allows external users to find information about the festival, and allows site admins to update line-up and artist information. The site is designed to be responsive and accessible on a range of devices, making it easy to navigate for external users and site admins alike.
 
-You can safely delete this README.md file, or change it for your own project. Please do read it at least once, though! It contains some important information about Gitpod and the extensions we use. Some of this information has been updated since the video content was created. The last update to this file was: **September 1, 2021**
+[View the live project here]()
 
-## Gitpod Reminders
+![Folk on the Lawn website displayed on various devices](readme_images/responsive_screens.png)
 
-To run a frontend (HTML, CSS, Javascript only) application in Gitpod, in the terminal, type:
 
-`python3 -m http.server`
+## Table of Contents
 
-A blue button should appear to click: _Make Public_,
+1. [Project Goals](#project-goals)
+2. [Research](#research)
+3. [User Stories](#user-stories)
+4. [Design](#design)
+5. [Features](#features)
+6. [Testing](#testing)
+7. [Tecnologies Used](#technologies-used)
+8. [Deployment](#deployment)
+9. [Credits](#credits)
 
-Another blue button should appear to click: _Open Browser_.
 
-To run a backend Python file, type `python3 app.py`, if your Python file is named `app.py` of course.
+## Project Goals
 
-A blue button should appear to click: _Make Public_,
+### Purpose
 
-Another blue button should appear to click: _Open Browser_.
+(Purpose)
 
-In Gitpod you have superuser security privileges by default. Therefore you do not need to use the `sudo` (superuser do) command in the bash terminal in any of the lessons.
+### Client Goals
 
-To log into the Heroku toolbelt CLI:
+(Client goals)
 
-1. Log in to your Heroku account and go to *Account Settings* in the menu under your avatar.
-2. Scroll down to the *API Key* and click *Reveal*
-3. Copy the key
-4. In Gitpod, from the terminal, run `heroku_config`
-5. Paste in your API key when asked
+### User Goals
 
-You can now use the `heroku` CLI program - try running `heroku apps` to confirm it works. This API key is unique and private to you so do not share it. If you accidentally make it public then you can create a new one with _Regenerate API Key_.
+Detailed user stories are provided in the [User Stories](#user-stories) section below, but the primary goals of the user are to:
 
-------
+(Primary user goals)
+   
+## Research
 
-## Release History
+### User research
 
-We continually tweak and adjust this template to help give you the best experience. Here is the version history:
+(User research)
 
-**September 20 2023:** Update Python version to 3.9.17.
+### Existing music festival websites
 
-**September 1 2021:** Remove `PGHOSTADDR` environment variable.
+(Existing music festival websites)
 
-**July 19 2021:** Remove `font_fix` script now that the terminal font issue is fixed.
+## User Stories
 
-**July 2 2021:** Remove extensions that are not available in Open VSX.
+(User stories)
 
-**June 30 2021:** Combined the P4 and P5 templates into one file, added the uptime script. See the FAQ at the end of this file.
+## Design
 
-**June 10 2021:** Added: `font_fix` script and alias to fix the Terminal font issue
+### Wireframes
 
-**May 10 2021:** Added `heroku_config` script to allow Heroku API key to be stored as an environment variable.
+Wireframes were created using the Figma platform: [Figma - Folk on the Lawn](https://www.figma.com/file/IjXmZ89Phzn0gKjmCOi23H/Folk-On-The-Lawn?type=design&node-id=301-77&mode=design&t=Wg7msaTdH6gV8TMv-0).
 
-**April 7 2021:** Upgraded the template for VS Code instead of Theia.
+<details><summary>Desktop wireframes</summary>
 
-**October 21 2020:** Versions of the HTMLHint, Prettier, Bootstrap4 CDN and Auto Close extensions updated. The Python extension needs to stay the same version for now.
+  ![Desktop wireframes](readme_images/desktop_wireframes.png)
 
-**October 08 2020:** Additional large Gitpod files (`core.mongo*` and `core.python*`) are now hidden in the Explorer, and have been added to the `.gitignore` by default.
+</details>
 
-**September 22 2020:** Gitpod occasionally creates large `core.Microsoft` files. These are now hidden in the Explorer. A `.gitignore` file has been created to make sure these files will not be committed, along with other common files.
+<details><summary>Mobile wireframes</summary>
 
-**April 16 2020:** The template now automatically installs MySQL instead of relying on the Gitpod MySQL image. The message about a Python linter not being installed has been dealt with, and the set-up files are now hidden in the Gitpod file explorer.
+  ![Mobile wireframes](readme_images/mobile_wireframes.png)
 
-**April 13 2020:** Added the _Prettier_ code beautifier extension instead of the code formatter built-in to Gitpod.
+</details>
 
-**February 2020:** The initialisation files now _do not_ auto-delete. They will remain in your project. You can safely ignore them. They just make sure that your workspace is configured correctly each time you open it. It will also prevent the Gitpod configuration popup from appearing.
+Based on prior experience I decided that desktop and mobile wireframes would be sufficient to keep the overall layout of the site on track, the expectation being that [Bootstrap's grid system](https://getbootstrap.com/docs/5.3/layout/grid/) would provide the responsiveness required at different device breakpoints in between (see [Layout and Styling](#layout-and-styling) section below).
 
-**December 2019:** Added Eventyret's Bootstrap 4 extension. Type `!bscdn` in a HTML file to add the Bootstrap boilerplate. Check out the <a href="https://github.com/Eventyret/vscode-bcdn" target="_blank">README.md file at the official repo</a> for more options.
+(Detail any differences)
 
-------
+### Layout and Styling
 
-## FAQ about the uptime script
+The site uses the [Bootstrap 5.3 Grid system](https://getbootstrap.com/docs/5.3/layout/grid/) to ensure it is fully responsive on all device and viewport sizes. Bootstrap 5.3 uses the following [breakpoints](https://getbootstrap.com/docs/5.3/layout/breakpoints/), the shorthand references for which are used throughout the rest of this document:
 
-**Why have you added this script?**
+| Breakpoint        | Shorthand   | Dimensions |
+|-------------------|-------------|------------|
+| Extra small       | xs          | <576px     |
+| Small             | sm          | ≥576px     |
+| Medium            | md          | ≥768px     |
+| Large             | lg          | ≥992px     |
+| Extra large       | xl          | ≥1200px    |
+| Extra extra large | xxl         | ≥1400px    |
 
-It will help us to calculate how many running workspaces there are at any one time, which greatly helps us with cost and capacity planning. It will help us decide on the future direction of our cloud-based IDE strategy.
+In addition, the site uses the following specific components from the Bootstrap library:
 
-**How will this affect me?**
+(Specific components)
 
-For everyday usage of Gitpod, it doesn’t have any effect at all. The script only captures the following data:
+### Imagery
 
-- An ID that is randomly generated each time the workspace is started.
-- The current date and time
-- The workspace status of “started” or “running”, which is sent every 5 minutes.
+- **Logo**: (Logo deails))
 
-It is not possible for us or anyone else to trace the random ID back to an individual, and no personal data is being captured. It will not slow down the workspace or affect your work.
+  <details><summary>Logo</summary>
+  
+  ![Static logo](readme_images/logo.png)
+  
+  </details>
 
-**So….?**
+(Details of other images)
 
-We want to tell you this so that we are being completely transparent about the data we collect and what we do with it.
+- **404 image**: (404 image details)
+       
+### Colour Scheme
 
-**Can I opt out?**
+(Colour scheme details)
 
-Yes, you can. Since no personally identifiable information is being captured, we'd appreciate it if you let the script run; however if you are unhappy with the idea, simply run the following commands from the terminal window after creating the workspace, and this will remove the uptime script:
+<details><summary>Colour scheme palette</summary>
 
-```
-pkill uptime.sh
-rm .vscode/uptime.sh
-```
+![Website colour scheme palette](readme_images/palette.png)
 
-**Anything more?**
+</details>
 
-Yes! We'd strongly encourage you to look at the source code of the `uptime.sh` file so that you know what it's doing. As future software developers, it will be great practice to see how these shell scripts work.
+### Typography
 
----
+- #### Logo
 
-Happy coding!
+  (Logo font details)
+
+- #### Main heading
+
+  (Main heading font details)
+  
+- #### Other headings, buttons and text
+
+   (Other font details)
+
+  
+- #### Icons
+
+  [Bootstrap Icons](https://icons.getbootstrap.com/) have been used for the main menu buttons, utilised as classes in the `<i>` tag.
+
+  <details><summary>Menu icons</summary>
+
+  (Icon details)
+
+  </details>
+  
+- #### Favicon
+
+   The favicon is (...), generated using [Favicon Generator](https://www.favicon-generator.org/). This proved more effective than trying to use the main logo as a favicon, as the detail of it was lost at such a small size.
+
+  <details><summary>Favicon</summary>
+
+  ![Favicon](readme_images/favicon.png)
+
+  </details>
+
+## Features
+
+### Scope
+
+- #### Minimum Viable Product
+
+(MVP details)
+         
+- #### Additional Features (in scope)
+
+(Additional features)
+   
+- #### Future Ideas (not currently in scope)
+  
+(Future ideas)
+
+### Page Elements and Interaction
+
+(Details)
+
+- #### Header
+
+  (Header details)
+         
+  <details><summary>Header (lg)</summary>
+      
+  ![Header (lg)](readme_images/header_lg.png)
+
+  </details>
+    
+  <details><summary>Header (md)</summary>
+      
+  ![Header (md)](readme_images/header_md.png)
+
+  </details>
+    
+  <details><summary>Header (sm)</summary>
+      
+  ![Header (xs)](readme_images/header_xs.png)
+
+  </details>
+
+  
+- #### Home page
+
+- #### Line-up page
+
+- #### Edit line-up (Admin)
+
+- #### Edit artist (Admin)
+
+- #### 404 page
+
+  A 404 page is provided in the event that the user browses to a page which does not exist. It depicts (...details...)
+
+  <details><summary>404 page (lg)</summary>
+    
+  ![404 page (lg)](readme_images/404_lg.png)
+
+  </details>
+
+  <details><summary>404 page (xs)</summary>
+    
+  ![404 page (xs)](readme_images/404_xs.png)
+
+  </details>    
+
+### JavaScript Functionality
+
+- #### Presentation and navigation
+
+### Python Functionality
+
+## Testing
+
+### Automated testing
+
+- #### HTML validation with [W3C Markup Validator](https://validator.w3.org/)
+
+- #### CSS validation with [W3C CSS Validator](https://jigsaw.w3.org/css-validator/)
+
+- #### JavaScript validation using [JSHint](https://jshint.com/)
+
+- #### Python validation using (...)
+
+- #### Accessibility using [Lighthouse accessibility](https://developer.chrome.com/docs/lighthouse/accessibility/)
+
+  Lighthouse audit scores (accessed through Chrome DevTools) show that the site is fully accessible and complies with best practices.
+
+  <details><summary>Lighthouse scores</summary>
+
+  ![Lighthouse scores](readme_images/lighthouse.png)
+
+  </details>
+
+### Manual Testing
+
+- #### User stories
+
+  The site was tested against the user stories as follows. (See [User story screenshots](#user-story-screenshots) below table for associated screenshots.)
+
+    (User stories table)
+
+- #### User story screenshots
+
+  Screenshots are shown for xs viewports (i.e. mobile devices) because this is how the majority of users are expected to access the site. Screenshots for lg viewports (tablets, laptops and desktops) can be found in the [Features](#features) section. 
+
+  (User stories screenshots)
+
+- #### Feature testing
+
+  (Feature testing table)
+    
+
+- #### Browser and device compatibility
+
+  The above features were tested on the following browsers and devices:
+
+  (Browser and device compatibility table)
+
+### Bugs and fixes
+
+(Bugs and fixes details)
+
+
+## Technologies Used
+
+### Languages
+- [HTML](https://html.spec.whatwg.org/multipage/)
+  - Standard markup language for web pages
+- [CSS](https://www.w3.org/Style/CSS/)
+  - Adding style to HTML
+- [JavaScript](https://www.w3schools.com/js/)
+  - Adding interactive elements
+- [Python](https://www.w3schools.com/python/)
+  - Providing backend application to provide website information 
+
+### Frameworks
+- [Bootstrap 5.3](https://getbootstrap.com/docs/5.3/getting-started/introduction/)
+  - Overall layout and styling, and specific components as described above
+
+### Libraries
+- [jQuery](https://jquery.com/)
+  - Show and hide functionality
+- [jQuery UI](https://jqueryui.com/)
+  - Autocomplete on search form
+- [Google Fonts](https://fonts.google.com)
+  - Exo and Oswald fonts
+- [Bootstrap icons](https://icons.getbootstrap.com/)
+  - Icons on main menu buttons
+
+### APIs
+(Provide any APIs here)
+
+### Platforms
+- [Github](https://github.com/)
+  - Storing code
+- [Gitpod](https://gitpod.io/)
+  - IDE used for project development
+- [MongoDB](https://mongodb.com/)
+  - Used for hosting database
+- [Heroku](https://heroku.com/)
+  - Deployment
+
+### Other Tools
+- [Figma](https://www.figma.com/)
+  - Wireframes
+- [Coolors](https://coolors.co/)
+  - Colour palette
+- [Favicon Generator](https://www.favicon-generator.org/)
+  - Website favicon
+- [Am I Responsive](https://ui.dev/amiresponsive)
+  - Montage of different devices displaying the site
+- [Canva](https://www.canva.com/)
+  - Creation of main logo
+- [Unsplash](https://unsplash.com/)
+  - 404 image
+- [Fix the photo](https://fixthephoto.com/uk/online-gimp.html)
+  - Image editing
+  
+
+## Deployment
+
+### Heroku
+
+(Deploment info, including local deployment instructions)
+
+## Credits
+
+### Code
+
+- [Bootstrap 5.3](https://getbootstrap.com/docs/5.3/layout/grid/): Bootstrap Library used throughout the project, including responsive layout and specific components as outlined above.
+- All other code snippets are credited in comments in the relevant files.
+
+### Content
+
+(Content info)
+
+### Media
+
+(Media info)   
+
+### Acknowledgements
+
+- My Mentor [Rory Patrick Sheridan](https://github.com/Ri-Dearg) for many helpful pointers.
+- Our Cohort Facilitator [Iris Smok](https://github.com/Iris-Smok/Iris-Smok) for providing helpful guidance on project requirements throughout.
+- [Emma Hewson](https://github.com/emmahewson) (...Swimmon project details...)
