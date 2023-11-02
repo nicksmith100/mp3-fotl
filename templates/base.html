@@ -14,8 +14,39 @@
 </head>
 <body>
     
-    <h1>Folk on the Lawn</h1>
-    
+    <header>
+        <nav class="navbar navbar-expand-lg bg-body-tertiary">
+            <div class="container-fluid">
+                    <a class="navbar-brand" href="#">Folk on the Lawn</a>
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarToggler" aria-controls="navbarToggler" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse ms-auto" id="navbarToggler">
+                        <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                            <li class="nav-item">
+                                <a class="nav-link" href="#"><i class="bi bi-house-fill" aria-hidden="true"></i> Home</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ url_for('get_artists') }}"><i class="bi bi-people-fill" aria-hidden="true"></i> Line-up</a>
+                            </li>                            
+                            <li class="nav-item">
+                                <a class="nav-link list-inline-item" href="https://www.facebook.com/folkonthelawn" target="_blank"><i class="bi bi-facebook" aria-hidden="true"></i><span class="visually-hidden">Facebook</span></a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link list-inline-item" href="https://www.instagram.com/folkonthelawn/" target="_blank"><i class="bi bi-instagram" aria-hidden="true"></i><span class="visually-hidden">X (Twitter)</span></a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link list-inline-item" href="https://twitter.com/folkonthelawn" target="_blank"><i class="bi bi-twitter-x" aria-hidden="true"></i><span class="visually-hidden">X (Twitter)</span></a>
+                            </li>
+                            <li class="nav-item"></li>
+                                <a class="nav-link list-inline-item" href="mailto:info@folkonthelawn.com" target="_blank"><i class="bi bi-envelope" aria-hidden="true"></i><span class="visually-hidden">Email</span></a>
+                            </li>
+                        </ul>            
+                    </div>
+            </div>
+        </nav>
+    </header>
+
     {% block content %}
     {% endblock %}
 
