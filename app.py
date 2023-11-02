@@ -29,6 +29,11 @@ def lineup():
     return render_template("lineup.html", artists=artists)
 
 
+@app.route("/register", methods=["GET", "POST"])
+def register():
+    return render_template("register.html")
+
+
 @app.route("/admin", methods=["GET", "POST"])
 def admin():
     return render_template("admin.html")
