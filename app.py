@@ -23,8 +23,8 @@ def home():
     return render_template("home.html")
 
 
-@app.route("/get_artists")
-def get_artists():
+@app.route("/lineup")
+def lineup():
     artists = mongo.db.artists.find()
     return render_template("lineup.html", artists=artists)
 
