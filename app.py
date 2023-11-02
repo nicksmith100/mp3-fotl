@@ -29,6 +29,11 @@ def lineup():
     return render_template("lineup.html", artists=artists)
 
 
+@app.route("/admin", methods=["GET", "POST"])
+def admin():
+    return render_template("admin.html")
+
+
 if __name__ == "__main__":
     app.run(host=os.environ.get("IP"),
             port=int(os.environ.get("PORT")),
