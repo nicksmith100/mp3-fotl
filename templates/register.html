@@ -10,15 +10,15 @@
     <div class="card-body">
         <form method="POST" action="{{ url_for('register') }}">
             <div class="mb-3">
-              <label for="username" class="form-label"><i class="bi bi-person" aria-hidden="true"></i> Username</label>
-              <input type="text" class="form-control" id="username">
+              <label for="username" class="form-label"><i class="bi bi-person" aria-hidden="true"></i> Username<br><small class="text-muted">Must be 5-15 characters using letters and numbers only.</small></label>
+              <input type="text" minlength="5" maxlength="15" pattern="^[a-zA-Z0-9]{5,15}$" class="validate form-control" id="username" name="username" required>
             </div>
             <div class="mb-3">
-              <label for="password" class="form-label"><i class="bi bi-key" aria-hidden="true"></i> Password</label>
-              <input type="password" class="form-control" id="password">
+              <label for="password" class="form-label"><i class="bi bi-key" aria-hidden="true"></i> Password<br><small class="text-muted">Must be 5-15 characters using letters and numbers only.</label>
+              <input type="password" minlength="5" maxlength="15" pattern="^[a-zA-Z0-9]{5,15}$" class="validate form-control" id="password" name="password" required>
             </div>
             <div class="mb-3 form-check">
-                <input type="checkbox" class="form-check-input" id="superuser-check">
+                <input type="checkbox" class="form-check-input" id="superuser-check" name="superuser-check">
                 <label class="form-check-label" for="superuser-check">Make superuser</label>
             </div>
             <p class="text-danger"><i class="bi bi-exclamation-circle-fill" aria-hidden="true"></i> Superuser access will allow this user to add and delete admins.</p>
