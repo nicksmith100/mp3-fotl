@@ -77,6 +77,24 @@ def delete_admin(admin_id):
     return redirect(url_for("register"))
 
 
+@app.route("/switch_superuser/<admin_id>")
+def switch_superuser(admin_id):
+
+    admin = mongo.db.admins.find_one({"_id": ObjectId(admin_id)})
+    
+    is_superuser = "off" if admin.get('is_superuser') == "on" else "on"
+    
+    submit = {
+            "$set": {
+                "is_superuser": is_superuser
+            }
+        }
+
+    mongo.db.admins.update_one({"_id": ObjectId(admin_id)}, submit)
+    flash("Admin superuser status updated")
+    return redirect(url_for("register"))
+
+
 @app.route("/admin", methods=["GET", "POST"])
 def admin():
     return render_template("admin.html")
