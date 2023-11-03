@@ -70,6 +70,13 @@ def register():
     return render_template("register.html", admins=admins)
 
 
+@app.route("/delete_admin/<admin_id>")
+def delete_admin(admin_id):
+    mongo.db.admins.delete_one({"_id": ObjectId(admin_id)})
+    flash("Admin successfully deleted")
+    return redirect(url_for("register"))
+
+
 @app.route("/admin", methods=["GET", "POST"])
 def admin():
     return render_template("admin.html")
