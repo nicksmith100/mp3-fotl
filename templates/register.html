@@ -1,73 +1,80 @@
 {% extends "base.html" %}
 {% block content %}
 
-<h2 class="mt-5 text-center">Admin registration</h2>
+<div class="container">
+    <div class="row">
+        <div class="col-12 col-sm-4">
+            <h2 class="mt-5 text-center">Admin registration</h2>
 
-<div class="card mt-3 mx-auto" style="width: 24rem;">
-    <div class="card-header">
-        Enter username and password for new admin
+            <div class="card mt-3 mx-auto" style="width: 24rem;">
+                <div class="card-header">
+                    Enter username and password for new admin
+                </div>
+                <div class="card-body">
+                    <form method="POST" action="{{ url_for('register') }}">
+                        <div class="mb-3">
+                            <label for="name" class="form-label"><i class="bi bi-alphabet" aria-hidden="true"></i> Name<br><small class="text-muted">At least 3 characters</small></label>
+                            <input type="text" minlength="3" class="validate form-control" id="name" name="name" required>
+                        </div>
+                        <div class="mb-3">
+                        <label for="username" class="form-label"><i class="bi bi-person" aria-hidden="true"></i> Username<br><small class="text-muted">5-15 characters using letters and numbers only</small></label>
+                        <input type="text" minlength="5" maxlength="15" pattern="^[a-zA-Z0-9]{5,15}$" class="validate form-control" id="username" name="username" required>
+                        </div>
+                        <div class="mb-3">
+                        <label for="password" class="form-label"><i class="bi bi-key" aria-hidden="true"></i> Password<br><small class="text-muted">5-15 characters using letters and numbers only</small></label>
+                        <input type="password" minlength="5" maxlength="15" pattern="^[a-zA-Z0-9]{5,15}$" class="validate form-control" id="password" name="password" required>
+                        </div>
+                        <div class="mb-3 form-check">
+                            <input type="checkbox" class="form-check-input" id="superuser-check" name="superuser-check">
+                            <label class="form-check-label" for="superuser-check">Make superuser</label>
+                        </div>
+                        <p class="text-danger"><i class="bi bi-exclamation-circle-fill" aria-hidden="true"></i> Superuser access will allow this user to add and delete admins.</p>
+                        <div class="mt-3 text-center">
+                            <button type="submit" class="btn btn-primary"><i class="bi bi-person-add" aria-hidden="true"></i> Add user</button>
+                        </div>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+        <div class="col-12 col-sm-8">
+            <h2 class="mt-5 text-center">Existing admins</h2>
+
+            <div class="table-responsive">
+                <table class="table w-auto mt-3 mb-5 mx-auto">
+                    <thead>
+                        <tr>
+                            <th scope="col">Name</th>
+                            <th scope="col">Username</th>
+                            <th scope="col">Date added</th>
+                            <th scope="col">Superuser</th>
+                            <th scope="col">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    {% for admin in admins %}
+                        <tr>
+                            <td>{{ admin.name }}</td>
+                            <td>{{ admin.username }}</td>
+                            <td>{{ admin.date_added }}</td>
+                            <td>
+                                {% if admin.is_superuser == "on" %}
+                                <span class="text-danger">Yes</span>
+                                {% else %}
+                                <span class="text-success">No</span>
+                                {% endif %}
+                            </td>
+                            <td>
+                                <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#modal-confirm" data-bs-url="{{ url_for('delete_admin', admin_id=admin._id) }}"><i class="bi bi-person-x" aria-hidden="true"></i> Delete</button>
+                                <a href="{{ url_for('switch_superuser', admin_id=admin._id) }}" class="btn btn-warning"><i class="bi bi-person-gear" aria-hidden="true"></i> Switch superuser</a>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
     </div>
-    <div class="card-body">
-        <form method="POST" action="{{ url_for('register') }}">
-            <div class="mb-3">
-                <label for="name" class="form-label"><i class="bi bi-alphabet" aria-hidden="true"></i> Name<br><small class="text-muted">At least 3 characters</small></label>
-                <input type="text" minlength="3" class="validate form-control" id="name" name="name" required>
-            </div>
-            <div class="mb-3">
-              <label for="username" class="form-label"><i class="bi bi-person" aria-hidden="true"></i> Username<br><small class="text-muted">5-15 characters using letters and numbers only</small></label>
-              <input type="text" minlength="5" maxlength="15" pattern="^[a-zA-Z0-9]{5,15}$" class="validate form-control" id="username" name="username" required>
-            </div>
-            <div class="mb-3">
-              <label for="password" class="form-label"><i class="bi bi-key" aria-hidden="true"></i> Password<br><small class="text-muted">5-15 characters using letters and numbers only</label>
-              <input type="password" minlength="5" maxlength="15" pattern="^[a-zA-Z0-9]{5,15}$" class="validate form-control" id="password" name="password" required>
-            </div>
-            <div class="mb-3 form-check">
-                <input type="checkbox" class="form-check-input" id="superuser-check" name="superuser-check">
-                <label class="form-check-label" for="superuser-check">Make superuser</label>
-            </div>
-            <p class="text-danger"><i class="bi bi-exclamation-circle-fill" aria-hidden="true"></i> Superuser access will allow this user to add and delete admins.</p>
-            <div class="mt-3 text-center">
-                <button type="submit" class="btn btn-primary"><i class="bi bi-person-add" aria-hidden="true"></i> Add user</button>
-            </div>
-        </form>
-    </div>
-
-</div>
-
-<h2 class="mt-5 text-center">Existing admins</h2>
-
-<div class="table-responsive">
-    <table class="table w-auto mt-3 mb-5 mx-auto">
-        <thead>
-            <tr>
-                <th scope="col">Name</th>
-                <th scope="col">Username</th>
-                <th scope="col">Date added</th>
-                <th scope="col">Superuser</th>
-                <th scope="col">Actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for admin in admins %}
-            <tr>
-                <td>{{ admin.name }}</td>
-                <td>{{ admin.username }}</td>
-                <td>{{ admin.date_added }}</td>
-                <td>
-                    {% if admin.is_superuser == "on" %}
-                    <span class="text-danger">Yes</span>
-                    {% else %}
-                    <span class="text-success">No</span>
-                    {% endif %}
-                </td>
-                <td>
-                    <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#modal-confirm" data-bs-url="{{ url_for('delete_admin', admin_id=admin._id) }}"><i class="bi bi-person-x" aria-hidden="true"></i> Delete</button>
-                    <a href="{{ url_for('switch_superuser', admin_id=admin._id) }}" class="btn btn-warning"><i class="bi bi-person-gear" aria-hidden="true"></i> Switch superuser</a>
-                </td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
 </div>
 
 {% endblock %}
