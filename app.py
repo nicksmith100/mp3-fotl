@@ -32,6 +32,7 @@ def lineup():
 
 @app.route("/register", methods=["GET", "POST"])
 def register():
+
     if request.method == "POST":
         # Check if username already exists
         existing_user = mongo.db.admins.find_one(
@@ -52,7 +53,11 @@ def register():
         # Confirm registration with flash message
         flash("New admin {} successfully added!".format(
             request.form.get("username")))
-    return render_template("register.html")
+
+    # Get list of existing admins to display
+    admins = mongo.db.admins.find()
+
+    return render_template("register.html", admins=admins)
 
 
 @app.route("/admin", methods=["GET", "POST"])

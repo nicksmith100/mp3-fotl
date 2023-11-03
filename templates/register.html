@@ -3,7 +3,7 @@
 
 <h2 class="mt-5 text-center">Admin registration</h2>
 
-<div class="card mt-5 mx-auto" style="width: 24rem;">
+<div class="card mt-3 mx-auto" style="width: 24rem;">
     <div class="card-header">
         Enter username and password for new admin
     </div>
@@ -28,6 +28,40 @@
         </form>
     </div>
 
+</div>
+
+<h2 class="mt-5 text-center">Existing admins</h2>
+
+<div class="table-responsive">
+    <table class="table w-auto mt-3 mb-5 mx-auto">
+        <thead>
+            <tr>
+                <th scope="col">Name</th>
+                <th scope="col">Username</th>
+                <th scope="col">Date added</th>
+                <th scope="col">Superuser</th>
+                <th scope="col">Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for admin in admins %}
+            <tr>
+                <td>NAME</td>
+                <td>{{ admin.username }}</td>
+                <td>DATE</td>
+                <td>
+                    {% if admin.is_superuser == "on" %}
+                    <span class="text-danger">Yes</span>
+                    {% else %}
+                    <span class="text-success">No</span>
+                    {% endif %}
+                </td>
+                <td><button type="button" class="btn btn-danger"><i class="bi bi-person-x" aria-hidden="true"></i> Delete</button>
+                    <button type="button" class="btn btn-warning"><i class="bi bi-person-gear" aria-hidden="true"></i> Switch superuser</button></td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
 </div>
 
 {% endblock %}
