@@ -52,7 +52,7 @@
             <tr>
                 <td>{{ admin.name }}</td>
                 <td>{{ admin.username }}</td>
-                <td>DATE</td>
+                <td>{{ admin.date_added }}</td>
                 <td>
                     {% if admin.is_superuser == "on" %}
                     <span class="text-danger">Yes</span>
