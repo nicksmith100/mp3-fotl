@@ -44,6 +44,7 @@ def register():
 
         # Register admin user
         register = {
+            "name": request.form.get("name"),
             "username": request.form.get("username"),
             "password": generate_password_hash(request.form.get("password")),
             "is_superuser": request.form.get("superuser-check")
@@ -52,7 +53,7 @@ def register():
 
         # Confirm registration with flash message
         flash("New admin {} successfully added!".format(
-            request.form.get("username")))
+            request.form.get("name")))
 
     # Get list of existing admins to display
     admins = mongo.db.admins.find()

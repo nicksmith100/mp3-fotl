@@ -10,11 +10,15 @@
     <div class="card-body">
         <form method="POST" action="{{ url_for('register') }}">
             <div class="mb-3">
-              <label for="username" class="form-label"><i class="bi bi-person" aria-hidden="true"></i> Username<br><small class="text-muted">Must be 5-15 characters using letters and numbers only.</small></label>
+                <label for="name" class="form-label"><i class="bi bi-alphabet" aria-hidden="true"></i> Name<br><small class="text-muted">At least 3 characters</small></label>
+                <input type="text" minlength="3" class="validate form-control" id="name" name="name" required>
+            </div>
+            <div class="mb-3">
+              <label for="username" class="form-label"><i class="bi bi-person" aria-hidden="true"></i> Username<br><small class="text-muted">5-15 characters using letters and numbers only</small></label>
               <input type="text" minlength="5" maxlength="15" pattern="^[a-zA-Z0-9]{5,15}$" class="validate form-control" id="username" name="username" required>
             </div>
             <div class="mb-3">
-              <label for="password" class="form-label"><i class="bi bi-key" aria-hidden="true"></i> Password<br><small class="text-muted">Must be 5-15 characters using letters and numbers only.</label>
+              <label for="password" class="form-label"><i class="bi bi-key" aria-hidden="true"></i> Password<br><small class="text-muted">5-15 characters using letters and numbers only</label>
               <input type="password" minlength="5" maxlength="15" pattern="^[a-zA-Z0-9]{5,15}$" class="validate form-control" id="password" name="password" required>
             </div>
             <div class="mb-3 form-check">
@@ -46,7 +50,7 @@
         <tbody>
         {% for admin in admins %}
             <tr>
-                <td>NAME</td>
+                <td>{{ admin.name }}</td>
                 <td>{{ admin.username }}</td>
                 <td>DATE</td>
                 <td>
