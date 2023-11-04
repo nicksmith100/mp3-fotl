@@ -121,7 +121,7 @@ def admin():
             flash("Incorrect username or password")
             return redirect(url_for("admin"))
    
-    return render_template("admin.html")
+    return redirect(url_for("artists"))
 
 
 @app.route("/artists")
