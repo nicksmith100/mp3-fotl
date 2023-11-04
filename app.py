@@ -111,6 +111,7 @@ def admin():
                 existing_user["password"], request.form.get("password")):
                     session["user"] = request.form.get("username").lower()
                     flash("Welcome, {}".format(request.form.get("username")))
+                    return redirect(url_for("artists"))
             else:
                 # Invalid password
                 flash("Incorrect username or password")
@@ -120,8 +121,16 @@ def admin():
             # Username doesn't exist
             flash("Incorrect username or password")
             return redirect(url_for("admin"))
-   
-    return redirect(url_for("artists"))
+    
+    return render_template("admin.html")
+
+
+@app.route("/logout")
+def logout():
+    # Remove user from session cookie
+    flash("You have been logged out")
+    session.pop("user")
+    return redirect(url_for("admin"))
 
 
 @app.route("/artists")
