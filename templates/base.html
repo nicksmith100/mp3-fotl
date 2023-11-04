@@ -14,6 +14,27 @@
 </head>
 <body>
     
+    <!-- Confirmation modal -->
+    <div class="modal fade" id="modal-confirm" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="modal-label">Confirmation</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal-confirm" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="mb-3 modal-text">
+                </div>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+              <a href="#" class="btn btn-danger btn-confirm">Confirm</a>
+            </div>
+          </div>
+        </div>
+    </div>
+    <!-- .confirmation modal -->
+
     <header>
         <nav class="navbar navbar-expand-lg bg-body-tertiary">
             <div class="container-fluid">
@@ -47,6 +68,12 @@
         </nav>
     </header>
 
+    <!-- Subheader for admin pages --> 
+    <div class="container">
+        {% block subheader %}
+        {% endblock %}
+    </div>
+
     <section>
         <!-- Flash messages -->
         {% with messages = get_flashed_messages() %}
@@ -60,27 +87,6 @@
         {% endwith %}
         <!-- .flash messages -->
     </section>
-
-    <!-- Confirmation modal -->
-    <div class="modal fade" id="modal-confirm" tabindex="-1" aria-hidden="true">
-        <div class="modal-dialog">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title" id="modal-label">Confirmation</h5>
-              <button type="button" class="btn-close" data-bs-dismiss="modal-confirm" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                <div class="mb-3 modal-text">
-                </div>
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-              <a href="#" class="btn btn-danger btn-confirm">Confirm</a>
-            </div>
-          </div>
-        </div>
-    </div>
-    <!-- .confirmation modal -->
 
     <main class="container">
         {% block content %}
