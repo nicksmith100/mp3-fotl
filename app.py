@@ -124,6 +124,28 @@ def admin():
     return render_template("admin.html")
 
 
+@app.route("/artists")
+def artists():
+    artists = list(mongo.db.artists.find())
+
+    return render_template("artists.html", artists=artists)
+
+
+@app.route("/add_artist")
+def add_artist():
+    return render_template("artists.html")
+
+
+@app.route("/edit_artist")
+def edit_artist():
+    return render_template("artists.html")
+
+
+@app.route("/delete_artist")
+def delete_artist():
+    return render_template("artists.html")
+
+
 if __name__ == "__main__":
     app.run(host=os.environ.get("IP"),
             port=int(os.environ.get("PORT")),

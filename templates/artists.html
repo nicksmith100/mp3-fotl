@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="container">
+            
+    <div class="row mt-5">
+        <div class="col-4">
+            <h2>Artist index</h2>
+
+            {% for artist in artists %}
+
+                <a href="#{{ artist.artist_name }}">{{ artist.artist_name }}</a><br>
+
+            {% endfor %}
+
+            <div class="add-artist mt-3">
+                <a href="{{ url_for('add_artist') }}" class="btn btn-primary btn-lg"><i class="bi bi-plus-circle-fill" aria-hidden="true"></i> Add artist</a>
+            </div>
+
+        </div>
+        
+        <div class="col-8">
+            <h2>Biographies</h2>
+
+            {% for artist in artists %}
+                    
+                <div id="{{ artist.artist_name }}" class="card my-5 w-75">
+                    <img src="{{ artist.artist_img }}" alt="{{ artist.artist_name }}" class="card-img-top">
+                    <div class="card-body">
+                        <h3 class="card-title">{{ artist.artist_name }}</h3>    
+                        <p class="bio">
+                            <strong>Biography:</strong><br>
+                            {{ artist.artist_bio }}</p>
+                        <p class="artist-url">
+                            <p><strong>Website:</strong><br>
+                            {{ artist.artist_url }}</p>
+                    </div>
+                    <div class="card-footer">
+                        <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#modal-confirm" data-bs-url="{{ url_for('delete_artist', artist_id=artist._id) }}"><i class="bi bi-x-circle-fill" aria-hidden="true"></i> Delete</button>
+                        <a href="{{ url_for('edit_artist', artist_id=artist._id) }}" class="btn btn-warning"><i class="bi bi-pencil-fill" aria-hidden="true"></i> Edit</a>
+                    </div>
+                </div>
+            {% endfor %}    
+        </div>
+    </div>
+</div>
+
+{% endblock %}
