@@ -150,7 +150,7 @@ def artists():
 
 @app.route("/add_artist")
 def add_artist():
-    return render_template("artists.html")
+    return render_template("add_artist.html")
 
 
 @app.route("/edit_artist")

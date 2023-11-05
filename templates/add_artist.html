@@ -1,0 +1,161 @@
+{% extends "base.html" %}
+
+{% block subheader %}
+<nav class="navbar navbar-expand-lg bg-dark" data-bs-theme="dark">
+    <div class="container-fluid">
+            <span class="navbar-brand">Admin menu</span>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarToggler" aria-controls="navbarToggler" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse ms-auto" id="navbarToggler">
+                <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                    {% if is_superuser=="on" %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url_for('register') }}"><i class="bi bi-person-add" aria-hidden="true"></i> Register admins</a>
+                    </li>
+                    {% endif %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url_for('logout') }}"><i class="bi bi-box-arrow-right" aria-hidden="true"></i> Log out</a>
+                    </li>
+                </ul>            
+            </div>
+    </div>
+</nav>
+{% endblock %}
+
+{% block content %}
+
+<h2 class="my-3">Add artist</h2>
+
+<form method="POST" action="">
+    <fieldset>
+        <legend>Artist information</legend>
+        <div class="mb-3">
+            <label for="artist_name" class="form-label"><i class="bi bi-alphabet" aria-hidden="true"></i> Name</label>
+            <input type="text" minlength="1" class="validate form-control" id="artist_name" name="artist_name" required>
+        </div>
+        <div class="mb-3">
+            <label for="artist_bio" class="form-label"><i class="bi bi-blockquote-left" aria-hidden="true"></i> Biography<br></label>
+            <textarea minlength="10" maxlength="1000" class="validate form-control" id="artist_bio" name="artist_bio"></textarea>
+        </div>
+        <div class="mb-3">
+            <label for="artist_url" class="form-label"><i class="bi bi-link-45deg" aria-hidden="true"></i> Website<br></label>
+            <input type="url" minlength="5" maxlength="50" class="validate form-control" id="artist_url" name="artist_url">
+        </div>
+        <div class="mb-3">
+            <label for="artist_img" class="form-label"><i class="bi bi-image" aria-hidden="true"></i> Image<br></label>
+            <input type="url" minlength="5" maxlength="50" class="validate form-control" id="artist_url" name="artist_url">
+        </div>
+        
+    </fieldset>
+    <fieldset>
+        <legend>Show 1</legend>
+        <div class="row">
+            <div class="col-sm-4">
+                <div class="mb-3">
+                    <label for="show1_day" class="form-label"><i class="bi bi-calendar-event" aria-hidden="true"></i> Day<br></label>
+                    <select id="show1_day" name="show1_day" class="form-select">
+                        <option selected>Select</option>
+                        <option value="thu">Thursday</option>
+                        <option value="fri">Friday</option>
+                        <option value="sat">Saturday</option>
+                        <option value="sun">Sunday</option>
+                    </select>
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <div class="mb-3">
+                    <label for="show1_time" class="form-label"><i class="bi bi-clock" aria-hidden="true"></i> Time<br></label>
+                    <select id="show1_time" name="show1_time" class="form-select">
+                        <option selected>Select</option>
+                        <option value="10.00">10.00</option>
+                        <option value="10.15">10.15</option>
+                        <option value="10.30">10.30</option>
+                        <option value="10.45">10.45</option>
+                    </select>
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <div class="mb-3">
+                    <label for="show1_duration" class="form-label"><i class="bi bi-hourglass-split" aria-hidden="true"></i> Duration<br></label>
+                    <input type="number" min="5" max="120" class="validate form-control" id="show1_duration" name="show1_duration">
+                </div>
+            </div>
+        </div>
+    </fieldset>
+    <fieldset>
+        <legend>Show 2</legend>
+        <div class="row">
+            <div class="col-sm-4">
+                <div class="mb-3">
+                    <label for="show2_day" class="form-label"><i class="bi bi-calendar-event" aria-hidden="true"></i> Day<br></label>
+                    <select id="show2_day" name="show2_day" class="form-select">
+                        <option selected>Select</option>
+                        <option value="thu">Thursday</option>
+                        <option value="fri">Friday</option>
+                        <option value="sat">Saturday</option>
+                        <option value="sun">Sunday</option>
+                    </select>
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <div class="mb-3">
+                    <label for="show2_time" class="form-label"><i class="bi bi-clock" aria-hidden="true"></i> Time<br></label>
+                    <select id="show2_time" name="show2_time" class="form-select">
+                        <option selected>Select</option>
+                        <option value="10.00">10.00</option>
+                        <option value="10.15">10.15</option>
+                        <option value="10.30">10.30</option>
+                        <option value="10.45">10.45</option>
+                    </select>
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <div class="mb-3">
+                    <label for="show2_duration" class="form-label"><i class="bi bi-hourglass-split" aria-hidden="true"></i> Duration<br></label>
+                    <input type="number" min="5" max="120" class="validate form-control" id="show2_duration" name="show2_duration">
+                </div>
+            </div>
+        </div>
+    </fieldset>
+    <fieldset>
+        <legend>Show 3</legend>
+        <div class="row">
+            <div class="col-sm-4">
+                <div class="mb-3">
+                    <label for="show3_day" class="form-label"><i class="bi bi-calendar-event" aria-hidden="true"></i> Day<br></label>
+                    <select id="show3_day" name="show3_day" class="form-select">
+                        <option selected>Select</option>
+                        <option value="thu">Thursday</option>
+                        <option value="fri">Friday</option>
+                        <option value="sat">Saturday</option>
+                        <option value="sun">Sunday</option>
+                    </select>
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <div class="mb-3">
+                    <label for="show3_time" class="form-label"><i class="bi bi-clock" aria-hidden="true"></i> Time<br></label>
+                    <select id="show3_time" name="show3_time" class="form-select">
+                        <option selected>Select</option>
+                        <option value="10.00">10.00</option>
+                        <option value="10.15">10.15</option>
+                        <option value="10.30">10.30</option>
+                        <option value="10.45">10.45</option>
+                    </select>
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <div class="mb-3">
+                    <label for="show3_duration" class="form-label"><i class="bi bi-hourglass-split" aria-hidden="true"></i> Duration<br></label>
+                    <input type="number" min="5" max="120" class="validate form-control" id="show3_duration" name="show3_duration">
+                </div>
+            </div>
+        </div>
+    </fieldset>
+    <div class="my-3 text-center">
+        <button type="submit" class="btn btn-primary"><i class="bi bi-plus-circle-fill" aria-hidden="true"></i> Add</button>
+    </div>
+</form>
+
+{% endblock %}
