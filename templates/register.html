@@ -93,9 +93,10 @@
                                 {% endif %}
                             </td>
                             <td>
+                                {% if admin.username != session["user"] %}
                                 <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#modal-confirm" data-bs-url="{{ url_for('delete_admin', admin_id=admin._id) }}"><i class="bi bi-person-x" aria-hidden="true"></i> Delete</button>
                                 <a href="{{ url_for('switch_superuser', admin_id=admin._id) }}" class="btn btn-warning"><i class="bi bi-person-gear" aria-hidden="true"></i> Switch superuser</a>
-                                
+                                {% endif %}
                             </td>
                         </tr>
                     {% endfor %}
