@@ -64,10 +64,14 @@ def register():
         flash("New admin {} successfully added!".format(
             request.form.get("name")))
 
+    #Get superuser status from database
+    is_superuser = mongo.db.admins.find_one(
+    {"username": session["user"]})["is_superuser"]
+
     # Get list of existing admins to display
     admins = mongo.db.admins.find()
 
-    return render_template("register.html", admins=admins)
+    return render_template("register.html", admins=admins, is_superuser=is_superuser)
 
 
 @app.route("/delete_admin/<admin_id>")
@@ -137,7 +141,11 @@ def logout():
 def artists():
     artists = list(mongo.db.artists.find())
 
-    return render_template("artists.html", artists=artists)
+    #Get superuser status from database
+    is_superuser = mongo.db.admins.find_one(
+    {"username": session["user"]})["is_superuser"]
+    
+    return render_template("artists.html", artists=artists, is_superuser=is_superuser)
 
 
 @app.route("/add_artist")
