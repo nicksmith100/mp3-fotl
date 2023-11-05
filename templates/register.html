@@ -12,12 +12,11 @@
                     <li class="nav-item">
                         <a class="nav-link" href="{{ url_for('logout') }}"><i class="bi bi-box-arrow-right" aria-hidden="true"></i> Log out</a>
                     </li>
-                    {% if is_superuser == "on" %}
+                    {% if is_superuser=="on" %}
                     <li class="nav-item">
                         <a class="nav-link" href="{{ url_for('register') }}"><i class="bi bi-person-add" aria-hidden="true"></i> Register admins</a>
                     </li>
-                    {% endif %}                            
-                   
+                    {% endif %}                          
                 </ul>            
             </div>
     </div>
@@ -26,6 +25,10 @@
 
 {% block content %}
 
+{% if is_superuser=="off" %}
+<p class="bg-warning text-center fs-1"><i class="bi bi-exclamation-diamond-fill" aria-hidden="true"></i> You do not have permission to view this page <i class="bi bi-exclamation-diamond-fill" aria-hidden="true"></i></p>
+
+{% else %}
 <div class="container">
     <div class="row">
         <div class="col-12 col-sm-4">
@@ -92,6 +95,7 @@
                             <td>
                                 <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#modal-confirm" data-bs-url="{{ url_for('delete_admin', admin_id=admin._id) }}"><i class="bi bi-person-x" aria-hidden="true"></i> Delete</button>
                                 <a href="{{ url_for('switch_superuser', admin_id=admin._id) }}" class="btn btn-warning"><i class="bi bi-person-gear" aria-hidden="true"></i> Switch superuser</a>
+                                
                             </td>
                         </tr>
                     {% endfor %}
@@ -101,5 +105,6 @@
         </div>
     </div>
 </div>
+{% endif %}
 
 {% endblock %}
