@@ -1,7 +1,6 @@
-// Display confirmation modal with dynamic confirm button
+/* Display confirmation modal with dynamic confirm button */
 
 let confirmationModal = document.getElementById('modal-confirm');
-
 confirmationModal.addEventListener('show.bs.modal', function (event) {
 
 // Button that triggered the modal
@@ -18,4 +17,13 @@ modalText.innerHTML = `<strong class="text-danger"><i class="bi bi-exclamation-c
 let modalConfirm = confirmationModal.querySelector('.btn-confirm');
 modalConfirm.href = url;
 
+});
+
+/* Date-and-time picker using flatpickr plugin */
+
+$(".showtime").flatpickr({
+    enableTime: true,
+    dateFormat: "d-m-Y H:i",
+    minDate: "13-07-2023",
+    maxDate: "16-07-2023"
 });
