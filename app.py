@@ -195,9 +195,11 @@ def add_artist():
 
     return render_template("add_artist.html")
 
-@app.route("/edit_artist")
-def edit_artist():
-    return render_template("artists.html")
+
+@app.route("/edit_artist/<artist_id>", methods=["GET", "POST"])
+def edit_artist(artist_id):
+    artist = mongo.db.artists.find_one({"_id": ObjectId(artist_id)})
+    return render_template("edit_artist.html", artist=artist)
 
 
 @app.route("/delete_artist")
