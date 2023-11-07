@@ -141,11 +141,13 @@ def logout():
 def artists():
     artists = list(mongo.db.artists.find())
 
-    #Get superuser status from database
+    # Get superuser status from database
     is_superuser = mongo.db.admins.find_one(
     {"username": session["user"]})["is_superuser"]
-    
-    return render_template("artists.html", artists=artists, is_superuser=is_superuser)
+
+    return render_template("artists.html",
+    artists=artists,
+    is_superuser=is_superuser)
 
 
 @app.route("/add_artist", methods=["GET", "POST"])
@@ -153,19 +155,36 @@ def add_artist():
     if request.method == "POST":
         now = datetime.now()
         date = now.strftime("%d/%m/%Y")
+
+        # Convert date strings to datetime objects
+        if request.form.get("show1_start") != "":
+            show1_start = datetime.strptime(request.form.get("show1_start"), "%d-%m-%Y %H:%M")
+        else:
+            show1_start = ""
+
+        if request.form.get("show2_start") != "":
+            show2_start = datetime.strptime(request.form.get("show2_start"), "%d-%m-%Y %H:%M")
+        else:
+            show2_start = ""
+
+        if request.form.get("show3_start") != "":
+            show3_start = datetime.strptime(request.form.get("show3_start"), "%d-%m-%Y %H:%M")
+        else:
+            show3_start = ""          
+
         artist = {
             "artist_name": request.form.get("artist_name"),
             "artist_bio": request.form.get("artist_bio"),
             "artist_url": request.form.get("artist_url"),
             "artist_img": request.form.get("artist_img"),
             "show1_stage": request.form.get("show1_stage"),
-            "show1_start": request.form.get("show1_start"),
+            "show1_start": show1_start,
             "show1_duration": request.form.get("show1_duration"),
             "show2_stage": request.form.get("show2_stage"),
-            "show2_start": request.form.get("show2_start"),
+            "show2_start": show2_start,
             "show2_duration": request.form.get("show2_duration"),
             "show3_stage": request.form.get("show3_stage"),
-            "show3_start": request.form.get("show3_start"),
+            "show3_start": show3_start,
             "show3_duration": request.form.get("show3_duration"),
             "last_edit_by": session["user"],
             "last_edit_on": date
