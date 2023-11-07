@@ -64,6 +64,7 @@
                         class="bi bi-x-circle-fill" aria-hidden="true"></i> Delete</button>
                 <a href="{{ url_for('edit_artist', artist_id=artist._id) }}" class="btn btn-warning"><i
                         class="bi bi-pencil-fill" aria-hidden="true"></i> Edit</a>
+                <p class="text-muted mt-1">Last edited by {{ artist.last_edit_by }} on {{ artist.last_edit_on }}</p>
             </div>
         </div>
         {% endfor %}
