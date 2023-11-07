@@ -148,10 +148,33 @@ def artists():
     return render_template("artists.html", artists=artists, is_superuser=is_superuser)
 
 
-@app.route("/add_artist")
+@app.route("/add_artist", methods=["GET", "POST"])
 def add_artist():
-    return render_template("add_artist.html")
+    if request.method == "POST":
+        now = datetime.now()
+        date = now.strftime("%d/%m/%Y")
+        artist = {
+            "artist_name": request.form.get("artist_name"),
+            "artist_bio": request.form.get("artist_bio"),
+            "artist_url": request.form.get("artist_url"),
+            "artist_img": request.form.get("artist_img"),
+            "show1_stage": request.form.get("show1_stage"),
+            "show1_start": request.form.get("show1_start"),
+            "show1_duration": request.form.get("show1_duration"),
+            "show2_stage": request.form.get("show2_stage"),
+            "show2_start": request.form.get("show2_start"),
+            "show2_duration": request.form.get("show2_duration"),
+            "show3_stage": request.form.get("show3_stage"),
+            "show3_start": request.form.get("show3_start"),
+            "show3_duration": request.form.get("show3_duration"),
+            "last_edit_by": session["user"],
+            "last_edit_on": date
+        }
+        mongo.db.artists.insert_one(artist)
+        flash("Artist successfully added")
+        return redirect(url_for("artists"))
 
+    return render_template("add_artist.html")
 
 @app.route("/edit_artist")
 def edit_artist():
