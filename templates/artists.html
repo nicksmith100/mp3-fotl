@@ -59,15 +59,15 @@
                     {{ artist.artist_url }}</p>
                 
                 <!-- Show appearances if they exist-->
-                {% if artist.show1_stage != "Select" %}
+                {% if artist.show1_stage != "" %}
                     <p class="artist-shows">
                         <strong>Appearing:</strong><p>
                         <ul>
                             <li>{{ artist.show1_start.strftime('%A %-d %B at %-I.%M%p') }} on the {{ artist.show1_stage|capitalize }} stage</li>
-                            {% if artist.show2_stage != "Select" %}
+                            {% if artist.show2_stage != "" %}
                             <li>{{ artist.show2_start.strftime('%A %-d %B at %-I.%M%p') }} on the {{ artist.show2_stage|capitalize }} stage</li>
                             {% endif %}
-                            {% if artist.show3_stage != "Select" %}
+                            {% if artist.show3_stage != "" %}
                             <li>{{ artist.show3_start.strftime('%A %-d %B at %-I.%M%p') }} on the {{ artist.show3_stage|capitalize }} stage</li>>
                             {% endif %}
                         </ul>
