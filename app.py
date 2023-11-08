@@ -140,13 +140,47 @@ def logout():
 @app.route("/event", methods=["GET", "POST"])
 def event():
 
-    #Get superuser status from database
+    if request.method == "POST":
+        event_id = mongo.db.event.find_one()["_id"]
+        now = datetime.now()
+        date = now.strftime("%d-%m-%Y")
+
+        # Convert date strings to datetime objects
+        if request.form.get("event_start") != "":
+            event_start = datetime.strptime(request.form.get("event_start"), "%d-%m-%Y")
+        else:
+            event_start = datetime.strptime("01-01-1900", "%d-%m-%Y")
+
+        if request.form.get("event_end") != "":
+            event_end = datetime.strptime(request.form.get("event_end"), "%d-%m-%Y")
+        else:
+            event_end = datetime.strptime("01-01-1900", "%d-%m-%Y")
+
+        event_info = {
+            "$set": {
+            "event_name": request.form.get("event_name"),
+            "event_about": request.form.get("event_about"),
+            "event_img": request.form.get("event_img"),
+            "event_location": request.form.get("event_location"),
+            "event_start": event_start,
+            "event_end": event_end,
+            "last_edit_by": session["user"],
+            "last_edit_on": date
+            }
+        }
+        mongo.db.event.update_one({"_id": event_id}, event_info)
+        flash("Event info successfully updated")
+        return redirect(url_for("event"))
+    
+    # Get superuser status from database
     is_superuser = mongo.db.admins.find_one(
     {"username": session["user"]})["is_superuser"]
-
+    
     event = list(mongo.db.event.find())
     return render_template("event.html", is_superuser = is_superuser,
     event=event)
+
+   
 
 
 @app.route("/artists")
