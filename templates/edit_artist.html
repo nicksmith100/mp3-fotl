@@ -77,14 +77,14 @@
                 <div class="mb-3">
                     <label for="show1_start" class="form-label"><i class="bi bi-calendar-event" aria-hidden="true"></i> Date and time<br></label>
                     {% if artist.show1_start.year != 1900 %}
-                        <input id="show1_start" name="show1_start" value="{{ artist.show1_start }}" class="validate form-control showtime">
+                        <input id="show1_start" name="show1_start" value="{{ artist.show1_start.strftime('%d-%m-%Y %H:%M') }}" class="validate form-control showtime">
                     {% else %}
                         <input id="show1_start" name="show1_start" class="validate form-control showtime">
                     {% endif %}
                 </div>
                 <div class="mb-3">
                     <label for="show1_duration" class="form-label"><i class="bi bi-hourglass-split" aria-hidden="true"></i> Duration<br></label>
-                    {% if artist.show1_duration > 0 %}
+                    {% if artist.show1_duration != "" %}
                         <input type="number" min="5" max="120" step="5" value="{{ artist.show1_duration }}" class="validate form-control w-50" id="show1_duration" name="show1_duration">
                     {% else %}
                         <input type="number" min="5" max="120" step="5"  class="validate form-control w-50" id="show1_duration" name="show1_duration">
@@ -116,14 +116,14 @@
                 <div class="mb-3">
                     <label for="show2_start" class="form-label"><i class="bi bi-calendar-event" aria-hidden="true"></i> Date and time<br></label>
                     {% if artist.show2_start.year != 1900 %}
-                        <input id="show2_start" name="show2_start" value="{{ artist.show2_start }}" class="validate form-control showtime">
+                        <input id="show2_start" name="show2_start" value="{{ artist.show2_start.strftime('%d-%m-%Y %H:%M') }}" class="validate form-control showtime">
                     {% else %}
                         <input id="show2_start" name="show2_start" class="validate form-control showtime">
                     {% endif %}
                 </div>
                 <div class="mb-3">
                     <label for="show2_duration" class="form-label"><i class="bi bi-hourglass-split" aria-hidden="true"></i> Duration<br></label>
-                    {% if artist.show2_duration > 0 %}
+                    {% if artist.show2_duration != "" %}
                         <input type="number" min="5" max="120" step="5" value="{{ artist.show2_duration }}" class="validate form-control w-50" id="show2_duration" name="show2_duration">
                     {% else %}
                         <input type="number" min="5" max="120" step="5"  class="validate form-control w-50" id="show2_duration" name="show2_duration">
@@ -155,14 +155,14 @@
                 <div class="mb-3">
                     <label for="show3_start" class="form-label"><i class="bi bi-calendar-event" aria-hidden="true"></i> Date and time<br></label>
                     {% if artist.show3_start.year != 1900 %}
-                        <input id="show3_start" name="show3_start" value="{{ artist.show3_start }}" class="validate form-control showtime">
+                        <input id="show3_start" name="show3_start" value="{{ artist.show3_start.strftime('%d-%m-%Y %H:%M') }}" class="validate form-control showtime">
                     {% else %}
                         <input id="show3_start" name="show3_start" class="validate form-control showtime">
                     {% endif %}
                 </div>
                 <div class="mb-3">
                     <label for="show3_duration" class="form-label"><i class="bi bi-hourglass-split" aria-hidden="true"></i> Duration<br></label>
-                    {% if artist.show3_duration > 0 %}
+                    {% if artist.show3_duration != "" %}
                         <input type="number" min="5" max="120" step="5" value="{{ artist.show3_duration }}" class="validate form-control w-50" id="show3_duration" name="show3_duration">
                     {% else %}
                         <input type="number" min="5" max="120" step="5"  class="validate form-control w-50" id="show3_duration" name="show3_duration">

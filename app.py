@@ -154,7 +154,7 @@ def artists():
 def add_artist():
     if request.method == "POST":
         now = datetime.now()
-        date = now.strftime("%d/%m/%Y")
+        date = now.strftime("%d-%m-%Y")
 
         # Convert date strings to datetime objects
         if request.form.get("show1_start") != "":
@@ -198,6 +198,50 @@ def add_artist():
 
 @app.route("/edit_artist/<artist_id>", methods=["GET", "POST"])
 def edit_artist(artist_id):
+
+    if request.method == "POST":
+        now = datetime.now()
+        date = now.strftime("%d-%m-%Y")
+
+        # Convert date strings to datetime objects
+        if request.form.get("show1_start") != "":
+            show1_start = datetime.strptime(request.form.get("show1_start"), "%d-%m-%Y %H:%M")
+        else:
+            show1_start = datetime.strptime("01-01-1900", "%d-%m-%Y")
+
+        if request.form.get("show2_start") != "":
+            show2_start = datetime.strptime(request.form.get("show2_start"), "%d-%m-%Y %H:%M")
+        else:
+            show2_start = datetime.strptime("01-01-1900", "%d-%m-%Y")
+
+        if request.form.get("show3_start") != "":
+            show3_start = datetime.strptime(request.form.get("show3_start"), "%d-%m-%Y %H:%M")
+        else:
+            show3_start = datetime.strptime("01-01-1900", "%d-%m-%Y")          
+
+        edited_artist = {
+            "$set": {
+            "artist_name": request.form.get("artist_name"),
+            "artist_bio": request.form.get("artist_bio"),
+            "artist_url": request.form.get("artist_url"),
+            "artist_img": request.form.get("artist_img"),
+            "show1_stage": request.form.get("show1_stage"),
+            "show1_start": show1_start,
+            "show1_duration": request.form.get("show1_duration"),
+            "show2_stage": request.form.get("show2_stage"),
+            "show2_start": show2_start,
+            "show2_duration": request.form.get("show2_duration"),
+            "show3_stage": request.form.get("show3_stage"),
+            "show3_start": show3_start,
+            "show3_duration": request.form.get("show3_duration"),
+            "last_edit_by": session["user"],
+            "last_edit_on": date
+            }
+        }
+        mongo.db.artists.update_one({"_id": ObjectId(artist_id)}, edited_artist)
+        flash("Artist successfully updated")
+        return redirect(url_for("artists"))
+
     artist = mongo.db.artists.find_one({"_id": ObjectId(artist_id)})
     stages = ["river", "mill", "bar", "cottage"]
     return render_template("edit_artist.html", artist=artist, stages=stages)
