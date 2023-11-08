@@ -48,7 +48,7 @@ def register():
         ## Get current date
 
         now = datetime.now()
-        date = now.strftime("%d/%m/%Y")
+        date = now.strftime("%d-%m-%Y")
                 
         # Register admin user
         register = {
