@@ -176,11 +176,9 @@ def event():
     is_superuser = mongo.db.admins.find_one(
     {"username": session["user"]})["is_superuser"]
     
-    event = list(mongo.db.event.find())
+    event = mongo.db.event.find_one()
     return render_template("event.html", is_superuser = is_superuser,
     event=event)
-
-   
 
 
 @app.route("/artists")

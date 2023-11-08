@@ -33,5 +33,4 @@ $(".showtime").flatpickr({
 $(".event-date").flatpickr({
     dateFormat: "d-m-Y",
     minDate: "01-07-2022",
-    defaultDate: "01-07-2023"
 });
