@@ -27,3 +27,11 @@ $(".showtime").flatpickr({
     minDate: "13-07-2023",
     maxDate: "16-07-2023"
 });
+
+/* Date picker using flatpickr plugin */
+
+$(".event-date").flatpickr({
+    dateFormat: "d-m-Y",
+    minDate: "01-07-2022",
+    defaultDate: "01-07-2023"
+});
