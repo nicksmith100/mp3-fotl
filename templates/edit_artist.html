@@ -32,19 +32,21 @@
         <legend>Artist information</legend>
         <div class="mb-3">
             <label for="artist_name" class="form-label"><i class="bi bi-alphabet" aria-hidden="true"></i> Name</label>
-            <input type="text" minlength="1" class="validate form-control" id="artist_name" name="artist_name" required>
+            <input type="text" minlength="1" value="{{ artist.artist_name }}" class="validate form-control" id="artist_name" name="artist_name" required>
         </div>
         <div class="mb-3">
             <label for="artist_bio" class="form-label"><i class="bi bi-blockquote-left" aria-hidden="true"></i> Biography<br></label>
-            <textarea minlength="10" maxlength="3000" rows="15" class="validate form-control" id="artist_bio" name="artist_bio"></textarea>
+            <textarea minlength="10" maxlength="3000" rows="15" class="validate form-control" id="artist_bio" name="artist_bio">
+                {{- artist.artist_bio -}}
+            </textarea>
         </div>
         <div class="mb-3">
             <label for="artist_url" class="form-label"><i class="bi bi-link-45deg" aria-hidden="true"></i> Website<br></label>
-            <input type="url" minlength="5" maxlength="200" class="validate form-control" id="artist_url" name="artist_url">
+            <input type="url" minlength="5" maxlength="200" value="{{ artist.artist_url }}" class="validate form-control" id="artist_url" name="artist_url">
         </div>
         <div class="mb-3">
             <label for="artist_img" class="form-label"><i class="bi bi-image" aria-hidden="true"></i> Image<br></label>
-            <input type="url" minlength="5" maxlength="200" class="validate form-control" id="artist_img" name="artist_img">
+            <input type="url" minlength="5" maxlength="200" value="{{ artist.artist_img }}" class="validate form-control" id="artist_img" name="artist_img">
         </div>
     </fieldset>
     <fieldset class="mt-3">
@@ -55,62 +57,116 @@
                 <div class="my-3">
                     <label for="show1_stage" class="form-label"><i class="bi bi-mic" aria-hidden="true"></i> Stage<br></label>
                     <select class="validate form-control form-select" id="show1_stage" name="show1_stage">
-                        <option selected>Select</option>
-                        <option value="river">River</option>
-                        <option value="mill">Mill</option>
-                        <option value="bar">Bar</option>
-                        <option value="cottage">Cottage</option>
+                        
+                        {% if artist.show1_stage == "" %}
+                            <option value="" selected>Select</option>
+                        {% else %}
+                            <option value="">Select</option>
+                        {% endif %}
+
+                        {% for stage in stages %}
+                            {% if artist.show1_stage == stage %}
+                                <option value="{{ stage }}" selected>{{ stage|capitalize }}</option>
+                            {% else %}
+                                <option value="{{ stage }}">{{ stage|capitalize }}</option>
+                            {% endif %}                            
+                        {% endfor %}
+                        
                     </select>
                 </div>
                 <div class="mb-3">
-                        <label for="show1_start" class="form-label"><i class="bi bi-calendar-event" aria-hidden="true"></i> Date and time<br></label>
+                    <label for="show1_start" class="form-label"><i class="bi bi-calendar-event" aria-hidden="true"></i> Date and time<br></label>
+                    {% if artist.show1_start.year != 1900 %}
+                        <input id="show1_start" name="show1_start" value="{{ artist.show1_start }}" class="validate form-control showtime">
+                    {% else %}
                         <input id="show1_start" name="show1_start" class="validate form-control showtime">
+                    {% endif %}
                 </div>
                 <div class="mb-3">
                     <label for="show1_duration" class="form-label"><i class="bi bi-hourglass-split" aria-hidden="true"></i> Duration<br></label>
-                    <input type="number" min="5" max="120" step="5" class="validate form-control w-50" id="show1_duration" name="show1_duration">
+                    {% if artist.show1_duration > 0 %}
+                        <input type="number" min="5" max="120" step="5" value="{{ artist.show1_duration }}" class="validate form-control w-50" id="show1_duration" name="show1_duration">
+                    {% else %}
+                        <input type="number" min="5" max="120" step="5"  class="validate form-control w-50" id="show1_duration" name="show1_duration">
+                    {% endif %}
                 </div>
             </div>
             <div class="col-sm-3">
                 <span class="fs-5">Show 2</span>
                 <div class="my-3">
                     <label for="show2_stage" class="form-label"><i class="bi bi-mic" aria-hidden="true"></i> Stage<br></label>
-                    <select class="validate form-control form-select" id="show2_stage" name="show2_stage">
-                        <option selected>Select</option>
-                        <option value="river">River</option>
-                        <option value="mill">Mill</option>
-                        <option value="bar">Bar</option>
-                        <option value="cottage">Cottage</option>
+                    <select value="{{ artist.show2_stage }}" class="validate form-control form-select" id="show2_stage" name="show2_stage">
+                        
+                        {% if artist.show2_stage == "" %}
+                            <option value="" selected>Select</option>
+                        {% else %}
+                            <option value="">Select</option>
+                        {% endif %}
+
+                        {% for stage in stages %}
+                            {% if artist.show2_stage == stage %}
+                                <option value="{{ stage }}" selected>{{ stage|capitalize }}</option>
+                            {% else %}
+                                <option value="{{ stage }}">{{ stage|capitalize }}</option>
+                            {% endif %}                            
+                        {% endfor %}
+                    
                     </select>
                 </div>
                 <div class="mb-3">
-                            <label for="show2_start" class="form-label"><i class="bi bi-calendar-event" aria-hidden="true"></i> Date and time<br></label>
-                            <input id="show2_start" name="show2_start" class="validate form-control showtime">
-                    </div>
-                    <div class="mb-3">
-                        <label for="show2_duration" class="form-label"><i class="bi bi-hourglass-split" aria-hidden="true"></i> Duration<br></label>
-                        <input type="number" min="5" max="120" step="5" class="validate form-control w-50" id="show2_duration" name="show2_duration">
-                    </div>
+                    <label for="show2_start" class="form-label"><i class="bi bi-calendar-event" aria-hidden="true"></i> Date and time<br></label>
+                    {% if artist.show2_start.year != 1900 %}
+                        <input id="show2_start" name="show2_start" value="{{ artist.show2_start }}" class="validate form-control showtime">
+                    {% else %}
+                        <input id="show2_start" name="show2_start" class="validate form-control showtime">
+                    {% endif %}
+                </div>
+                <div class="mb-3">
+                    <label for="show2_duration" class="form-label"><i class="bi bi-hourglass-split" aria-hidden="true"></i> Duration<br></label>
+                    {% if artist.show2_duration > 0 %}
+                        <input type="number" min="5" max="120" step="5" value="{{ artist.show2_duration }}" class="validate form-control w-50" id="show2_duration" name="show2_duration">
+                    {% else %}
+                        <input type="number" min="5" max="120" step="5"  class="validate form-control w-50" id="show2_duration" name="show2_duration">
+                    {% endif %}
+                </div>
             </div>
             <div class="col-sm-3">
                 <span class="fs-5">Show 3</span>
                 <div class="my-3">
                     <label for="show3_stage" class="form-label"><i class="bi bi-mic" aria-hidden="true"></i> Stage<br></label>
                     <select class="validate form-control form-select" id="show3_stage" name="show3_stage">
-                        <option selected>Select</option>
-                        <option value="river">River</option>
-                        <option value="mill">Mill</option>
-                        <option value="bar">Bar</option>
-                        <option value="cottage">Cottage</option>
+                        
+                        {% if artist.show3_stage == "" %}
+                            <option value="" selected>Select</option>
+                        {% else %}
+                            <option value="">Select</option>
+                        {% endif %}
+
+                        {% for stage in stages %}
+                            {% if artist.show3_stage == stage %}
+                                <option value="{{ stage }}" selected>{{ stage|capitalize }}</option>
+                            {% else %}
+                                <option value="{{ stage }}">{{ stage|capitalize }}</option>
+                            {% endif %}                            
+                        {% endfor %}
+                        
                     </select>
                 </div>
                 <div class="mb-3">
                     <label for="show3_start" class="form-label"><i class="bi bi-calendar-event" aria-hidden="true"></i> Date and time<br></label>
-                    <input id="show3_start" name="show3_start" class="validate form-control showtime">
+                    {% if artist.show3_start.year != 1900 %}
+                        <input id="show3_start" name="show3_start" value="{{ artist.show3_start }}" class="validate form-control showtime">
+                    {% else %}
+                        <input id="show3_start" name="show3_start" class="validate form-control showtime">
+                    {% endif %}
                 </div>
                 <div class="mb-3">
                     <label for="show3_duration" class="form-label"><i class="bi bi-hourglass-split" aria-hidden="true"></i> Duration<br></label>
-                    <input type="number" min="5" max="120" step="5" class="validate form-control w-50" id="show3_duration" name="show3_duration">
+                    {% if artist.show3_duration > 0 %}
+                        <input type="number" min="5" max="120" step="5" value="{{ artist.show3_duration }}" class="validate form-control w-50" id="show3_duration" name="show3_duration">
+                    {% else %}
+                        <input type="number" min="5" max="120" step="5"  class="validate form-control w-50" id="show3_duration" name="show3_duration">
+                    {% endif %}
                 </div>
             </div>
         </div>
