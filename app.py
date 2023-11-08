@@ -61,7 +61,7 @@ def register():
         mongo.db.admins.insert_one(register)
 
         # Confirm registration with flash message
-        flash("New admin {} successfully added!".format(
+        flash("New admin {} successfully added".format(
             request.form.get("name")))
 
     #Get superuser status from database
@@ -135,6 +135,18 @@ def logout():
     flash("You have been logged out")
     session.pop("user")
     return redirect(url_for("admin"))
+
+
+@app.route("/event", methods=["GET", "POST"])
+def event():
+
+    #Get superuser status from database
+    is_superuser = mongo.db.admins.find_one(
+    {"username": session["user"]})["is_superuser"]
+
+    event = list(mongo.db.event.find())
+    return render_template("event.html", is_superuser = is_superuser,
+    event=event)
 
 
 @app.route("/artists")
@@ -250,7 +262,6 @@ def edit_artist(artist_id):
 @app.route("/delete_artist/<artist_id>")
 def delete_artist(artist_id):
     deleted_artist = mongo.db.artists.find_one({"_id": ObjectId(artist_id)})["artist_name"]
-
     mongo.db.artists.delete_one({"_id": ObjectId(artist_id)})
     flash("Artist {} successfully deleted".format(deleted_artist))
     return redirect(url_for("artists"))
