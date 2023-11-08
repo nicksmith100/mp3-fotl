@@ -247,9 +247,13 @@ def edit_artist(artist_id):
     return render_template("edit_artist.html", artist=artist, stages=stages)
 
 
-@app.route("/delete_artist")
-def delete_artist():
-    return render_template("artists.html")
+@app.route("/delete_artist/<artist_id>")
+def delete_artist(artist_id):
+    deleted_artist = mongo.db.artists.find_one({"_id": ObjectId(artist_id)})["artist_name"]
+
+    mongo.db.artists.delete_one({"_id": ObjectId(artist_id)})
+    flash("Artist {} successfully deleted".format(deleted_artist))
+    return redirect(url_for("artists"))
 
 
 if __name__ == "__main__":
