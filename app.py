@@ -160,17 +160,17 @@ def add_artist():
         if request.form.get("show1_start") != "":
             show1_start = datetime.strptime(request.form.get("show1_start"), "%d-%m-%Y %H:%M")
         else:
-            show1_start = ""
+            show1_start = datetime.strptime("01-01-1900", "%d-%m-%Y")
 
         if request.form.get("show2_start") != "":
             show2_start = datetime.strptime(request.form.get("show2_start"), "%d-%m-%Y %H:%M")
         else:
-            show2_start = ""
+            show2_start = datetime.strptime("01-01-1900", "%d-%m-%Y")
 
         if request.form.get("show3_start") != "":
             show3_start = datetime.strptime(request.form.get("show3_start"), "%d-%m-%Y %H:%M")
         else:
-            show3_start = ""          
+            show3_start = datetime.strptime("01-01-1900", "%d-%m-%Y")          
 
         artist = {
             "artist_name": request.form.get("artist_name"),
@@ -199,7 +199,7 @@ def add_artist():
 @app.route("/edit_artist/<artist_id>", methods=["GET", "POST"])
 def edit_artist(artist_id):
     artist = mongo.db.artists.find_one({"_id": ObjectId(artist_id)})
-    return render_template("edit_artist.html", artist=artist)
+    return render_template("edit_artist.html", artist=artist, stages=stages)
 
 
 @app.route("/delete_artist")
