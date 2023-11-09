@@ -76,8 +76,9 @@ def register():
 
 @app.route("/delete_admin/<admin_id>")
 def delete_admin(admin_id):
+    deleted_admin = mongo.db.admins.find_one({"_id": ObjectId(admin_id)})["username"]
     mongo.db.admins.delete_one({"_id": ObjectId(admin_id)})
-    flash("Admin successfully deleted")
+    flash("Admin {} successfully deleted".format(deleted_admin))
     return redirect(url_for("register"))
 
 
