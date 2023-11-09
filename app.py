@@ -95,8 +95,9 @@ def switch_superuser(admin_id):
             }
         }
 
+    switched_admin = mongo.db.admins.find_one({"_id": ObjectId(admin_id)})["username"]
     mongo.db.admins.update_one({"_id": ObjectId(admin_id)}, submit)
-    flash("Admin superuser status updated")
+    flash("Superuser status of {} updated".format(switched_admin))
     return redirect(url_for("register"))
 
 
