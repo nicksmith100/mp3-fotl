@@ -39,15 +39,40 @@
                 {% if artist.show1_stage != "" %}
                     <p class="artist-shows">
                         <strong>Appearing:</strong><p>
-                        <ul>
-                            <li>{{ artist.show1_start.strftime('%A %-d %B at %-I.%M%p') }} on the {{ artist.show1_stage|capitalize }} stage</li>
-                            {% if artist.show2_stage != "" %}
-                            <li>{{ artist.show2_start.strftime('%A %-d %B at %-I.%M%p') }} on the {{ artist.show2_stage|capitalize }} stage</li>
+                        <table class="table w-auto mt-3 mb-5">
+                            <thead>
+                                <tr>
+                                    <th scope="col">Day</th>
+                                    <th scope="col">Stage</th>
+                                    <th scope="col">Start</th>
+                                    <th scope="col">Duration</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>{{ artist.show1_start.strftime('%A %-d %B') }}</td>
+                                    <td>{{ artist.show1_stage|capitalize }}</td>
+                                    <td>{{ artist.show1_start.strftime('%-I.%M%p')|lower }}</td>
+                                    <td>{{ artist.show1_duration }}min</td>
+                                </tr>
+                                {% if artist.show2_stage != "" %}
+                                    <tr>
+                                        <td>{{ artist.show2_start.strftime('%A %-d %B') }}</td>
+                                        <td>{{ artist.show2_stage|capitalize }}</td>
+                                        <td>{{ artist.show2_start.strftime('%-I.%M%p') }}</td>
+                                        <td>{{ artist.show2_duration }}min</td>
+                                    </tr>
+                                {% endif %}
+                                {% if artist.show3_stage != "" %}
+                                <tr>
+                                    <td>{{ artist.show3_start.strftime('%A %-d %B') }}</td>
+                                    <td>{{ artist.show3_stage|capitalize }}</td>
+                                    <td>{{ artist.show3_start.strftime('%-I.%M%p') }}</td>
+                                    <td>{{ artist.show3_duration }}min</td>
+                                </tr>
                             {% endif %}
-                            {% if artist.show3_stage != "" %}
-                            <li>{{ artist.show3_start.strftime('%A %-d %B at %-I.%M%p') }} on the {{ artist.show3_stage|capitalize }} stage</li>>
-                            {% endif %}
-                        </ul>
+                            </tbody>
+                        </table>
                 {% endif %}
             </div>
             <div class="card-footer">
