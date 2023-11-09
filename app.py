@@ -20,6 +20,14 @@ app.secret_key = os.environ.get("SECRET_KEY")
 
 mongo = PyMongo(app)
 
+# Inject content for base template
+@app.context_processor
+def inject_content():
+    
+    #Get event info from database
+    event = mongo.db.event.find_one()
+    return dict(event=event)
+
 
 @app.route("/")
 @app.route("/home")
