@@ -285,7 +285,7 @@ def edit_artist(artist_id):
             }
         }
         mongo.db.artists.update_one({"_id": ObjectId(artist_id)}, edited_artist)
-        flash("Artist successfully updated")
+        flash("Artist {} successfully updated".format(request.form.get("artist_name")))
         return redirect(url_for("artists"))
 
     artist = mongo.db.artists.find_one({"_id": ObjectId(artist_id)})
