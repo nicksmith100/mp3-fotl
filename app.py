@@ -236,7 +236,7 @@ def add_artist():
             "last_edit_on": date
         }
         mongo.db.artists.insert_one(artist)
-        flash("Artist successfully added")
+        flash("Artist {} successfully added".format(request.form.get("artist_name")))
         return redirect(url_for("artists"))
 
     return render_template("add_artist.html")
