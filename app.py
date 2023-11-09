@@ -158,6 +158,9 @@ def event():
         else:
             event_end = datetime.strptime("01-01-1900", "%d-%m-%Y")
 
+        # Convert comma separated string to list with no spaces
+        stages_list = request.form.get("stages").replace(", ", ",").split(",")
+
         event_info = {
             "$set": {
             "event_name": request.form.get("event_name"),
@@ -166,6 +169,7 @@ def event():
             "event_location": request.form.get("event_location"),
             "event_start": event_start,
             "event_end": event_end,
+            "stages": stages_list,
             "last_edit_by": session["user"],
             "last_edit_on": date
             }
