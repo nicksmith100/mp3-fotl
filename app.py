@@ -242,8 +242,9 @@ def add_artist():
         mongo.db.artists.insert_one(artist)
         flash("Artist {} successfully added".format(request.form.get("artist_name")))
         return redirect(url_for("artists"))
-
-    return render_template("add_artist.html")
+    
+    stages = mongo.db.event.find_one()["stages"]
+    return render_template("add_artist.html", stages=stages)
 
 
 @app.route("/edit_artist/<artist_id>", methods=["GET", "POST"])
@@ -293,7 +294,7 @@ def edit_artist(artist_id):
         return redirect(url_for("artists"))
 
     artist = mongo.db.artists.find_one({"_id": ObjectId(artist_id)})
-    stages = ["river", "mill", "bar", "cottage"]
+    stages = mongo.db.event.find_one()["stages"]
     return render_template("edit_artist.html", artist=artist, stages=stages)
 
 

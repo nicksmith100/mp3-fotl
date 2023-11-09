@@ -43,9 +43,9 @@
 
                         {% for stage in stages %}
                             {% if artist.show1_stage == stage %}
-                                <option value="{{ stage }}" selected>{{ stage|capitalize }}</option>
+                                <option value="{{ stage }}" selected>{{ stage }}</option>
                             {% else %}
-                                <option value="{{ stage }}">{{ stage|capitalize }}</option>
+                                <option value="{{ stage }}">{{ stage }}</option>
                             {% endif %}                            
                         {% endfor %}
                         
