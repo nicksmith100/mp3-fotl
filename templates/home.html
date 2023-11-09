@@ -1,6 +1,13 @@
 {% extends "base.html" %}
 {% block content %}
 
-<h2>Home</h2>
+<div id="hero-image-container" class="container">
+    <img src="{{ event.event_img }}"
+        alt="Colourful numbered tin cans arranged in pyramid with building in background"
+        class="img-fluid primary-image" id="hero-image">
+</div>
+
+<h2 class="mt-2">About</h2>
+<span class="about">{{ event.event_about }}</span>
 
 {% endblock %}
