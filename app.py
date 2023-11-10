@@ -26,7 +26,15 @@ def inject_content():
     
     #Get event info from database
     event = mongo.db.event.find_one()
-    return dict(event=event)
+    
+    #Get superuser status from database
+    if "user" in session:
+        is_superuser = mongo.db.admins.find_one(
+        {"username": session["user"]})["is_superuser"]
+    else:
+        is_superuser = "off"
+
+    return dict(event=event, is_superuser=is_superuser)
 
 
 @app.route("/")
@@ -72,14 +80,10 @@ def register():
         flash("New admin {} successfully added".format(
             request.form.get("name")))
 
-    #Get superuser status from database
-    is_superuser = mongo.db.admins.find_one(
-    {"username": session["user"]})["is_superuser"]
-
     # Get list of existing admins to display
     admins = mongo.db.admins.find()
 
-    return render_template("register.html", admins=admins, is_superuser=is_superuser)
+    return render_template("register.html", admins=admins)
 
 
 @app.route("/delete_admin/<admin_id>")
@@ -186,12 +190,9 @@ def event():
         flash("Event info successfully updated")
         return redirect(url_for("event"))
     
-    # Get superuser status from database
-    is_superuser = mongo.db.admins.find_one(
-    {"username": session["user"]})["is_superuser"]
     
     event = mongo.db.event.find_one()
-    return render_template("event.html", is_superuser = is_superuser,
+    return render_template("event.html",
     event=event)
 
 
@@ -199,13 +200,9 @@ def event():
 def artists():
     artists = list(mongo.db.artists.find())
 
-    # Get superuser status from database
-    is_superuser = mongo.db.admins.find_one(
-    {"username": session["user"]})["is_superuser"]
 
     return render_template("artists.html",
-    artists=artists,
-    is_superuser=is_superuser)
+    artists=artists)
 
 
 @app.route("/add_artist", methods=["GET", "POST"])
