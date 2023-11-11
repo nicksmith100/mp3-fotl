@@ -41,7 +41,7 @@
         <nav class="navbar navbar-expand-lg bg-body-tertiary">
             <div class="container-fluid">
                     <a class="navbar-brand" href="/">Folk on the Lawn</a>
-                    <span class="fs-7 ms-3 text-muted">{{ event.event_start.strftime('%A %-d %B') }} to {{ event.event_end.strftime('%A %-d %B %Y') }}</span>
+                    <span class="fs-7 ms-3 text-muted">{{ key_info.event_start.strftime('%A %-d %B') }} to {{ key_info.event_end.strftime('%A %-d %B %Y') }}</span>
                     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar-toggler-main" aria-controls="navbar-toggler-main" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
                     </button>
@@ -83,7 +83,7 @@
                     <div class="collapse navbar-collapse ms-auto" id="navbar-toggler-admin">
                         <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ url_for('event') }}"><i class="bi bi-info-circle" aria-hidden="true"></i> Event info</a>
+                                <a class="nav-link" href="{{ url_for('key_info') }}"><i class="bi bi-info-circle" aria-hidden="true"></i> Key info</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ url_for('artists') }}"><i class="bi bi-music-note-beamed" aria-hidden="true"></i> Artists</a>

@@ -24,8 +24,8 @@ mongo = PyMongo(app)
 @app.context_processor
 def inject_content():
     
-    #Get event info from database
-    event = mongo.db.event.find_one()
+    #Get key info from database
+    key_info = mongo.db.key_info.find_one()
     
     #Get superuser status from database
     if "user" in session:
@@ -34,7 +34,7 @@ def inject_content():
     else:
         is_superuser = "off"
 
-    return dict(event=event, is_superuser=is_superuser)
+    return dict(key_info=key_info, is_superuser=is_superuser)
 
 
 @app.route("/")
@@ -151,11 +151,11 @@ def logout():
     return redirect(url_for("admin"))
 
 
-@app.route("/event", methods=["GET", "POST"])
-def event():
+@app.route("/key_info", methods=["GET", "POST"])
+def key_info():
 
     if request.method == "POST":
-        event_id = mongo.db.event.find_one()["_id"]
+        key_info_id = mongo.db.key_info.find_one()["_id"]
         now = datetime.now()
         date = now.strftime("%d-%m-%Y")
 
@@ -173,27 +173,25 @@ def event():
         # Convert comma separated string to list with no spaces
         stages_list = request.form.get("stages").replace(", ", ",").split(",")
 
-        event_info = {
+        key_info = {
             "$set": {
-            "event_name": request.form.get("event_name"),
-            "event_about": request.form.get("event_about"),
-            "event_img": request.form.get("event_img"),
-            "event_location": request.form.get("event_location"),
             "event_start": event_start,
             "event_end": event_end,
             "stages": stages_list,
+            "main_img": request.form.get("main_img"),
+            "banner_heading": request.form.get("banner_heading"),
+            "banner_text": request.form.get("banner_text"),
             "last_edit_by": session["user"],
             "last_edit_on": date
             }
         }
-        mongo.db.event.update_one({"_id": event_id}, event_info)
-        flash("Event info successfully updated")
-        return redirect(url_for("event"))
+        mongo.db.key_info.update_one({"_id": key_info_id}, key_info)
+        flash("Key info successfully updated")
+        return redirect(url_for("key_info"))
     
     
-    event = mongo.db.event.find_one()
-    return render_template("event.html",
-    event=event)
+    key_info = mongo.db.key_info.find_one()
+    return render_template("key_info.html")
 
 
 @app.route("/artists")
@@ -248,7 +246,7 @@ def add_artist():
         flash("Artist {} successfully added".format(request.form.get("artist_name")))
         return redirect(url_for("artists"))
     
-    stages = mongo.db.event.find_one()["stages"]
+    stages = mongo.db.key_info.find_one()["stages"]
     return render_template("add_artist.html", stages=stages)
 
 
@@ -299,7 +297,7 @@ def edit_artist(artist_id):
         return redirect(url_for("artists"))
 
     artist = mongo.db.artists.find_one({"_id": ObjectId(artist_id)})
-    stages = mongo.db.event.find_one()["stages"]
+    stages = mongo.db.key_info.find_one()["stages"]
     return render_template("edit_artist.html", artist=artist, stages=stages)
 
 

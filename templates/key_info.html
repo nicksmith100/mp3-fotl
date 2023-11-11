@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h2 class="my-3 text-center">Key info</h2>
+
+<form method="POST" action="{{ url_for('key_info') }}" class="w-75 mx-auto">
+    <fieldset>
+        <legend class="mt-2">Event info</legend>
+        <div class="mb-3">
+            <label for="event_start" class="form-label"><i class="bi bi-calendar-check" aria-hidden="true"></i> Start date<br></label>
+            <input id="event_start" name="event_start" value="{{ key_info.event_start.strftime('%d-%m-%Y') }}" class="validate form-control event-date">
+        </div>
+        <div class="mb-3">
+            <label for="event_end" class="form-label"><i class="bi bi-calendar-x" aria-hidden="true"></i> End date<br></label>
+            <input id="event_end" name="event_end" value="{{ key_info.event_end.strftime('%d-%m-%Y') }}" class="validate form-control event-date">
+        </div>
+        <div class="mb-3">
+            <label for="stages" class="form-label"><i class="bi bi-mic" aria-hidden="true"></i> Stages<br></label>
+            <small class="text-muted">(Names separated by commas)</small>
+            <input type="text" minlength="1" value="{{ key_info.stages|join(', ') }}" class="validate form-control" id="stages" name="stages">
+        </div>
+    </fieldset>
+    <fieldset>
+        <legend class="mt-2">Website main image</legend>
+        <div class="mb-3">
+            <label for="main_img" class="form-label"><i class="bi bi-image" aria-hidden="true"></i> Image<br></label>
+            <input type="url" minlength="5" maxlength="200" value="{{ key_info.main_img }}" class="validate form-control" id="main_img" name="main_img"><br>
+            {% if key_info.event_img != "" %}
+            <img src="{{ key_info.main_img }}" class="w-50" alt="Event image">
+            {% endif %}
+        </div>
+    </fieldset>
+    <fieldset>
+        <legend class="mt-2">Homepage banner</legend>
+        <p class="text-muted">Display a key message on the website homepage.</p>
+        <div class="mb-3">
+            
+            <label for="banner_heading" class="form-label"><i class="bi bi-card-heading" aria-hidden="true"></i> Banner heading<br></label>
+            <input type="text" minlength="1" maxlenth="100" value="" class="validate form-control" id="banner_heading" name="banner_heading">
+        </div>
+        <div class="mb-3">
+            <label for="banner_text" class="form-label"><i class="bi bi-blockquote-left" aria-hidden="true"></i> Banner text<br></label>
+            <textarea minlength="10" maxlength="3000" rows="5" class="validate form-control" id="banner_text" name="banner_text"></textarea>
+        </div>
+    </fieldset>
+    <div class="col-12 my-4">
+        <button type="submit" class="btn btn-primary"><i class="bi bi-floppy" aria-hidden="true"></i> Save changes</button>
+        <p class="text-muted mt-3">Last edited by {{ key_info.last_edit_by }} on {{ key_info.last_edit_on }}</p>
+    </div>
+</form>
+
+{% endblock %}
