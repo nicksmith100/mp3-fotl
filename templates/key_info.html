@@ -37,11 +37,11 @@
         <div class="mb-3">
             
             <label for="banner_heading" class="form-label"><i class="bi bi-card-heading" aria-hidden="true"></i> Banner heading<br></label>
-            <input type="text" minlength="1" maxlenth="100" value="" class="validate form-control" id="banner_heading" name="banner_heading">
+            <input type="text" minlength="1" maxlenth="100" value="{{ key_info.banner_heading }}" class="validate form-control" id="banner_heading" name="banner_heading">
         </div>
         <div class="mb-3">
             <label for="banner_text" class="form-label"><i class="bi bi-blockquote-left" aria-hidden="true"></i> Banner text<br></label>
-            <textarea minlength="10" maxlength="3000" rows="5" class="validate form-control" id="banner_text" name="banner_text"></textarea>
+            <textarea minlength="10" maxlength="3000" rows="5" class="validate form-control" id="banner_text" name="banner_text">{{ key_info.banner_text }}</textarea>
         </div>
     </fieldset>
     <div class="col-12 my-4">
