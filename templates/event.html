@@ -6,23 +6,11 @@
 
 <form method="POST" action="{{ url_for('event') }}" class="w-75 mx-auto">
     <div class="mb-3">
-        <label for="event_name" class="form-label"><i class="bi bi-alphabet" aria-hidden="true"></i> Name</label>
-        <input type="text" minlength="1" value="{{ event.event_name }}" class="validate form-control" id="event_name" name="event_name" required>
-    </div>
-    <div class="mb-3">
-        <label for="event_about" class="form-label"><i class="bi bi-blockquote-left" aria-hidden="true"></i> About<br></label>
-        <textarea minlength="10" maxlength="5000" rows="15" class="validate form-control" id="event_about" name="event_about"> {{- event.event_about -}}</textarea>
-    </div>
-    <div class="mb-3">
         <label for="event_img" class="form-label"><i class="bi bi-image" aria-hidden="true"></i> Image<br></label>
         <input type="url" minlength="5" maxlength="200" value="{{ event.event_img }}" class="validate form-control" id="event_img" name="event_img"><br>
         {% if event.event_img != "" %}
         <img src="{{ event.event_img }}" class="w-50" alt="Event image">
         {% endif %}
-    </div>
-    <div class="mb-3">
-        <label for="event_location" class="form-label"><i class="bi bi-geo-alt" aria-hidden="true"></i> Location<br></label>
-        <input type="text" minlength="5" maxlength="200" value="{{ event.event_location }}"class="validate form-control" id="event_location" name="event_location">
     </div>
     <div class="mb-3">
         <label for="event_start" class="form-label"><i class="bi bi-calendar-check" aria-hidden="true"></i> Start date<br></label>
