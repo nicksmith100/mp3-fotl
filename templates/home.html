@@ -7,6 +7,13 @@
         class="img-fluid primary-image" id="hero-image">
 </div>
 
+{% if key_info.banner_text != "" %}
+<div class="banner bg-secondary text-light p-3">
+    <h2 class="mt-2">{{ key_info.banner_heading }}</h2>
+    <p class="text-light">{{ key_info.banner_text }}</p>
+</div>
+{% endif %}
+
 <div class="about"></div>
     <h2 class="mt-2">About</h2>
     <p>Folk on the Lawn (FotL) is a volunteer-run festival which runs every 
