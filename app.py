@@ -175,7 +175,6 @@ def key_info():
             event_start = datetime.strptime(request.form.get("event_start"), "%d-%m-%Y")
         else:
             event_start = datetime.strptime("01-01-1900", "%d-%m-%Y")
-
         if request.form.get("event_end") != "":
             event_end = datetime.strptime(request.form.get("event_end"), "%d-%m-%Y")
         else:
@@ -184,12 +183,19 @@ def key_info():
         # Convert comma separated string to list with no spaces
         stages_list = request.form.get("stages").replace(", ", ",").split(",")
 
+        # Upload image to Cloudinary and return url
+        main_img = request.files["main_img"]
+        if main_img.filename.split(".")[-1].lower() in ALLOWED_EXTENSIONS:
+            upload_result = cloudinary.uploader.upload(main_img)["secure_url"]
+        else:
+            filename = ""
+
         key_info = {
             "$set": {
             "event_start": event_start,
             "event_end": event_end,
             "stages": stages_list,
-            "main_img": request.form.get("main_img"),
+            "main_img": upload_result,
             "banner_heading": request.form.get("banner_heading"),
             "banner_text": request.form.get("banner_text"),
             "last_edit_by": session["user"],

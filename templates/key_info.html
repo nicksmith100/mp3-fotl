@@ -4,7 +4,7 @@
 
 <h2 class="my-3 text-center">Key info</h2>
 
-<form method="POST" action="{{ url_for('key_info') }}" class="w-75 mx-auto">
+<form method="POST" action="{{ url_for('key_info') }}" enctype="multipart/form-data" class="w-75 mx-auto">
     <fieldset>
         <legend class="mt-2">Event info</legend>
         <div class="mb-3">
@@ -25,9 +25,15 @@
         <legend class="mt-2">Website main image</legend>
         <div class="mb-3">
             <label for="main_img" class="form-label"><i class="bi bi-image" aria-hidden="true"></i> Image<br></label>
-            <input type="url" minlength="5" maxlength="200" value="{{ key_info.main_img }}" class="validate form-control" id="main_img" name="main_img"><br>
-            {% if key_info.event_img != "" %}
-            <img src="{{ key_info.main_img }}" class="w-50" alt="Event image">
+            <input
+            type="file"
+            class="form-control"
+            id="main_img"
+            name="main_img"
+            accept="image/*"
+            /> 
+            {% if key_info.main_img != "" %}
+            <img src="{{ key_info.main_img }}" class="w-50 mt-3" alt="Event image">
             {% endif %}
         </div>
     </fieldset>
