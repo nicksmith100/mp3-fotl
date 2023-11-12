@@ -31,10 +31,12 @@
             accept="image/*"
             /> 
         </div>
-        <div class="mb-3">
-            <p>Current image:</p>
-            <img src="{{ url_for('static', filename='uploads/' + artist.artist_img) }}" alt="{{ artist.artist_name }}" class="w-50">
-        </div>
+        {% if artist.artist_img != "" %}
+            <div class="mb-3">
+                <p>Current image:</p>
+                <img src="{{ url_for('static', filename='uploads/' + artist.artist_img) }}" alt="{{ artist.artist_name }}" class="w-50">
+            </div>
+        {% endif %}
                 
     </fieldset>
     <fieldset class="mt-3">
