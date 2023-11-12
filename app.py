@@ -7,7 +7,8 @@ from bson.objectid import ObjectId
 from werkzeug.utils import secure_filename
 from werkzeug.security import generate_password_hash, check_password_hash
 from datetime import datetime
-
+import cloudinary
+import cloudinary.uploader
 
 if os.path.exists("env.py"):
     import env
@@ -23,6 +24,12 @@ app.secret_key = os.environ.get("SECRET_KEY")
 mongo = PyMongo(app)
 ALLOWED_EXTENSIONS = ["png", "jpg", "jpeg", "gif"]
 
+# Cloudinary config
+cloudinary.config(
+    cloud_name=os.environ.get("CLOUDINARY_CLOUD_NAME"),
+    api_key=os.environ.get("CLOUDINARY_API_KEY"),
+    api_secret=os.environ.get("CLOUDINARY_API_SECRET")
+)
 
 # Inject content for base template
 @app.context_processor
@@ -227,12 +234,10 @@ def add_artist():
         else:
             show3_start = datetime.strptime("01-01-1900", "%d-%m-%Y")          
 
-        # Upload image and return filename
+        # Upload image to Cloudinary and return url
         artist_img = request.files["artist_img"]
         if artist_img.filename.split(".")[-1].lower() in ALLOWED_EXTENSIONS:
-            filename = secure_filename(artist_img.filename)
-            artist_img.save(os.path.join(app.config["UPLOAD_FOLDER"], filename))
-
+            upload_result = cloudinary.uploader.upload(artist_img)["secure_url"]
         else:
             filename = ""
             
@@ -240,7 +245,7 @@ def add_artist():
             "artist_name": request.form.get("artist_name"),
             "artist_bio": request.form.get("artist_bio"),
             "artist_url": request.form.get("artist_url"),
-            "artist_img": filename,
+            "artist_img": upload_result,
             "show1_stage": request.form.get("show1_stage"),
             "show1_start": show1_start,
             "show1_duration": request.form.get("show1_duration"),
@@ -284,11 +289,10 @@ def edit_artist(artist_id):
         else:
             show3_start = datetime.strptime("01-01-1900", "%d-%m-%Y")          
 
-        # Upload image and return filename
+        # Upload image to Cloudinary and return url
         artist_img = request.files["artist_img"]
         if artist_img.filename.split(".")[-1].lower() in ALLOWED_EXTENSIONS:
-            filename = secure_filename(artist_img.filename)
-            artist_img.save(os.path.join(app.config["UPLOAD_FOLDER"], filename))
+            upload_result = cloudinary.uploader.upload(artist_img)["secure_url"]
         else:
             filename = ""
 
@@ -297,7 +301,7 @@ def edit_artist(artist_id):
             "artist_name": request.form.get("artist_name"),
             "artist_bio": request.form.get("artist_bio"),
             "artist_url": request.form.get("artist_url"),
-            "artist_img": filename,
+            "artist_img": upload_result,
             "show1_stage": request.form.get("show1_stage"),
             "show1_start": show1_start,
             "show1_duration": request.form.get("show1_duration"),

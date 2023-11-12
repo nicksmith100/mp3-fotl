@@ -25,7 +25,7 @@
         {% for artist in artists %}
 
         <div id="{{ artist.artist_name }}" class="card my-5 w-75">
-            <img src="{{ url_for('static', filename='uploads/' + artist.artist_img) }}" alt="{{ artist.artist_name }}" class="card-img-top">
+            <img src="{{ artist.artist_img }}" alt="{{ artist.artist_name }}" class="card-img-top">
             <div class="card-body">
                 <h3 class="card-title">{{ artist.artist_name }}</h3>
                 <p class="bio">
