@@ -232,6 +232,9 @@ def add_artist():
         if artist_img.filename.split(".")[-1].lower() in ALLOWED_EXTENSIONS:
             filename = secure_filename(artist_img.filename)
             artist_img.save(os.path.join(app.config["UPLOAD_FOLDER"], filename))
+
+        else:
+            filename = ""
             
         artist = {
             "artist_name": request.form.get("artist_name"),
@@ -286,6 +289,8 @@ def edit_artist(artist_id):
         if artist_img.filename.split(".")[-1].lower() in ALLOWED_EXTENSIONS:
             filename = secure_filename(artist_img.filename)
             artist_img.save(os.path.join(app.config["UPLOAD_FOLDER"], filename))
+        else:
+            filename = ""
 
         edited_artist = {
             "$set": {
