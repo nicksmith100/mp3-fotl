@@ -281,12 +281,18 @@ def edit_artist(artist_id):
         else:
             show3_start = datetime.strptime("01-01-1900", "%d-%m-%Y")          
 
+        # Upload image and return filename
+        artist_img = request.files["artist_img"]
+        if artist_img.filename.split(".")[-1].lower() in ALLOWED_EXTENSIONS:
+            filename = secure_filename(artist_img.filename)
+            artist_img.save(os.path.join(app.config["UPLOAD_FOLDER"], filename))
+
         edited_artist = {
             "$set": {
             "artist_name": request.form.get("artist_name"),
             "artist_bio": request.form.get("artist_bio"),
             "artist_url": request.form.get("artist_url"),
-            "artist_img": request.form.get("artist_img"),
+            "artist_img": filename,
             "show1_stage": request.form.get("show1_stage"),
             "show1_start": show1_start,
             "show1_duration": request.form.get("show1_duration"),
