@@ -4,7 +4,7 @@
 
 <h2 class="my-3 text-center">Add artist</h2>
 
-<form method="POST" action="{{ url_for('add_artist') }}" class="w-75 mx-auto">
+<form method="POST" action="{{ url_for('add_artist') }}" enctype="multipart/form-data" class="w-75 mx-auto">
     <fieldset>
         <legend>Artist information</legend>
         <div class="mb-3">
@@ -21,7 +21,13 @@
         </div>
         <div class="mb-3">
             <label for="artist_img" class="form-label"><i class="bi bi-image" aria-hidden="true"></i> Image<br></label>
-            <input type="url" minlength="5" maxlength="200" class="validate form-control" id="artist_img" name="artist_img">
+            <input
+            type="file"
+            class="form-control"
+            id="artist_img"
+            name="artist_img"
+            accept="image/*"
+            />
         </div>
     </fieldset>
     <fieldset class="mt-3">

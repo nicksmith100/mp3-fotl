@@ -4,6 +4,7 @@ from flask import (
     redirect, request, session, url_for)
 from flask_pymongo import PyMongo
 from bson.objectid import ObjectId
+from werkzeug.utils import secure_filename
 from werkzeug.security import generate_password_hash, check_password_hash
 from datetime import datetime
 
@@ -16,9 +17,12 @@ app = Flask(__name__)
 
 app.config["MONGO_DBNAME"] = os.environ.get("MONGO_DBNAME")
 app.config["MONGO_URI"] = os.environ.get("MONGO_URI")
+app.config["UPLOAD_FOLDER"] = "static/uploads/"
 app.secret_key = os.environ.get("SECRET_KEY")
 
 mongo = PyMongo(app)
+ALLOWED_EXTENSIONS = ["png", "jpg", "jpeg", "gif"]
+
 
 # Inject content for base template
 @app.context_processor
@@ -214,22 +218,26 @@ def add_artist():
             show1_start = datetime.strptime(request.form.get("show1_start"), "%d-%m-%Y %H:%M")
         else:
             show1_start = datetime.strptime("01-01-1900", "%d-%m-%Y")
-
         if request.form.get("show2_start") != "":
             show2_start = datetime.strptime(request.form.get("show2_start"), "%d-%m-%Y %H:%M")
         else:
             show2_start = datetime.strptime("01-01-1900", "%d-%m-%Y")
-
         if request.form.get("show3_start") != "":
             show3_start = datetime.strptime(request.form.get("show3_start"), "%d-%m-%Y %H:%M")
         else:
             show3_start = datetime.strptime("01-01-1900", "%d-%m-%Y")          
 
+        # Upload image and return filename
+        artist_img = request.files["artist_img"]
+        if artist_img.filename.split(".")[-1].lower() in ALLOWED_EXTENSIONS:
+            filename = secure_filename(artist_img.filename)
+            artist_img.save(os.path.join(app.config["UPLOAD_FOLDER"], filename))
+            
         artist = {
             "artist_name": request.form.get("artist_name"),
             "artist_bio": request.form.get("artist_bio"),
             "artist_url": request.form.get("artist_url"),
-            "artist_img": request.form.get("artist_img"),
+            "artist_img": filename,
             "show1_stage": request.form.get("show1_stage"),
             "show1_start": show1_start,
             "show1_duration": request.form.get("show1_duration"),
