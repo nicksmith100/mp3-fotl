@@ -46,7 +46,7 @@ def inject_content():
         is_superuser = "off"
 
     # Set Cloudinary base url
-    cloudinary_url = "https://res.cloudinary.com/dpy1aevmo/image/upload/"
+    cloudinary_url = "https://res.cloudinary.com/dpy1aevmo/image/upload/f_auto,q_auto/"
 
     return dict(key_info=key_info, is_superuser=is_superuser, cloudinary_url=cloudinary_url)
 
