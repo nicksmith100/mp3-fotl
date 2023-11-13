@@ -35,17 +35,20 @@ cloudinary.config(
 @app.context_processor
 def inject_content():
     
-    #Get key info from database
+    # Get key info from database
     key_info = mongo.db.key_info.find_one()
     
-    #Get superuser status from database
+    # Get superuser status from database
     if "user" in session:
         is_superuser = mongo.db.admins.find_one(
         {"username": session["user"]})["is_superuser"]
     else:
         is_superuser = "off"
 
-    return dict(key_info=key_info, is_superuser=is_superuser)
+    # Set Cloudinary base url
+    cloudinary_url = "https://res.cloudinary.com/dpy1aevmo/image/upload/"
+
+    return dict(key_info=key_info, is_superuser=is_superuser, cloudinary_url=cloudinary_url)
 
 
 @app.route("/")
@@ -183,10 +186,10 @@ def key_info():
         # Convert comma separated string to list with no spaces
         stages_list = request.form.get("stages").replace(", ", ",").split(",")
 
-        # Upload image to Cloudinary and return url
+        # Upload image to Cloudinary and return public_id
         main_img = request.files["main_img"]
         if main_img.filename.split(".")[-1].lower() in ALLOWED_EXTENSIONS:
-            upload_result = cloudinary.uploader.upload(main_img)["secure_url"]
+            upload_result = cloudinary.uploader.upload(main_img)["public_id"]
         else:
             filename = ""
 
@@ -240,10 +243,10 @@ def add_artist():
         else:
             show3_start = datetime.strptime("01-01-1900", "%d-%m-%Y")          
 
-        # Upload image to Cloudinary and return url
+        # Upload image to Cloudinary and return public_id
         artist_img = request.files["artist_img"]
         if artist_img.filename.split(".")[-1].lower() in ALLOWED_EXTENSIONS:
-            upload_result = cloudinary.uploader.upload(artist_img)["secure_url"]
+            upload_result = cloudinary.uploader.upload(artist_img)["public_id"]
         else:
             filename = ""
             
@@ -295,10 +298,10 @@ def edit_artist(artist_id):
         else:
             show3_start = datetime.strptime("01-01-1900", "%d-%m-%Y")          
 
-        # Upload image to Cloudinary and return url
+        # Upload image to Cloudinary and return public_id
         artist_img = request.files["artist_img"]
         if artist_img.filename.split(".")[-1].lower() in ALLOWED_EXTENSIONS:
-            upload_result = cloudinary.uploader.upload(artist_img)["secure_url"]
+            upload_result = cloudinary.uploader.upload(artist_img)["public_id"]
         else:
             filename = ""
 

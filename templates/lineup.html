@@ -6,7 +6,7 @@
     {% for artist in artists %}
         <h3>{{ artist.artist_name }}</h3>
         <p class="bio">{{ artist.artist_bio }}</p>
-        <img src="{{ artist.artist_img }}" alt="{{ artist.artist_name }}"><br>
+        <img src="{{ cloudinary_url }}{{ artist.artist_img }}" alt="{{ artist.artist_name }}"><br>
         <a href="{{ artist.artist_url }}" target="_blank">{{ artist.artist_name }} Website</a><br><br>
     {% endfor %}
 

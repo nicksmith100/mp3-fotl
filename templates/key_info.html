@@ -33,7 +33,7 @@
             accept="image/*"
             /> 
             {% if key_info.main_img != "" %}
-            <img src="{{ key_info.main_img }}" class="w-50 mt-3" alt="Event image">
+            <img src="{{ cloudinary_url }}{{ key_info.main_img }}" class="w-50 mt-3" alt="Event image">
             {% endif %}
         </div>
     </fieldset>
