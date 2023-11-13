@@ -3,11 +3,38 @@
 
 <h2>Artists</h2>
 
-    {% for artist in artists %}
-        <h3>{{ artist.artist_name }}</h3>
-        <p class="bio">{{ artist.artist_bio }}</p>
-        <img src="{{ cloudinary_url }}{{ artist.artist_img }}" alt="{{ artist.artist_name }}"><br>
-        <a href="{{ artist.artist_url }}" target="_blank">{{ artist.artist_name }} Website</a><br><br>
-    {% endfor %}
+<div class="container">
+    <div class="row">
+        {% for artist in artists %}
+            <div id="{{ artist.artist_name }}" class="col-4">
+            <div class="card my-3">
+                <img src="{{ cloudinary_url }}{{ artist.artist_img }}" alt="{{ artist.artist_name }}" class="card-img-top">
+                <div class="card-body">
+                    <h3 class="card-title">{{ artist.artist_name }}</h3>
+                    <div class="lineup_bio d-none">    
+                        <p>{{ artist.artist_bio }}</p>
+                        <a href="{{ artist.artist_url }}" class="lineup-url">{{ artist.artist_name }} on the web</a>
+                    </div>
+                </div>
+                <div class="card-footer">
+                    <!-- Show appearances if they exist-->
+                    {% if artist.show1_stage != "" %}
+                        <p class="lineup-shows">
+                            <strong>Appearing:</strong><br>
+                            {{ artist.show1_start.strftime('%A %-d %B') }} at {{ artist.show1_start.strftime('%-I.%M%p')|lower }} on the {{ artist.show1_stage|capitalize }} stage<br>
+                            {% if artist.show2_stage != "" %}
+                                <br>{{ artist.show2_start.strftime('%A %-d %B') }} at {{ artist.show2_start.strftime('%-I.%M%p')|lower }} on the {{ artist.show2_stage|capitalize }} stage<br>
+                            {% endif %}
+                            {% if artist.show3_stage != "" %}
+                                <br>{{ artist.show3_start.strftime('%A %-d %B') }} at {{ artist.show3_start.strftime('%-I.%M%p')|lower }} on the {{ artist.show3_stage|capitalize }} stage<br>
+                            {% endif %}
+                        </p>
+                    {% endif %}    
+                </div>
+            </div>
+            </div>
+        {% endfor %}
+    </div>
+</div>
 
 {% endblock %}
