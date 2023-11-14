@@ -1,3 +1,7 @@
-.bio, .about, .lineup-bio {
+.bio, .about, .lineup-bio-text {
     white-space: pre-line;
+}
+
+.hidden {
+    display: none;
 }

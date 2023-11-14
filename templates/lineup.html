@@ -3,7 +3,7 @@
 
 <h2>Artists</h2>
 
-<div class="container">
+<div class="container" id="artist-cards">
     <div class="row">
         {% for artist in artists %}
             <div id="{{ artist.artist_name }}" class="col-4">
@@ -11,9 +11,10 @@
                 <img src="{{ cloudinary_url }}{{ artist.artist_img }}" alt="{{ artist.artist_name }}" class="card-img-top">
                 <div class="card-body">
                     <h3 class="card-title">{{ artist.artist_name }}</h3>
-                    <div class="lineup_bio d-none">    
-                        <p>{{ artist.artist_bio }}</p>
-                        <a href="{{ artist.artist_url }}" class="lineup-url">{{ artist.artist_name }} on the web</a>
+                    <button class="bio-toggle btn btn-dark my-2">Biography<i class="bi bi-caret-down-fill ms-2"></i></button>
+                    <div class= "lineup-bio hidden my-2">    
+                        <p class="lineup-bio-text">{{ artist.artist_bio }}</p>
+                        <a href="{{ artist.artist_url }}" class="lineup-url" target="_blank">{{ artist.artist_name }} on the web</a>
                     </div>
                 </div>
                 <div class="card-footer">
