@@ -14,10 +14,15 @@
                     <button class="bio-toggle btn btn-dark my-2">Biography<i class="bi bi-caret-down-fill ms-2"></i></button>
                     <div class= "lineup-bio hidden my-2">    
                         <p class="lineup-bio-text">{{ artist.artist_bio }}</p>
-                        <a href="{{ artist.artist_url }}" class="lineup-url" target="_blank">{{ artist.artist_name }} on the web</a>
                     </div>
                 </div>
                 <div class="card-footer">
+                    <!-- Show website if it exists-->
+                    {% if artist.artist_url != "" %}
+                        <p class="lineup-url">
+                            <strong>Elsewhere on the web:</strong><br>
+                            <a href="{{ artist.artist_url }}" class="lineup-url text-dark" target="_blank">{{ artist.artist_name }}</a>
+                    {% endif %}
                     <!-- Show appearances if they exist-->
                     {% if artist.show1_stage != "" %}
                         <p class="lineup-shows">
