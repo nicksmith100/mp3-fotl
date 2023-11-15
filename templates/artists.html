@@ -59,7 +59,7 @@
                                     <tr>
                                         <td>{{ artist.show2_start.strftime('%A %-d %B') }}</td>
                                         <td>{{ artist.show2_stage|capitalize }}</td>
-                                        <td>{{ artist.show2_start.strftime('%-I.%M%p') }}</td>
+                                        <td>{{ artist.show2_start.strftime('%-I.%M%p')|lower }}</td>
                                         <td>{{ artist.show2_duration }}min</td>
                                     </tr>
                                 {% endif %}
@@ -67,7 +67,7 @@
                                 <tr>
                                     <td>{{ artist.show3_start.strftime('%A %-d %B') }}</td>
                                     <td>{{ artist.show3_stage|capitalize }}</td>
-                                    <td>{{ artist.show3_start.strftime('%-I.%M%p') }}</td>
+                                    <td>{{ artist.show3_start.strftime('%-I.%M%p')|lower }}</td>
                                     <td>{{ artist.show3_duration }}min</td>
                                 </tr>
                             {% endif %}
