@@ -186,13 +186,14 @@ def key_info():
         # Convert comma separated string to list with no spaces
         stages_list = request.form.get("stages").replace(", ", ",").split(",")
 
+        # Get current main_img ID and assign it to upload_result variable
+        upload_result = mongo.db.key_info.find_one()["main_img"]
+
         # Upload image to Cloudinary and return public_id
         main_img = request.files["main_img"]
         if main_img.filename.split(".")[-1].lower() in ALLOWED_EXTENSIONS:
             upload_result = cloudinary.uploader.upload(main_img)["public_id"]
-        else:
-            filename = ""
-
+        
         key_info = {
             "$set": {
             "event_start": event_start,
@@ -248,7 +249,7 @@ def add_artist():
         if artist_img.filename.split(".")[-1].lower() in ALLOWED_EXTENSIONS:
             upload_result = cloudinary.uploader.upload(artist_img)["public_id"]
         else:
-            filename = ""
+            upload_result = ""
             
         artist = {
             "artist_name": request.form.get("artist_name"),
@@ -278,6 +279,8 @@ def add_artist():
 @app.route("/edit_artist/<artist_id>", methods=["GET", "POST"])
 def edit_artist(artist_id):
 
+    artist = mongo.db.artists.find_one({"_id": ObjectId(artist_id)})
+
     if request.method == "POST":
         now = datetime.now()
         date = now.strftime("%d-%m-%Y")
@@ -298,13 +301,14 @@ def edit_artist(artist_id):
         else:
             show3_start = datetime.strptime("01-01-1900", "%d-%m-%Y")          
 
+        # Get current artist_img ID and assign it to upload_result variable
+        upload_result = artist["artist_img"]
+        
         # Upload image to Cloudinary and return public_id
         artist_img = request.files["artist_img"]
         if artist_img.filename.split(".")[-1].lower() in ALLOWED_EXTENSIONS:
             upload_result = cloudinary.uploader.upload(artist_img)["public_id"]
-        else:
-            filename = ""
-
+        
         edited_artist = {
             "$set": {
             "artist_name": request.form.get("artist_name"),
@@ -328,7 +332,6 @@ def edit_artist(artist_id):
         flash("Artist {} successfully updated".format(request.form.get("artist_name")))
         return redirect(url_for("artists"))
 
-    artist = mongo.db.artists.find_one({"_id": ObjectId(artist_id)})
     stages = mongo.db.key_info.find_one()["stages"]
     return render_template("edit_artist.html", artist=artist, stages=stages)
 
