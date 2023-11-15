@@ -59,7 +59,7 @@ def home():
 
 @app.route("/lineup")
 def lineup():
-    artists = mongo.db.artists.find()
+    artists = mongo.db.artists.find().sort("artist_name")
     return render_template("lineup.html", artists=artists)
 
 
@@ -217,9 +217,8 @@ def key_info():
 
 @app.route("/artists")
 def artists():
-    artists = list(mongo.db.artists.find())
-
-
+    artists = list(mongo.db.artists.find().sort("artist_name"))
+    
     return render_template("artists.html",
     artists=artists)
 
