@@ -60,7 +60,7 @@ def home():
 @app.route("/lineup")
 def lineup():
 
-    # Get individual dates
+    # Get individual dates for schedule
     start_dt = mongo.db.key_info.find_one()["event_start"]
     end_dt = mongo.db.key_info.find_one()["event_end"]
     delta = timedelta(days=1)
@@ -70,8 +70,70 @@ def lineup():
         dates.append(start_dt)
         start_dt += delta
 
+    # Add individual showtimes to list
+    showtimes = []
+    artists = list(mongo.db.artists.find())
+    for artist in artists:
+        
+        if artist["show1_start"] > datetime(1900,1,1):
+            
+            # Get showtime info from database
+            showtime_stage = artist["show1_stage"]
+            showtime_artist = artist["artist_name"]
+            showtime_start = artist["show1_start"]
+            showtime_duration = int(artist["show1_duration"])
+            showtime_end = showtime_start + timedelta(minutes=showtime_duration)
+            
+            # Add showtime information to list
+            showtimes.append(
+                {
+                    "showtime_stage": showtime_stage,
+                    "showtime_artist": showtime_artist,
+                    "showtime_start": showtime_start,
+                    "showtime_end": showtime_end
+            })
+        
+        if artist["show2_start"] > datetime(1900,1,1):
+            
+            # Get showtime info from database
+            showtime_stage = artist["show2_stage"]
+            showtime_artist = artist["artist_name"]
+            showtime_start = artist["show2_start"]
+            showtime_duration = int(artist["show2_duration"])
+            showtime_end = showtime_start + timedelta(minutes=showtime_duration)
+            
+            # Add showtime information to list
+            showtimes.append(
+                {
+                    "showtime_stage": showtime_stage,
+                    "showtime_artist": showtime_artist,
+                    "showtime_start": showtime_start,
+                    "showtime_end": showtime_end
+            })
+
+        if artist["show3_start"] > datetime(1900,1,1):
+            
+            # Get showtime info from database
+            showtime_stage = artist["show3_stage"]
+            showtime_artist = artist["artist_name"]
+            showtime_start = artist["show3_start"]
+            showtime_duration = int(artist["show3_duration"])
+            showtime_end = showtime_start + timedelta(minutes=showtime_duration)
+            
+            # Add showtime information to list
+            showtimes.append(
+                {
+                    "showtime_stage": showtime_stage,
+                    "showtime_artist": showtime_artist,
+                    "showtime_start": showtime_start,
+                    "showtime_end": showtime_end
+            })
+
+    showtimes.sort(key=lambda item:item["showtime_start"])
     artists = mongo.db.artists.find().sort("artist_name")
-    return render_template("lineup.html", artists=artists, dates=dates)
+    stages = mongo.db.key_info.find_one()["stages"]
+
+    return render_template("lineup.html", artists=artists, dates=dates, showtimes=showtimes, stages=stages)
 
 
 @app.route("/register", methods=["GET", "POST"])
