@@ -5,3 +5,10 @@
 .hidden {
     display: none;
 }
+
+.accordion {
+    --bs-accordion-btn-bg: #fff;
+    --bs-accordion-active-bg: #fff;
+    --bs-accordion-active-color: #000;
+    --bs-accordion-btn-focus-box-shadow: none;
+}
