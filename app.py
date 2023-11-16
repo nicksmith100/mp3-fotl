@@ -6,7 +6,7 @@ from flask_pymongo import PyMongo
 from bson.objectid import ObjectId
 from werkzeug.utils import secure_filename
 from werkzeug.security import generate_password_hash, check_password_hash
-from datetime import datetime
+from datetime import datetime, timedelta
 import cloudinary
 import cloudinary.uploader
 
@@ -59,8 +59,19 @@ def home():
 
 @app.route("/lineup")
 def lineup():
+
+    # Get individual dates
+    start_dt = mongo.db.key_info.find_one()["event_start"]
+    end_dt = mongo.db.key_info.find_one()["event_end"]
+    delta = timedelta(days=1)
+    dates = []
+
+    while start_dt <= end_dt:
+        dates.append(start_dt)
+        start_dt += delta
+
     artists = mongo.db.artists.find().sort("artist_name")
-    return render_template("lineup.html", artists=artists)
+    return render_template("lineup.html", artists=artists, dates=dates)
 
 
 @app.route("/register", methods=["GET", "POST"])
