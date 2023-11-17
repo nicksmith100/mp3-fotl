@@ -20,6 +20,18 @@
             <small class="text-muted">(Names separated by commas)</small>
             <input type="text" minlength="1" value="{{ key_info.stages|join(', ') }}" class="validate form-control" id="stages" name="stages">
         </div>
+        <div class="mb-3 form-check form-switch">
+            <label class="form-check-label" for="show_schedule">Show schedule</label>
+            <small class="text-muted">(Toggles visibility of schedule on Line-up page)</small>
+            <input id="show_schedule" 
+            name="show_schedule"
+            class="validate form-control form-check-input" 
+            type="checkbox" 
+            role="switch"
+            {% if key_info.show_schedule == "on" %} 
+                checked
+            {% endif %} >
+        </div>
     </fieldset>
     <fieldset>
         <legend class="mt-2">Website main image</legend>

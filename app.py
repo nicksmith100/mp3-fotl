@@ -132,8 +132,9 @@ def lineup():
     showtimes.sort(key=lambda item:item["showtime_start"])
     artists = mongo.db.artists.find().sort("artist_name")
     stages = mongo.db.key_info.find_one()["stages"]
+    show_schedule = mongo.db.key_info.find_one()["show_schedule"]
 
-    return render_template("lineup.html", artists=artists, dates=dates, showtimes=showtimes, stages=stages)
+    return render_template("lineup.html", artists=artists, dates=dates, showtimes=showtimes, stages=stages, show_schedule=show_schedule)
 
 
 @app.route("/register", methods=["GET", "POST"])
@@ -272,6 +273,7 @@ def key_info():
             "event_start": event_start,
             "event_end": event_end,
             "stages": stages_list,
+            "show_schedule": request.form.get("show_schedule"),
             "main_img": upload_result,
             "banner_heading": request.form.get("banner_heading"),
             "banner_text": request.form.get("banner_text"),

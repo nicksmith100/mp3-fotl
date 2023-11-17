@@ -1,41 +1,45 @@
 {% extends "base.html" %}
 {% block content %}
 
-<div class="container">
-    <h2 class="mt-3">Schedule</h2>
+{% if show_schedule == "on" %}
 
-    <div class="accordion my-3" id="schedule">
-        {% for date in dates %}
-            <div class="accordion-item">
-                <h2 class="accordion-header" id="heading-{{ date.strftime('%A') }}">
-                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#{{ date.strftime('%A') }}" aria-expanded="false" aria-controls="{{ date.strftime('%A') }}">
-                        <h3>{{ date.strftime('%A') }}</h3>
-                    </button>
-                </h2>
-                <div id="{{ date.strftime('%A') }}" class="accordion-collapse collapse" aria-labelledby="heading-{{ date.strftime('%A') }}" data-bs-parent="#schedule">
-                    <div class="accordion-body">
-                        <div class="row">
-                            {% for stage in stages %}
-                                <div class="stage-listing col-3">    
-                                    <h4>{{ stage }} Stage</h4>
-                                    {% for showtime in showtimes %}
-                                        {% if showtime.showtime_start.strftime('%A') == date.strftime('%A') %}
-                                            {% if showtime.showtime_stage == stage %}
-                                             
-                                            <small>{{ showtime.showtime_start.strftime('%-I.%M%p')|lower }}-{{ showtime.showtime_end.strftime('%-I.%M%p')|lower }}</small>
-                                                <p><a href="#{{ showtime.showtime_artist }}" class="link-dark">{{ showtime.showtime_artist }}</a></p>
-                                            {% endif %}    
-                                        {% endif %}
-                                    {% endfor %}
-                                </div>
-                            {% endfor %}
+    <div class="container">
+        <h2 class="mt-3">Schedule</h2>
+
+        <div class="accordion my-3" id="schedule">
+            {% for date in dates %}
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="heading-{{ date.strftime('%A') }}">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#{{ date.strftime('%A') }}" aria-expanded="false" aria-controls="{{ date.strftime('%A') }}">
+                            <h3>{{ date.strftime('%A') }}</h3>
+                        </button>
+                    </h2>
+                    <div id="{{ date.strftime('%A') }}" class="accordion-collapse collapse" aria-labelledby="heading-{{ date.strftime('%A') }}" data-bs-parent="#schedule">
+                        <div class="accordion-body">
+                            <div class="row">
+                                {% for stage in stages %}
+                                    <div class="stage-listing col col-sm-3">    
+                                        <h4>{{ stage }} Stage</h4>
+                                        {% for showtime in showtimes %}
+                                            {% if showtime.showtime_start.strftime('%A') == date.strftime('%A') %}
+                                                {% if showtime.showtime_stage == stage %}
+                                                
+                                                <small>{{ showtime.showtime_start.strftime('%-I.%M%p')|lower }}-{{ showtime.showtime_end.strftime('%-I.%M%p')|lower }}</small>
+                                                    <p><a href="#{{ showtime.showtime_artist }}" class="link-dark">{{ showtime.showtime_artist }}</a></p>
+                                                {% endif %}    
+                                            {% endif %}
+                                        {% endfor %}
+                                    </div>
+                                {% endfor %}
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-        {% endfor %}
+            {% endfor %}
+        </div>
     </div>
-</div>
+
+{% endif %}
 
 <div class="container" id="lineup-bios">
 
