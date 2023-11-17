@@ -19,7 +19,7 @@
                             <div class="row">
                                 {% for stage in stages %}
                                     {% if showtimes|selectattr("showtime_stage", "equalto", stage)|selectattr("showtime_day", "equalto", date.strftime('%A'))|list|length > 0 %}
-                                        <div class="stage-listing col col-sm-3">    
+                                        <div class="stage-listing col-12 col-sm-6 col-lg-3 mb-3">    
                                             <h4>{{ stage }} Stage</h4>
                                             {% for showtime in showtimes %}
                                                 {% if showtime.showtime_start.strftime('%A') == date.strftime('%A') %}
@@ -43,49 +43,53 @@
 
 {% endif %}
 
-<div class="container" id="lineup-bios">
+<div class="container mt-5" id="lineup-bios">
 
     <h2>Artist information</h2>
-
-    <div class="row">
+    
         {% for artist in artists %}
-            <div id="{{ artist.artist_name }}" class="col-4">
-            <div class="card my-3">
-                <img src="{{ cloudinary_url }}{{ artist.artist_img }}" alt="{{ artist.artist_name }}" class="card-img-top">
-                <div class="card-body">
-                    <h3 class="card-title">{{ artist.artist_name }}</h3>
-                    <button class="bio-toggle btn btn-dark my-2">Biography<i class="bi bi-caret-down-fill ms-2"></i></button>
-                    <div class= "lineup-bio hidden my-2">    
-                        <p class="lineup-bio-text">{{ artist.artist_bio }}</p>
+            <div id="{{ artist.artist_name }}" class="row mt-4">
+                <div class="my-3 col-12 col-lg-4">
+                    <div class="card">
+                        <img src="{{ cloudinary_url }}{{ artist.artist_img }}" alt="{{ artist.artist_name }}" class="card-img-top">
+                        <div class="card-body">
+                            <h3 class="card-title">{{ artist.artist_name }}</h3>
+                            <button class="bio-toggle btn btn-dark my-2 d-lg-none">Biography<i class="bi bi-caret-down-fill ms-2"></i></button>
+                            <div class= "lineup-bio hidden my-2">    
+                                <p class="lineup-bio-text">{{ artist.artist_bio }}</p>
+                            </div>
+                        </div>
+                        <div class="card-footer">
+                            <!-- Show appearances if they exist-->
+                            {% if artist.show1_stage != "" %}
+                                <p class="lineup-shows">
+                                    <strong>Appearing:</strong><br>
+                                    <ul>
+                                        <li>{{ artist.show1_start.strftime('%A %-d %B') }} at {{ artist.show1_start.strftime('%-I.%M%p')|lower }} on the {{ artist.show1_stage|capitalize }} stage</li>
+                                        {% if artist.show2_stage != "" %}
+                                            <li>{{ artist.show2_start.strftime('%A %-d %B') }} at {{ artist.show2_start.strftime('%-I.%M%p')|lower }} on the {{ artist.show2_stage|capitalize }} stage</li>
+                                        {% endif %}
+                                        {% if artist.show3_stage != "" %}
+                                            <li>{{ artist.show3_start.strftime('%A %-d %B') }} at {{ artist.show3_start.strftime('%-I.%M%p')|lower }} on the {{ artist.show3_stage|capitalize }} stage</li>
+                                        {% endif %}
+                                    </ul>
+                                </p>
+                            {% endif %}
+                            <!-- Show website if it exists-->
+                            {% if artist.artist_url != "" %}
+                                <p class="lineup-url">
+                                    <strong>Elsewhere on the web:</strong><br>
+                                    <a href="{{ artist.artist_url }}" class="lineup-url text-dark" target="_blank">{{ artist.artist_name }}</a>
+                                </p>
+                            {% endif %}    
+                        </div>
                     </div>
                 </div>
-                <div class="card-footer">
-                    <!-- Show website if it exists-->
-                    {% if artist.artist_url != "" %}
-                        <p class="lineup-url">
-                            <strong>Elsewhere on the web:</strong><br>
-                            <a href="{{ artist.artist_url }}" class="lineup-url text-dark" target="_blank">{{ artist.artist_name }}</a>
-                    {% endif %}
-                    <!-- Show appearances if they exist-->
-                    {% if artist.show1_stage != "" %}
-                        <p class="lineup-shows">
-                            <strong>Appearing:</strong><br>
-                            <ul>
-                                <li>{{ artist.show1_start.strftime('%A %-d %B') }} at {{ artist.show1_start.strftime('%-I.%M%p')|lower }} on the {{ artist.show1_stage|capitalize }} stage</li>
-                                {% if artist.show2_stage != "" %}
-                                    <li>{{ artist.show2_start.strftime('%A %-d %B') }} at {{ artist.show2_start.strftime('%-I.%M%p')|lower }} on the {{ artist.show2_stage|capitalize }} stage</li>
-                                {% endif %}
-                                {% if artist.show3_stage != "" %}
-                                    <li>{{ artist.show3_start.strftime('%A %-d %B') }} at {{ artist.show3_start.strftime('%-I.%M%p')|lower }} on the {{ artist.show3_stage|capitalize }} stage</li>
-                                {% endif %}
-                            </ul>
-                        </p>
-                    {% endif %}    
+                <div class="my-auto card lineup-bio-lg d-none d-lg-block col-8">
+                    <p class="lineup-bio-text">{{ artist.artist_bio }}</p>
                 </div>
             </div>
-            </div>
         {% endfor %}
-    </div>
 </div>
 
 {% endblock %}
