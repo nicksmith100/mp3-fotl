@@ -1,35 +1,48 @@
 {% extends "base.html" %}
 {% block content %}
 
-<div id="hero-image-container" class="container">
-    <img src="{{ cloudinary_url }}{{ key_info.main_img }}"
-        alt=""
-        class="img-fluid primary-image" id="hero-image">
-</div>
-
-{% if key_info.banner_text != "" %}
-<div class="banner bg-secondary text-light p-3">
-    <h2 class="mt-2">{{ key_info.banner_heading }}</h2>
-    <p class="text-light">{{ key_info.banner_text }}</p>
-</div>
-{% endif %}
-
-<div class="about"></div>
-    <h2 class="mt-2">About</h2>
-    <p>Folk on the Lawn (FotL) is a volunteer-run festival which runs every 
-        year at the Abbey Mill, Tintern.</p>
-    <p>With no budget whatsoever, FotL relies on the good will of those 
-        involved - the artists, sound technicians, Abbey Mill staff, the good 
-        folk of Tintern and various other benefactors and supporters.
-    <p>Despite its modest size, FotL has featured a number of international 
-        artists and signed bands, in addition to the more local talent that 
-        has graced its stages. Folks continue to commit to FotL due to the 
-        beauty of the setting, the atmosphere of the event (very relaxed!) 
-        and the magnanimous hosting of the Abbey Mill management and staff.</p>
-    <p>We encourage rootsy, homespun, innovative and brave music, with a strong 
-        folk/roots/acoustic thread running through the whole festival. We would 
-        see the festival as the antithesis of and remedy for the X Factor, 
-        'tired folk' sort-of-thing</p>
+<div class="container">
+    <div class="row">
+        <div id="hero-image-container" class="container">
+            <img src="{{ cloudinary_url }}{{ key_info.main_img }}"
+                alt=""
+                class="img-fluid primary-image" id="hero-image">
+        </div>
+    </div>
+    <div class="row">
+        {% if key_info.banner_text != "" %}
+        <div id="banner" class="bg-secondary text-light p-3">
+            <h2 class="mt-2">{{ key_info.banner_heading }}</h2>
+            <p class="text-light">{{ key_info.banner_text }}</p>
+        </div>
+        {% endif %}
+    </div>
+    <div class="row">
+        <div id="support" class="mt-5">
+            <h2 >Support the Festival</h2>
+                <p>Folk On The Lawn is a not-for-profit festival run by volunteers, with all donations shared amongst the artists. We do not provide tickets in advance, but encourage donations in exchange for a wristband. Please click the button below to donate in advance!</p>
+                <a href="{{ key_info.fundraising_url }}" target="_blank" class="my-3 mx-auto btn btn-lg btn-dark">Donate</a>
+        </div>
+    </div>
+    <div class="row">
+        <div id="about" class="mt-5">
+            <h2>About</h2>
+            <p>Folk on the Lawn (FotL) is a volunteer-run festival which runs every 
+                year at the Abbey Mill, Tintern.</p>
+            <p>With no budget whatsoever, FotL relies on the good will of those 
+                involved - the artists, sound technicians, Abbey Mill staff, the good 
+                folk of Tintern and various other benefactors and supporters.
+            <p>Despite its modest size, FotL has featured a number of international 
+                artists and signed bands, in addition to the more local talent that 
+                has graced its stages. Folks continue to commit to FotL due to the 
+                beauty of the setting, the atmosphere of the event (very relaxed!) 
+                and the magnanimous hosting of the Abbey Mill management and staff.</p>
+            <p>We encourage rootsy, homespun, innovative and brave music, with a strong 
+                folk/roots/acoustic thread running through the whole festival. We would 
+                see the festival as the antithesis of and remedy for the X Factor, 
+                'tired folk' sort-of-thing.</p>
+        </div>
+    </div>
 </div>
 
 {% endblock %}
