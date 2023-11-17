@@ -18,7 +18,6 @@ app = Flask(__name__)
 
 app.config["MONGO_DBNAME"] = os.environ.get("MONGO_DBNAME")
 app.config["MONGO_URI"] = os.environ.get("MONGO_URI")
-app.config["UPLOAD_FOLDER"] = "static/uploads/"
 app.secret_key = os.environ.get("SECRET_KEY")
 
 mongo = PyMongo(app)
@@ -54,7 +53,8 @@ def inject_content():
 @app.route("/")
 @app.route("/home")
 def home():
-    return render_template("home.html")
+    GOOGLE_MAPS_API_KEY = os.environ.get("GOOGLE_MAPS_API_KEY")
+    return render_template("home.html", GOOGLE_MAPS_API_KEY=GOOGLE_MAPS_API_KEY)
 
 
 @app.route("/lineup")
