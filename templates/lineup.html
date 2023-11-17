@@ -18,18 +18,20 @@
                         <div class="accordion-body">
                             <div class="row">
                                 {% for stage in stages %}
-                                    <div class="stage-listing col col-sm-3">    
-                                        <h4>{{ stage }} Stage</h4>
-                                        {% for showtime in showtimes %}
-                                            {% if showtime.showtime_start.strftime('%A') == date.strftime('%A') %}
-                                                {% if showtime.showtime_stage == stage %}
-                                                
-                                                <small>{{ showtime.showtime_start.strftime('%-I.%M%p')|lower }}-{{ showtime.showtime_end.strftime('%-I.%M%p')|lower }}</small>
-                                                    <p><a href="#{{ showtime.showtime_artist }}" class="link-dark">{{ showtime.showtime_artist }}</a></p>
-                                                {% endif %}    
-                                            {% endif %}
-                                        {% endfor %}
-                                    </div>
+                                    {% if showtimes|selectattr("showtime_stage", "equalto", stage)|selectattr("showtime_day", "equalto", date.strftime('%A'))|list|length > 0 %}
+                                        <div class="stage-listing col col-sm-3">    
+                                            <h4>{{ stage }} Stage</h4>
+                                            {% for showtime in showtimes %}
+                                                {% if showtime.showtime_start.strftime('%A') == date.strftime('%A') %}
+                                                    {% if showtime.showtime_stage == stage %}
+                                                    
+                                                    <small>{{ showtime.showtime_start.strftime('%-I.%M%p')|lower }}-{{ showtime.showtime_end.strftime('%-I.%M%p')|lower }}</small>
+                                                        <p><a href="#{{ showtime.showtime_artist }}" class="link-dark">{{ showtime.showtime_artist }}</a></p>
+                                                    {% endif %}    
+                                                {% endif %}
+                                            {% endfor %}
+                                        </div>
+                                    {% endif %}
                                 {% endfor %}
                             </div>
                         </div>

@@ -80,6 +80,7 @@ def lineup():
             # Get showtime info from database
             showtime_stage = artist["show1_stage"]
             showtime_artist = artist["artist_name"]
+            showtime_day = artist["show1_start"].strftime('%A')
             showtime_start = artist["show1_start"]
             showtime_duration = int(artist["show1_duration"])
             showtime_end = showtime_start + timedelta(minutes=showtime_duration)
@@ -89,6 +90,7 @@ def lineup():
                 {
                     "showtime_stage": showtime_stage,
                     "showtime_artist": showtime_artist,
+                    "showtime_day": showtime_day,
                     "showtime_start": showtime_start,
                     "showtime_end": showtime_end
             })
@@ -98,6 +100,7 @@ def lineup():
             # Get showtime info from database
             showtime_stage = artist["show2_stage"]
             showtime_artist = artist["artist_name"]
+            showtime_day = artist["show2_start"].strftime('%A') 
             showtime_start = artist["show2_start"]
             showtime_duration = int(artist["show2_duration"])
             showtime_end = showtime_start + timedelta(minutes=showtime_duration)
@@ -107,6 +110,7 @@ def lineup():
                 {
                     "showtime_stage": showtime_stage,
                     "showtime_artist": showtime_artist,
+                    "showtime_day": showtime_day,
                     "showtime_start": showtime_start,
                     "showtime_end": showtime_end
             })
@@ -116,6 +120,7 @@ def lineup():
             # Get showtime info from database
             showtime_stage = artist["show3_stage"]
             showtime_artist = artist["artist_name"]
+            showtime_day = artist["show3_start"].strftime('%A') 
             showtime_start = artist["show3_start"]
             showtime_duration = int(artist["show3_duration"])
             showtime_end = showtime_start + timedelta(minutes=showtime_duration)
@@ -125,12 +130,17 @@ def lineup():
                 {
                     "showtime_stage": showtime_stage,
                     "showtime_artist": showtime_artist,
+                    "showtime_day": showtime_day,
                     "showtime_start": showtime_start,
                     "showtime_end": showtime_end
             })
 
+    # Sort showtimes by start date/time
     showtimes.sort(key=lambda item:item["showtime_start"])
+
+    # Sort artists by artist name
     artists = mongo.db.artists.find().sort("artist_name")
+    
     stages = mongo.db.key_info.find_one()["stages"]
     show_schedule = mongo.db.key_info.find_one()["show_schedule"]
 
