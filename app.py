@@ -287,7 +287,7 @@ def key_info():
             "main_img": upload_result,
             "banner_heading": request.form.get("banner_heading"),
             "banner_text": request.form.get("banner_text"),
-            "fundraising_link": request.form.get("fundraising_link"),
+            "fundraising_url": request.form.get("fundraising_url"),
             "last_edit_by": session["user"],
             "last_edit_on": date
             }
