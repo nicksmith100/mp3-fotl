@@ -1,3 +1,96 @@
+@import url('https: //fonts.googleapis.com/css2?family=Cutive&display=swap');
+
+@font-face {
+    font-family: 'Effloresce';
+    src: url('fonts/Effloresce-Italic.woff2') format('woff2'),
+        url('fonts/Effloresce-Italic.woff') format('woff');
+    font-weight: normal;
+    font-style: italic;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Effloresce';
+    src: url('fonts/Effloresce-Regular.woff2') format('woff2'),
+        url('fonts/Effloresce-Regular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Effloresce';
+    src: url('fonts/Effloresce-Bold.woff2') format('woff2'),
+        url('fonts/Effloresce-Bold.woff') format('woff');
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Effloresce';
+    src: url('fonts/Effloresce-BoldItalic.woff2') format('woff2'),
+        url('fonts/Effloresce-BoldItalic.woff') format('woff');
+    font-weight: bold;
+    font-style: italic;
+    font-display: swap;
+}
+
+@import url('https: //fonts.googleapis.com/css2?family=Oswald:wght@200;300;400;500;600;700&family=Raleway:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&display=swap');
+
+@font-face {
+    font-family: 'Effloresce';
+    src: url('fonts/Effloresce-Italic.woff2') format('woff2'),
+        url('fonts/Effloresce-Italic.woff') format('woff');
+    font-weight: normal;
+    font-style: italic;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Effloresce';
+    src: url('fonts/Effloresce-Regular.woff2') format('woff2'),
+        url('fonts/Effloresce-Regular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Effloresce';
+    src: url('fonts/Effloresce-Bold.woff2') format('woff2'),
+        url('fonts/Effloresce-Bold.woff') format('woff');
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Effloresce';
+    src: url('fonts/Effloresce-BoldItalic.woff2') format('woff2'),
+        url('fonts/Effloresce-BoldItalic.woff') format('woff');
+    font-weight: bold;
+    font-style: italic;
+    font-display: swap;
+}
+
+/* General styles */
+
+body {
+    color: #000;
+    font-family: 'Cutive', serif;
+    font-weight: 400;
+}
+
+h1 {
+    color: #00495C;
+}
+
+h1, h2, h3, h4, nav {
+    font-family: 'Effloresce', serif;
+    font-weight: bold;
+}
+
 .bio, .about, .lineup-bio-text {
     white-space: pre-line;
 }
