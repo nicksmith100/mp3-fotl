@@ -68,13 +68,15 @@
                     {% if artist.show1_stage != "" %}
                         <p class="lineup-shows">
                             <strong>Appearing:</strong><br>
-                            {{ artist.show1_start.strftime('%A %-d %B') }} at {{ artist.show1_start.strftime('%-I.%M%p')|lower }} on the {{ artist.show1_stage|capitalize }} stage<br>
-                            {% if artist.show2_stage != "" %}
-                                <br>{{ artist.show2_start.strftime('%A %-d %B') }} at {{ artist.show2_start.strftime('%-I.%M%p')|lower }} on the {{ artist.show2_stage|capitalize }} stage<br>
-                            {% endif %}
-                            {% if artist.show3_stage != "" %}
-                                <br>{{ artist.show3_start.strftime('%A %-d %B') }} at {{ artist.show3_start.strftime('%-I.%M%p')|lower }} on the {{ artist.show3_stage|capitalize }} stage<br>
-                            {% endif %}
+                            <ul>
+                                <li>{{ artist.show1_start.strftime('%A %-d %B') }} at {{ artist.show1_start.strftime('%-I.%M%p')|lower }} on the {{ artist.show1_stage|capitalize }} stage</li>
+                                {% if artist.show2_stage != "" %}
+                                    <li>{{ artist.show2_start.strftime('%A %-d %B') }} at {{ artist.show2_start.strftime('%-I.%M%p')|lower }} on the {{ artist.show2_stage|capitalize }} stage</li>
+                                {% endif %}
+                                {% if artist.show3_stage != "" %}
+                                    <li>{{ artist.show3_start.strftime('%A %-d %B') }} at {{ artist.show3_start.strftime('%-I.%M%p')|lower }} on the {{ artist.show3_stage|capitalize }} stage</li>
+                                {% endif %}
+                            </ul>
                         </p>
                     {% endif %}    
                 </div>
