@@ -1,31 +1,31 @@
 {% extends "base.html" %}
 {% block content %}
 
+
+<div id="hero-image-container" class="primary-image-container">
+    <img src="{{ cloudinary_url }}{{ key_info.main_img }}"
+        alt=""
+        class="img-fluid primary-image" id="hero-image">
+</div>
+
 <div class="container">
     <div class="row">
-        <div id="hero-image-container" class="container">
-            <img src="{{ cloudinary_url }}{{ key_info.main_img }}"
-                alt=""
-                class="img-fluid primary-image" id="hero-image">
-        </div>
-    </div>
-    <div class="row">
         {% if key_info.banner_text != "" %}
-        <div id="banner" class="bg-secondary text-light p-3">
+        <div id="banner" class="bg-secondary text-light p-3 mt-4">
             <h2 class="mt-2">{{ key_info.banner_heading }}</h2>
             <p class="text-light">{{ key_info.banner_text }}</p>
         </div>
         {% endif %}
     </div>
     <div class="row">
-        <div id="support" class="mt-5">
+        <div id="support" class="mt-4">
             <h2 >Support the Festival</h2>
                 <p>Folk On The Lawn is a not-for-profit festival run by volunteers, with all donations shared amongst the artists. We do not provide tickets in advance, but encourage donations in exchange for a wristband. Please click the button below to donate in advance!</p>
-                <a href="{{ key_info.fundraising_url }}" target="_blank" class="my-3 mx-auto btn btn-lg btn-dark">Donate</a>
+                <a href="{{ key_info.fundraising_url }}" target="_blank" class="mb-3 btn btn-lg btn-dark">Donate</a>
         </div>
     </div>
     <div class="row">
-        <div id="about" class="mt-5">
+        <div id="about" class="mt-4">
             <h2>About</h2>
             <p>Folk on the Lawn (FotL) is a volunteer-run festival which runs every 
                 year at the Abbey Mill, Tintern.</p>
@@ -43,7 +43,7 @@
                 'tired folk' sort-of-thing.</p>
         </div>
     </div>
-    <div id="location" class="row mt-5">
+    <div id="location" class="row my-4">
         <h2>Location</h2>
         <div class="col-12 col-sm-4 mb-3">
             <!-- Embed map from Google Maps -->
@@ -57,5 +57,4 @@
         </div>
     </div>  
 </div>
-
 {% endblock %}
