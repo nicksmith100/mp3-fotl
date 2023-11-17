@@ -68,12 +68,12 @@
 
 <div class="container mt-5" id="lineup-bios">
 
-    <h2>Artist information</h2>
+    <h2>Artists</h2>
 
         <div class="row mt-4" data-masonry='{"percentPosition": true }' >
         {% for artist in artists %}
             
-            <div id="{{ artist.artist_name | replace(' ','') }}" class="my-3 col-12 col-lg-4">
+            <div id="{{ artist.artist_name | replace(' ','') }}" class="my-3 col-12 col-sm-6 col-lg-4 col-xl-3">
                 <div class="card">
                     <img src="{{ cloudinary_url }}{{ artist.artist_img }}" alt="{{ artist.artist_name }}" class="card-img-top">
                     <div class="card-body">
