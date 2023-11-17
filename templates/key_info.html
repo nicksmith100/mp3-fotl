@@ -51,7 +51,7 @@
     </fieldset>
     <fieldset>
         <legend class="mt-2">Homepage banner</legend>
-        <p class="text-muted">Display a key message on the website homepage.</p>
+        <p class="text-muted">Display a key message on the website homepage</p>
         <div class="mb-3">
             
             <label for="banner_heading" class="form-label"><i class="bi bi-card-heading" aria-hidden="true"></i> Banner heading<br></label>
@@ -61,6 +61,15 @@
             <label for="banner_text" class="form-label"><i class="bi bi-blockquote-left" aria-hidden="true"></i> Banner text<br></label>
             <textarea minlength="10" maxlength="3000" rows="5" class="validate form-control" id="banner_text" name="banner_text">{{ key_info.banner_text }}</textarea>
         </div>
+    </fieldset>
+    <fieldset>
+        <legend class="mt-2">Fundraising link</legend>
+        <p class="text-muted">Current link for donations</p>
+        <div class="mb-3">
+            <label for="fundraising_link" class="form-label"><i class="bi bi-currency-pound" aria-hidden="true"></i> Fundraising link<br></label>
+            <input type="url" minlength="1" maxlength="300" value="{{ key_info.fundraising_link }}" class="validate form-control" id="fundraising_link" name="fundraising_link">
+        </div>
+
     </fieldset>
     <div class="col-12 my-4">
         <button type="submit" class="btn btn-primary"><i class="bi bi-floppy" aria-hidden="true"></i> Save changes</button>
