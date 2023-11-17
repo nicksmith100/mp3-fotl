@@ -1,6 +1,29 @@
 {% extends "base.html" %}
 {% block content %}
 
+{% for artist in artists %}
+<!-- Biography modal -->
+<div class="modal fade modal-lg" id="{{ artist.artist_name | replace(' ','') }}Modal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog">
+    <div class="modal-content">
+        <div class="modal-header">
+        <h5 class="modal-title" id="modal-label">{{ artist.artist_name }}</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            <div class="mb-3 modal-text lineup-bio-text">
+                {{ artist.artist_bio }}
+            </div>
+        </div>
+        <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        </div>
+    </div>
+    </div>
+</div>
+<!-- .biography modal -->
+{% endfor %}
+
 {% if show_schedule == "on" %}
 
     <div class="container">
@@ -26,7 +49,7 @@
                                                     {% if showtime.showtime_stage == stage %}
                                                     
                                                     <small>{{ showtime.showtime_start.strftime('%-I.%M%p')|lower }}-{{ showtime.showtime_end.strftime('%-I.%M%p')|lower }}</small>
-                                                        <p><a href="#{{ showtime.showtime_artist }}" class="link-dark">{{ showtime.showtime_artist }}</a></p>
+                                                        <p><a href="#{{ showtime.showtime_artist | replace(' ','') }}" class="link-dark">{{ showtime.showtime_artist }}</a></p>
                                                     {% endif %}    
                                                 {% endif %}
                                             {% endfor %}
@@ -50,15 +73,12 @@
         <div class="row mt-4" data-masonry='{"percentPosition": true }' >
         {% for artist in artists %}
             
-            <div id="{{ artist.artist_name }}" class="my-3 col-12 col-lg-4">
+            <div id="{{ artist.artist_name | replace(' ','') }}" class="my-3 col-12 col-lg-4">
                 <div class="card">
                     <img src="{{ cloudinary_url }}{{ artist.artist_img }}" alt="{{ artist.artist_name }}" class="card-img-top">
                     <div class="card-body">
                         <h3 class="card-title">{{ artist.artist_name }}</h3>
-                        <button class="bio-toggle btn btn-dark my-2">Biography<i class="bi bi-caret-down-fill ms-2"></i></button>
-                        <div class= "lineup-bio hidden my-2">    
-                            <p class="lineup-bio-text">{{ artist.artist_bio }}</p>
-                        </div>
+                        <button type="button" class="btn btn-dark my-2" data-bs-toggle="modal" data-bs-target="#{{ artist.artist_name | replace(' ','') }}Modal">Biography <i class="bi bi-blockquote-left ms-2"></i></button>
                     </div>
                     <div class="card-footer">
                         <!-- Show appearances if they exist-->

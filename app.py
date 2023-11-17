@@ -139,7 +139,7 @@ def lineup():
     showtimes.sort(key=lambda item:item["showtime_start"])
 
     # Sort artists by artist name
-    artists = mongo.db.artists.find().sort("artist_name")
+    artists = list(mongo.db.artists.find().sort("artist_name"))
     
     stages = mongo.db.key_info.find_one()["stages"]
     show_schedule = mongo.db.key_info.find_one()["show_schedule"]

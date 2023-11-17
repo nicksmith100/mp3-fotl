@@ -37,16 +37,5 @@ $(document).ready(function(){
         minDate: "01-07-2022",
     });
 
-    /* jQuery show/hide toggle for biographies on lineup page */
-
-    function handler( event ) {
-    let target = $( event.target );
-    if ( target.is( ".bio-toggle" ) ) {
-        target.children().toggleClass("bi-caret-down-fill bi-caret-up-fill");
-        target.next().toggle(1000);
-    }
-    }
-    
-    $( "button" ).on( "click", handler );
-    
+       
 });
