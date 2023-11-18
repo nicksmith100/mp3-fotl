@@ -73,7 +73,7 @@
         <div class="row mt-4" data-masonry='{"percentPosition": true }' >
         {% for artist in artists %}
             
-            <div id="{{ artist.artist_name | replace(' ','') }}" class="flip-card my-3 col-12 col-sm-6 col-lg-4 col-xl-3">
+            <div id="{{ artist.artist_name | replace(' ','') }}" class="flip-card my-3 col-12 col-sm-6">
                 <div class="flip-card-inner">    
                     <div class="card flip-card-front">
                         <img src="{{ cloudinary_url }}{{ artist.artist_img }}" alt="{{ artist.artist_name }}" class="card-img-top">
