@@ -82,6 +82,10 @@ body {
     font-weight: 400;
 }
 
+main {
+    margin-bottom: 100px;
+}
+
 h1 {
     color: #00495C;
 }
@@ -105,3 +109,4 @@ h1, h2, h3, h4, nav {
     --bs-accordion-active-color: #000;
     --bs-accordion-btn-focus-box-shadow: none;
 }
+
