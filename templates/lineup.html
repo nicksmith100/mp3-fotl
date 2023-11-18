@@ -1,33 +1,10 @@
 {% extends "base.html" %}
 {% block content %}
 
-{% for artist in artists %}
-<!-- Biography modal -->
-<div class="modal fade modal-lg" id="{{ artist.artist_name | replace(' ','') }}Modal" tabindex="-1" aria-hidden="true">
-    <div class="modal-dialog">
-    <div class="modal-content">
-        <div class="modal-header">
-        <h5 class="modal-title" id="modal-label">{{ artist.artist_name }}</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body">
-            <div class="mb-3 modal-text lineup-bio-text">
-                {{ artist.artist_bio }}
-            </div>
-        </div>
-        <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        </div>
-    </div>
-    </div>
-</div>
-<!-- .biography modal -->
-{% endfor %}
-
 {% if show_schedule == "on" %}
 
-    <div class="container">
-        <h2 class="mt-3">Schedule</h2>
+    <div class="container mt-5">
+        <h2>Schedule</h2>
 
         <div class="accordion my-3" id="schedule">
             {% for date in dates %}
@@ -69,6 +46,7 @@
 <div class="container mt-5" id="lineup-bios">
 
     <h2>Artists</h2>
+    <p class="fs-4 mt-1">(Click artist card to reveal biography)</p>
 
         <div class="row mt-4" data-masonry='{"percentPosition": true }' >
         {% for artist in artists %}
@@ -79,7 +57,6 @@
                         <img src="{{ cloudinary_url }}{{ artist.artist_img }}" alt="{{ artist.artist_name }}" class="card-img-top">
                         <div class="card-body">
                             <h3 class="card-title">{{ artist.artist_name }}</h3>
-                            <button type="button" class="btn btn-dark my-2" data-bs-toggle="modal" data-bs-target="#{{ artist.artist_name | replace(' ','') }}Modal">Biography <i class="bi bi-blockquote-left ms-2"></i></button>
                         </div>
                         <div class="card-footer">
                             <!-- Show appearances if they exist-->
