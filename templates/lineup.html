@@ -73,36 +73,46 @@
         <div class="row mt-4" data-masonry='{"percentPosition": true }' >
         {% for artist in artists %}
             
-            <div id="{{ artist.artist_name | replace(' ','') }}" class="my-3 col-12 col-sm-6 col-lg-4 col-xl-3">
-                <div class="card">
-                    <img src="{{ cloudinary_url }}{{ artist.artist_img }}" alt="{{ artist.artist_name }}" class="card-img-top">
-                    <div class="card-body">
-                        <h3 class="card-title">{{ artist.artist_name }}</h3>
-                        <button type="button" class="btn btn-dark my-2" data-bs-toggle="modal" data-bs-target="#{{ artist.artist_name | replace(' ','') }}Modal">Biography <i class="bi bi-blockquote-left ms-2"></i></button>
+            <div id="{{ artist.artist_name | replace(' ','') }}" class="flip-card my-3 col-12 col-sm-6 col-lg-4 col-xl-3">
+                <div class="flip-card-inner">    
+                    <div class="card flip-card-front">
+                        <img src="{{ cloudinary_url }}{{ artist.artist_img }}" alt="{{ artist.artist_name }}" class="card-img-top">
+                        <div class="card-body">
+                            <h3 class="card-title">{{ artist.artist_name }}</h3>
+                            <button type="button" class="btn btn-dark my-2" data-bs-toggle="modal" data-bs-target="#{{ artist.artist_name | replace(' ','') }}Modal">Biography <i class="bi bi-blockquote-left ms-2"></i></button>
+                        </div>
+                        <div class="card-footer">
+                            <!-- Show appearances if they exist-->
+                            {% if artist.show1_stage != "" %}
+                                <p class="lineup-shows">
+                                    <strong>Appearing:</strong><br>
+                                    <ul>
+                                        <li>{{ artist.show1_start.strftime('%A %-d %B') }} at {{ artist.show1_start.strftime('%-I.%M%p')|lower }} on the {{ artist.show1_stage|capitalize }} stage</li>
+                                        {% if artist.show2_stage != "" %}
+                                            <li>{{ artist.show2_start.strftime('%A %-d %B') }} at {{ artist.show2_start.strftime('%-I.%M%p')|lower }} on the {{ artist.show2_stage|capitalize }} stage</li>
+                                        {% endif %}
+                                        {% if artist.show3_stage != "" %}
+                                            <li>{{ artist.show3_start.strftime('%A %-d %B') }} at {{ artist.show3_start.strftime('%-I.%M%p')|lower }} on the {{ artist.show3_stage|capitalize }} stage</li>
+                                        {% endif %}
+                                    </ul>
+                                </p>
+                            {% endif %}
+                            <!-- Show website if it exists-->
+                            {% if artist.artist_url != "" %}
+                                <p class="lineup-url">
+                                    <strong>Elsewhere on the web:</strong><br>
+                                    <a href="{{ artist.artist_url }}" class="lineup-url text-dark" target="_blank">{{ artist.artist_name }}</a>
+                                </p>
+                            {% endif %}    
+                        </div>
                     </div>
-                    <div class="card-footer">
-                        <!-- Show appearances if they exist-->
-                        {% if artist.show1_stage != "" %}
-                            <p class="lineup-shows">
-                                <strong>Appearing:</strong><br>
-                                <ul>
-                                    <li>{{ artist.show1_start.strftime('%A %-d %B') }} at {{ artist.show1_start.strftime('%-I.%M%p')|lower }} on the {{ artist.show1_stage|capitalize }} stage</li>
-                                    {% if artist.show2_stage != "" %}
-                                        <li>{{ artist.show2_start.strftime('%A %-d %B') }} at {{ artist.show2_start.strftime('%-I.%M%p')|lower }} on the {{ artist.show2_stage|capitalize }} stage</li>
-                                    {% endif %}
-                                    {% if artist.show3_stage != "" %}
-                                        <li>{{ artist.show3_start.strftime('%A %-d %B') }} at {{ artist.show3_start.strftime('%-I.%M%p')|lower }} on the {{ artist.show3_stage|capitalize }} stage</li>
-                                    {% endif %}
-                                </ul>
-                            </p>
-                        {% endif %}
-                        <!-- Show website if it exists-->
-                        {% if artist.artist_url != "" %}
-                            <p class="lineup-url">
-                                <strong>Elsewhere on the web:</strong><br>
-                                <a href="{{ artist.artist_url }}" class="lineup-url text-dark" target="_blank">{{ artist.artist_name }}</a>
-                            </p>
-                        {% endif %}    
+                    <div class="card flip-card-back">
+                        <div class="card-body">
+                            <h3 class="card-title">{{ artist.artist_name }}</h3>
+                            <div class="lineup-bio-text">
+                                {{ artist.artist_bio }}
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>

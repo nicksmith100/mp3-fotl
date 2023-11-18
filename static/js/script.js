@@ -37,5 +37,9 @@ $(document).ready(function(){
         minDate: "01-07-2022",
     });
 
-       
+    $("#lineup-bios").on("click", ".flip-card", function() {
+        this.classList.toggle("flipped");
+     });
+
 });
+
