@@ -6,7 +6,7 @@
     <div class="card-header">
         Please enter your username and password
     </div>
-    <div class="card-body">
+    <div class="card-body bg-light">
         <form method="POST" action="{{ url_for('admin') }}">
             <div class="mb-3">
               <label for="username" class="form-label"><i class="bi bi-person" aria-hidden="true"></i> Username</label>
@@ -17,14 +17,14 @@
               <input type="password" class="form-control" id="password" name="password" required>
             </div>
             <div class="mt-3 text-center">
-                <button type="submit" class="btn btn-primary">Submit</button>
+                <button type="submit" class="btn btn-dark">Submit</button>
             </div>
         </form>
     </div>
 
     <div>
         <p class="text-center"><strong>Forgotten your username or password?</strong><br>
-            Please <a href="mailto:webmaster@folkonthelawn.com">contact webmaster</a>.</p>
+            Please <a href="mailto:webmaster@folkonthelawn.com" class="link-dark">contact webmaster</a>.</p>
     </div>
 
 </div>
