@@ -90,6 +90,10 @@ header {
     background: #022832;
 }
 
+#admin-menu {
+    background: #02283233;
+}
+
 h1, nav {
     font-family: 'Effloresce', serif;
     font-weight: bold; 
