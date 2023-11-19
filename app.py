@@ -227,7 +227,15 @@ def admin():
                 existing_user["password"], request.form.get("password")):
                     session["user"] = request.form.get("username").lower()
                     flash("Welcome, {}".format(request.form.get("username")))
-                    return redirect(url_for("artists"))
+
+                    # Direct user to key_info template if festival dates in the past, otherwise artists template
+                    now = datetime.now()
+                    event_start = mongo.db.key_info.find_one()["event_start"]
+                    if event_start < now:
+                        return redirect(url_for("key_info"))
+                    else:
+                        return redirect(url_for("artists"))
+            
             else:
                 # Invalid password
                 flash("Incorrect username or password")
