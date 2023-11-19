@@ -86,11 +86,17 @@ main {
     margin-bottom: 100px;
 }
 
-h1 {
-    color: #00495C;
+header {
+    background: #022832;
 }
 
-h1, h2, h3, h4, nav {
+h1, nav {
+    font-family: 'Effloresce', serif;
+    font-weight: bold; 
+}
+
+h2, h3, h4 {
+    color: #022832;
     font-family: 'Effloresce', serif;
     font-weight: bold;
 }

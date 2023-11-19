@@ -13,7 +13,7 @@
     {% endblock %}
     <title>Folk on the Lawn</title>
 </head>
-<body>
+<body class="bg-light">
     
     <!-- Confirmation modal -->
     <div class="modal fade" id="modal-confirm" tabindex="-1" aria-hidden="true">
@@ -36,21 +36,21 @@
     </div>
     <!-- .confirmation modal -->
 
-
+    <!-- Header -->
     <header>
-        <nav class="navbar navbar-expand-lg bg-body-tertiary">
+        <nav class="navbar navbar-dark navbar-expand-lg">
             <div class="container-fluid">
                     <div class="navbar-brand me-0">
                         <a href="/" class="text-decoration-none">
-                            <h1 class="d-none d-sm-block" aria-hidden="true">Folk on the Lawn</h1>
-                            <h1 class="d-block d-sm-none">FotL</h1>
+                            <h1 class="d-none d-sm-block text-light" aria-hidden="true">Folk on the Lawn</h1>
+                            <h1 class="d-block d-sm-none text-light">FotL</h1>
                             <h1 class="visually-hidden">Folk on the Lawn</h1></a>
-                        <span class="fs-5 text-muted d-none d-sm-block">{{ key_info.event_start.strftime('%A %-d %B') }} - {{ key_info.event_end.strftime('%A %-d %B %Y') }}</span>
-                        <span class="fs-5 text-muted d-none d-sm-block">Abbey Mill, Tintern</span>
+                        <span class="fs-5 d-none d-sm-block text-light opacity-75">{{ key_info.event_start.strftime('%A %-d %B') }} - {{ key_info.event_end.strftime('%A %-d %B %Y') }}</span>
+                        <span class="fs-5 d-none d-sm-block text-light opacity-75">Abbey Mill, Tintern</span>
                     </div>
                     <div class="d-block d-sm-none">
-                        <span class="fs-6 text-muted">{{ key_info.event_start.strftime('%-d %B') }} - {{ key_info.event_end.strftime('%-d %B %Y') }}</span><br>
-                        <span class="fs-6 text-muted">Abbey Mill, Tintern</span>
+                        <span class="fs-6 text-light opacity-75">{{ key_info.event_start.strftime('%-d %B') }} - {{ key_info.event_end.strftime('%-d %B %Y') }}</span><br>
+                        <span class="fs-6 text-light opacity-75">Abbey Mill, Tintern</span>
                     </div>
                     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar-toggler-main" aria-controls="navbar-toggler-main" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
