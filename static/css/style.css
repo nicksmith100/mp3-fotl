@@ -116,6 +116,16 @@ h2, h3, h4 {
     --bs-accordion-btn-focus-box-shadow: none;
 }
 
+.btn-dark {
+    --bs-btn-color: #F9F9FA;
+    --bs-btn-bg: #022832;
+    --bs-btn-hover-bg: #022832DD;
+    --bs-btn-hover-border-color: #022832;
+    --bs-btn-active-color: #F9F9FA;
+    --bs-btn-active-bg: #022832DD;
+    --bs-btn-active-border-color: #022832;
+}
+
 /* Flip animation for artist cards */
 
 .flip-card {
