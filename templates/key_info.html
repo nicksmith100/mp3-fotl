@@ -25,7 +25,7 @@
             <small class="text-muted">(Toggles visibility of schedule on Line-up page)</small>
             <input id="show_schedule" 
             name="show_schedule"
-            class="validate form-control form-check-input" 
+            class="validate form-control form-check-input bg-secondary border-dark focus-ring" 
             type="checkbox" 
             role="switch"
             {% if key_info.show_schedule == "on" %} 
@@ -72,7 +72,7 @@
 
     </fieldset>
     <div class="col-12 my-4">
-        <button type="submit" class="btn btn-primary"><i class="bi bi-floppy" aria-hidden="true"></i> Save changes</button>
+        <button type="submit" class="btn btn-dark"><i class="bi bi-floppy" aria-hidden="true"></i> Save changes</button>
         <p class="text-muted mt-3">Last edited by {{ key_info.last_edit_by }} on {{ key_info.last_edit_on }}</p>
     </div>
 </form>
