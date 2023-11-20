@@ -8,12 +8,13 @@ $(document).ready(function(){
         // Button that triggered the modal
         let button = event.relatedTarget;
 
-        // Extract info from data-bs-url attribute
+        // Extract info from data-bs attributes
         let url = button.getAttribute('data-bs-url');
+        let text = button.getAttribute('data-bs-text');
 
         // Update the modal's text content
         let modalText = confirmationModal.querySelector('.modal-text');
-        modalText.innerHTML = `<strong class="text-danger"><i class="bi bi-exclamation-circle-fill" aria-hidden="true"> </i>Are you sure? This action cannot be undone!</strong>`;
+        modalText.innerHTML = `<strong class="text-danger"><i class="bi bi-exclamation-circle-fill" aria-hidden="true"> </i>${ text }</strong>`;
 
         // Update the modal's button content
         let modalConfirm = confirmationModal.querySelector('.btn-confirm');
