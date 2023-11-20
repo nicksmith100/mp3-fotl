@@ -304,9 +304,19 @@ def key_info():
         flash("Key info successfully updated")
         return redirect(url_for("key_info"))
     
+    # Return total duration of show1 entries (to allow for checking if shows have been added)
+    show1_durations = []
+    artists = list(mongo.db.artists.find())
+    for artist in artists:
+        
+        if artist["show1_start"] > datetime(1900,1,1):
+            show1_duration = int(artist["show1_duration"])
+            show1_durations.append(show1_duration)
+            
+    show1_durations_total = sum(show1_durations)
     
     key_info = mongo.db.key_info.find_one()
-    return render_template("key_info.html")
+    return render_template("key_info.html", show1_durations_total=show1_durations_total)
 
 
 @app.route("/artists")
