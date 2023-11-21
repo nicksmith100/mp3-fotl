@@ -11,7 +11,7 @@
 <div class="container">
     {% if key_info.banner_text != "" %}
     <div class="row">
-        <div id="banner" class="border border-3 p-3 mt-4">
+        <div id="banner" class="border border-3 p-3 mt-5">
             <h2 class="mt-2">{{ key_info.banner_heading }}</h2>
             <p>{{ key_info.banner_text }}</p>
         </div>
@@ -19,7 +19,7 @@
     {% endif %}
     {% if key_info.fundraising_url != "" %}
     <div class="row">
-        <div id="support" class="mt-4">
+        <div id="support" class="mt-5">
             <h2 >Support the Festival</h2>
                 <p>Folk On The Lawn is a not-for-profit festival run by volunteers, with all donations shared amongst the artists. We do not provide tickets in advance, but encourage donations in exchange for a wristband. Please click the button below to donate in advance!</p>
                 <a href="{{ key_info.fundraising_url }}" target="_blank" class="mb-3 btn btn-lg btn-dark">Donate</a>
