@@ -474,6 +474,13 @@ def delete_artist(artist_id):
     return redirect(url_for("artists"))
 
 
+@app.route("/delete_all")
+def delete_all():
+    mongo.db.artists.delete_many({})
+    flash("All artists successfully deleted")
+    return redirect(url_for("artists"))
+
+
 if __name__ == "__main__":
     app.run(host=os.environ.get("IP"),
             port=int(os.environ.get("PORT")),

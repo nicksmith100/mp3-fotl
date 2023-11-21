@@ -13,11 +13,13 @@
         </div>
         {% endfor %}
 
-        <div id="add-artist" class="mt-3 mb-5">
+        <div class="my-5">
             <a href="{{ url_for('add_artist') }}" class="btn btn-dark btn-lg"><i class="bi bi-plus-circle-fill"
                     aria-hidden="true"></i> Add artist</a>
+            <button type="button" class="btn btn-danger btn-lg" data-bs-toggle="modal" data-bs-target="#modal-confirm"
+                            data-bs-url="{{ url_for('delete_all') }}" data-bs-text="Are you sure? This action will delete all artists and cannot be undone!"><i
+                                class="bi bi-x-circle-fill" aria-hidden="true"></i> Delete all</button>
         </div>
-        
         <div class="row mt-5 g-0">
             <h2>Artist info</h2>
 
