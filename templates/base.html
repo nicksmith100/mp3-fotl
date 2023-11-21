@@ -45,11 +45,15 @@
                             <h1 class="d-none d-sm-block text-light" aria-hidden="true">Folk on the Lawn</h1>
                             <h1 class="d-block d-sm-none text-light">FotL</h1>
                             <h1 class="visually-hidden">Folk on the Lawn</h1></a>
+                        {% if key_info.event_start.strftime('%Y') != "1900" %}
                         <span class="fs-5 d-none d-sm-block text-light opacity-75">{{ key_info.event_start.strftime('%A %-d %B') }} - {{ key_info.event_end.strftime('%A %-d %B %Y') }}</span>
+                        {% endif %}
                         <span class="fs-5 d-none d-sm-block text-light opacity-75">Abbey Mill, Tintern</span>
                     </div>
                     <div class="d-block d-sm-none">
+                        {% if key_info.event_start.strftime('%Y') != "1900" %}
                         <span class="fs-6 text-light opacity-75">{{ key_info.event_start.strftime('%-d %B') }} - {{ key_info.event_end.strftime('%-d %B %Y') }}</span><br>
+                        {% endif %}
                         <span class="fs-6 text-light opacity-75">Abbey Mill, Tintern</span>
                     </div>
                     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar-toggler-main" aria-controls="navbar-toggler-main" aria-expanded="false" aria-label="Toggle navigation">
