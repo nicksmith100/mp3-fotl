@@ -319,6 +319,33 @@ def key_info():
     return render_template("key_info.html", show1_durations_total=show1_durations_total)
 
 
+@app.route("/delete_event")
+def delete_event():
+
+    key_info_id = mongo.db.key_info.find_one()["_id"]
+    now = datetime.now()
+    date = now.strftime("%d-%m-%Y")
+
+    key_info = {
+            "$set": {
+            "event_start": datetime.strptime("01-01-1900", "%d-%m-%Y"),
+            "event_end": datetime.strptime("01-01-1900", "%d-%m-%Y"),
+            "stages": "",
+            "display_schedule": "",
+            "main_img": "",
+            "banner_heading": "",
+            "banner_text": "",
+            "fundraising_url": "",
+            "last_edit_by": session["user"],
+            "last_edit_on": date
+            }
+        }
+
+    mongo.db.key_info.update_one({"_id": key_info_id}, key_info)
+    flash("Event successfully deleted")
+    return redirect(url_for("key_info"))
+
+
 @app.route("/artists")
 def artists():
     artists = list(mongo.db.artists.find().sort("artist_name"))
