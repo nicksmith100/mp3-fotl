@@ -9,14 +9,15 @@
 </div>
 
 <div class="container">
+    {% if key_info.banner_text != "" %}
     <div class="row">
-        {% if key_info.banner_text != "" %}
         <div id="banner" class="border border-3 p-3 mt-4">
             <h2 class="mt-2">{{ key_info.banner_heading }}</h2>
             <p>{{ key_info.banner_text }}</p>
         </div>
-        {% endif %}
     </div>
+    {% endif %}
+    {% if key_info.fundraising_url != "" %}
     <div class="row">
         <div id="support" class="mt-4">
             <h2 >Support the Festival</h2>
@@ -24,6 +25,7 @@
                 <a href="{{ key_info.fundraising_url }}" target="_blank" class="mb-3 btn btn-lg btn-dark">Donate</a>
         </div>
     </div>
+    {% endif %}
     <div class="row">
         <div id="about" class="mt-4">
             <h2>About</h2>
