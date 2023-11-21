@@ -135,6 +135,15 @@ h2, h3, h4 {
     color: #F9F9FA;
 }
 
+.artist-card {
+    background: #022832;
+    color: #F9F9FA;
+}
+
+.artist-card .card-body {
+    background: transparent;
+}
+
 .card-img-top {
     border-bottom: 3px solid #F9F9FA;
 }
