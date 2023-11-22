@@ -21,11 +21,11 @@
                                 class="bi bi-x-circle-fill" aria-hidden="true"></i> Delete all</button>
         </div>
         <div class="row mt-5 g-0">
-            <h2>Artist info</h2>
+            <h2 class="mb-3">Artist info</h2>
 
             {% for artist in artists %}
 
-            <div id="{{ artist.artist_name | replace(' ','') }}" class="card my-5 col-12 col-sm-4">
+            <div id="{{ artist.artist_name | replace(' ','') }}" class="card mb-5 col-12 col-sm-4">
                 <img src="{{ cloudinary_url }}{{ artist.artist_img }}" alt="{{ artist.artist_name }}" class="card-img-top">
                 <div class="card-body">
                     <h3 class="card-title">{{ artist.artist_name }}</h3>
@@ -82,7 +82,7 @@
                     <p class="text-muted mt-1">Last edited by {{ artist.last_edit_by }} on {{ artist.last_edit_on }}</p>
                 </div>
             </div>
-            <div id="{{ artist.artist_name }}" class="card artist-card my-5 col-12 col-sm-5 mx-2">
+            <div id="{{ artist.artist_name }}" class="card artist-bio mb-5 col-12 col-sm-5 mx-2">
                 <div class="card-body">
                     <h3 class="card-title">Biography</h3>
                     <p class="bio">
