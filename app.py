@@ -148,8 +148,8 @@ def lineup():
     return render_template("lineup.html", artists=artists, dates=dates, showtimes=showtimes, stages=stages, display_schedule=display_schedule)
 
 
-@app.route("/register", methods=["GET", "POST"])
-def register():
+@app.route("/superuser", methods=["GET", "POST"])
+def superuser():
 
     # Check user is admin
     if "user" in session:
@@ -167,7 +167,7 @@ def register():
 
                 if existing_user:
                     flash("Username already exists")
-                    return redirect(url_for("register"))
+                    return redirect(url_for("superuser"))
 
                 ## Get current date
 
@@ -194,7 +194,7 @@ def register():
         else:
             return redirect(url_for("home"))
 
-        return render_template("register.html", admins=admins)
+        return render_template("superuser.html", admins=admins)
 
     else:
 
@@ -216,7 +216,7 @@ def delete_admin(admin_id):
                 deleted_admin = mongo.db.admins.find_one({"_id": ObjectId(admin_id)})["username"]
                 mongo.db.admins.delete_one({"_id": ObjectId(admin_id)})
                 flash("Admin {} successfully deleted".format(deleted_admin))
-                return redirect(url_for("register"))
+                return redirect(url_for("superuser"))
 
         else:
 
@@ -252,7 +252,7 @@ def switch_superuser(admin_id):
             switched_admin = mongo.db.admins.find_one({"_id": ObjectId(admin_id)})["username"]
             mongo.db.admins.update_one({"_id": ObjectId(admin_id)}, submit)
             flash("Superuser status of {} updated".format(switched_admin))
-            return redirect(url_for("register"))
+            return redirect(url_for("superuser"))
         
         else:
 
@@ -613,7 +613,7 @@ def backup():
             with open("data_backup/key_info_bkup.json", 'w') as file:
                 file.write(key_info)
             flash("Database successfully backed up")
-            return redirect(url_for('register'))
+            return redirect(url_for('superuser'))
         
         else:
             return redirect(url_for('home'))
@@ -663,7 +663,7 @@ def restore():
                 key_info_db.insert_one(key_info[ndx])
             
             flash("Database successfully restored from backup")
-            return redirect(url_for('register'))
+            return redirect(url_for('superuser'))
 
         else:
             return redirect(url_for('home'))
