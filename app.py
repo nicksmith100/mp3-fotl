@@ -1,7 +1,7 @@
 import os
 from flask import (
     Flask, flash, render_template,
-    redirect, request, session, url_for)
+    redirect, request, session, url_for, abort)
 from flask_pymongo import PyMongo
 from bson.objectid import ObjectId
 from werkzeug.utils import secure_filename
@@ -192,13 +192,13 @@ def superuser():
             admins = mongo.db.admins.find()
 
         else:
-            return redirect(url_for("home"))
+            abort(403)
 
         return render_template("superuser.html", admins=admins)
 
     else:
 
-        return redirect(url_for("home"))
+        abort(403)
 
 
 @app.route("/delete_admin/<admin_id>")
@@ -220,11 +220,11 @@ def delete_admin(admin_id):
 
         else:
 
-            return redirect(url_for("home"))
+            abort(403)
 
     else:
 
-        return redirect(url_for("home"))
+        abort(403)
    
 
 @app.route("/switch_superuser/<admin_id>")
@@ -256,11 +256,11 @@ def switch_superuser(admin_id):
         
         else:
 
-            return redirect(url_for("home"))
+            abort(403)
 
     else:
 
-        return redirect(url_for("home"))
+        abort(403)
 
 
 @app.route("/admin", methods=["GET", "POST"])
@@ -314,7 +314,7 @@ def logout():
         return redirect(url_for("admin"))
 
     else:
-        return redirect(url_for("home"))
+        abort(403)
 
 
 @app.route("/key_info", methods=["GET", "POST"])
@@ -382,7 +382,7 @@ def key_info():
         return render_template("key_info.html", show1_durations_total=show1_durations_total)
     
     else:
-        return redirect(url_for("home"))
+        abort(403)
 
 @app.route("/delete_event")
 def delete_event():
@@ -414,7 +414,7 @@ def delete_event():
         return redirect(url_for("key_info"))
 
     else:
-        return redirect(url_for("home"))
+        abort(403)
 
 @app.route("/artists")
 def artists():
@@ -428,7 +428,7 @@ def artists():
         artists=artists)
     
     else:
-        return redirect(url_for("home"))
+        abort(403)
 
 
 @app.route("/add_artist", methods=["GET", "POST"])
@@ -488,7 +488,7 @@ def add_artist():
 
     else:
 
-        return redirect(url_for("home"))
+        abort(403)
 
 @app.route("/edit_artist/<artist_id>", methods=["GET", "POST"])
 def edit_artist(artist_id):
@@ -554,7 +554,7 @@ def edit_artist(artist_id):
 
     else:
 
-        return redirect(url_for("home"))
+        abort(403)
 
 @app.route("/delete_artist/<artist_id>")
 def delete_artist(artist_id):
@@ -569,7 +569,7 @@ def delete_artist(artist_id):
     
     else:
 
-        return redirect(url_for("home"))
+        abort(403)
 
 @app.route("/delete_all")
 def delete_all():
@@ -583,7 +583,7 @@ def delete_all():
 
     else:
 
-        return redirect(url_for("home"))
+        abort(403)
 
 
 #-------------DATA BACKUP-----------------------------
@@ -616,10 +616,10 @@ def backup():
             return redirect(url_for('superuser'))
         
         else:
-            return redirect(url_for('home'))
+            abort(403)
 
     else:
-        return redirect(url_for('home'))
+        abort(403)
 
 @app.route("/restore")
 def restore():
@@ -666,10 +666,22 @@ def restore():
             return redirect(url_for('superuser'))
 
         else:
-            return redirect(url_for('home'))
+            abort(403)
 
     else:
-        return redirect(url_for('home'))
+        abort(403)
+
+#-------------ERROR HANDLERS-----------------------------
+
+# Error handler code from: https://flask.palletsprojects.com/en/2.3.x/errorhandling/
+@app.errorhandler(403)
+def forbidden(e):
+    return render_template('403.html'), 403
+
+
+@app.errorhandler(404)
+def page_not_found(e):
+    return render_template('404.html'), 404
 
 
 if __name__ == "__main__":
