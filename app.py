@@ -7,6 +7,7 @@ from bson.objectid import ObjectId
 from werkzeug.utils import secure_filename
 from werkzeug.security import generate_password_hash, check_password_hash
 from datetime import datetime, timedelta
+from bson.json_util import dumps, loads
 import cloudinary
 import cloudinary.uploader
 
@@ -583,6 +584,90 @@ def delete_all():
     else:
 
         return redirect(url_for("home"))
+
+
+#-------------DATA BACKUP-----------------------------
+
+# Backup functionality adapted from: https://github.com/abonello/food_nutrition/
+
+@app.route("/backup")
+def backup():
+
+    # Check user is admin
+    if "user" in session:
+    
+        # Check user is superuser
+        user_is_superuser = mongo.db.admins.find_one(
+        {"username": session["user"]})["is_superuser"]
+
+        if user_is_superuser == "on":
+
+            admins = dumps(mongo.db.admins.find())
+            artists = dumps(mongo.db.artists.find())
+            key_info = dumps(mongo.db.key_info.find())
+
+            with open("data_backup/admins_bkup.json", 'w') as file:
+                file.write(admins)
+            with open("data_backup/artists_bkup.json", 'w') as file:
+                file.write(artists)
+            with open("data_backup/key_info_bkup.json", 'w') as file:
+                file.write(key_info)
+            return redirect(url_for('register'))
+        
+        else:
+            return redirect(url_for('home'))
+
+    else:
+        return redirect(url_for('home'))
+
+@app.route("/restore")
+def restore():
+
+    # Check user is admin
+    if "user" in session:
+    
+        # Check user is superuser
+        user_is_superuser = mongo.db.admins.find_one(
+        {"username": session["user"]})["is_superuser"]
+
+        if user_is_superuser == "on":    
+
+            admins = []
+            artists = []
+            key_info = []
+            
+            with open("data_backup/admins_bkup.json", 'r') as file:
+                admins = loads(file.read())
+            with open("data_backup/artists_bkup.json", 'r') as file:
+                artists = loads(file.read())
+            with open("data_backup/key_info_bkup.json", 'r') as file:
+                key_info = loads(file.read())
+
+            admins_db = mongo.db.admins
+            admins_db.drop()
+            for ndx, each_admin in enumerate(admins):
+                del admins[ndx]["_id"]
+                admins_db.insert_one(admins[ndx])
+
+            artists_db = mongo.db.artists
+            artists_db.drop()
+            for ndx, each_artist in enumerate(artists):
+                del artists[ndx]["_id"]
+                artists_db.insert_one(artists[ndx])
+
+            key_info_db = mongo.db.key_info
+            key_info_db.drop()
+            for ndx, each_info in enumerate(key_info):
+                del key_info[ndx]["_id"]
+                key_info_db.insert_one(key_info[ndx])
+            
+            return redirect(url_for('register'))
+
+        else:
+            return redirect(url_for('home'))
+
+    else:
+        return redirect(url_for('home'))
 
 
 if __name__ == "__main__":
