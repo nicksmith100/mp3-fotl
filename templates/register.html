@@ -2,9 +2,6 @@
 
 {% block content %}
 
-{% if is_superuser=="off" %}
-<p class="bg-warning text-center fs-1"><i class="bi bi-exclamation-diamond-fill" aria-hidden="true"></i> You do not have permission to view this page <i class="bi bi-exclamation-diamond-fill" aria-hidden="true"></i></p>
-
 {% else %}
 <div class="container">
     <div class="row">
@@ -18,24 +15,34 @@
                 <div class="card-body bg-white text-dark">
                     <form method="POST" action="{{ url_for('register') }}">
                         <div class="mb-3">
-                            <label for="name" class="form-label"><i class="bi bi-alphabet" aria-hidden="true"></i> Name<br><small class="text-muted">At least 3 characters</small></label>
-                            <input type="text" minlength="3" class="validate form-control" id="name" name="name" required>
+                            <label for="name" class="form-label"><i class="bi bi-alphabet" aria-hidden="true"></i>
+                                Name<br><small class="text-muted">At least 3 characters</small></label>
+                            <input type="text" minlength="3" class="validate form-control" id="name" name="name"
+                                required>
                         </div>
                         <div class="mb-3">
-                        <label for="username" class="form-label"><i class="bi bi-person" aria-hidden="true"></i> Username<br><small class="text-muted">5-15 characters using letters and numbers only</small></label>
-                        <input type="text" minlength="5" maxlength="15" pattern="^[a-zA-Z0-9]{5,15}$" class="validate form-control" id="username" name="username" required>
+                            <label for="username" class="form-label"><i class="bi bi-person" aria-hidden="true"></i>
+                                Username<br><small class="text-muted">5-15 characters using letters and numbers
+                                    only</small></label>
+                            <input type="text" minlength="5" maxlength="15" pattern="^[a-zA-Z0-9]{5,15}$"
+                                class="validate form-control" id="username" name="username" required>
                         </div>
                         <div class="mb-3">
-                        <label for="password" class="form-label"><i class="bi bi-key" aria-hidden="true"></i> Password<br><small class="text-muted">5-15 characters using letters and numbers only</small></label>
-                        <input type="password" minlength="5" maxlength="15" pattern="^[a-zA-Z0-9]{5,15}$" class="validate form-control" id="password" name="password" required>
+                            <label for="password" class="form-label"><i class="bi bi-key" aria-hidden="true"></i>
+                                Password<br><small class="text-muted">5-15 characters using letters and numbers
+                                    only</small></label>
+                            <input type="password" minlength="5" maxlength="15" pattern="^[a-zA-Z0-9]{5,15}$"
+                                class="validate form-control" id="password" name="password" required>
                         </div>
                         <div class="mb-3 form-check">
                             <input type="checkbox" class="form-check-input" id="superuser-check" name="superuser-check">
                             <label class="form-check-label" for="superuser-check">Make superuser</label>
                         </div>
-                        <p class="text-danger"><i class="bi bi-exclamation-circle-fill" aria-hidden="true"></i> Superuser access will allow this user to add and delete admins.</p>
+                        <p class="text-danger"><i class="bi bi-exclamation-circle-fill" aria-hidden="true"></i>
+                            Superuser access will allow this user to add and delete admins.</p>
                         <div class="mt-3 text-center">
-                            <button type="submit" class="btn btn-dark"><i class="bi bi-person-add" aria-hidden="true"></i> Add user</button>
+                            <button type="submit" class="btn btn-dark"><i class="bi bi-person-add"
+                                    aria-hidden="true"></i> Add user</button>
                         </div>
                     </form>
                 </div>
@@ -57,7 +64,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                    {% for admin in admins %}
+                        {% for admin in admins %}
                         <tr>
                             <td>{{ admin.name }}</td>
                             <td>{{ admin.username }}</td>
@@ -73,12 +80,18 @@
                                 {% if admin.username == session["user"] %}
                                 <p class="text-muted">(Current user)</p>
                                 {% elif admin.username != session["user"] %}
-                                <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#modal-confirm" data-bs-url="{{ url_for('delete_admin', admin_id=admin._id) }}" data-bs-text="Are you sure? This action cannot be undone!"><i class="bi bi-person-x" aria-hidden="true"></i> Delete</button>
-                                <a href="{{ url_for('switch_superuser', admin_id=admin._id) }}" class="btn btn-warning"><i class="bi bi-person-gear" aria-hidden="true"></i> Switch superuser</a>
+                                <button type="button" class="btn btn-danger" data-bs-toggle="modal"
+                                    data-bs-target="#modal-confirm"
+                                    data-bs-url="{{ url_for('delete_admin', admin_id=admin._id) }}"
+                                    data-bs-text="Are you sure? This action cannot be undone!"><i class="bi bi-person-x"
+                                        aria-hidden="true"></i> Delete</button>
+                                <a href="{{ url_for('switch_superuser', admin_id=admin._id) }}"
+                                    class="btn btn-warning"><i class="bi bi-person-gear" aria-hidden="true"></i> Switch
+                                    superuser</a>
                                 {% endif %}
                             </td>
                         </tr>
-                    {% endfor %}
+                        {% endfor %}
                     </tbody>
                 </table>
             </div>

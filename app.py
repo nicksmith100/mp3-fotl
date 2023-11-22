@@ -612,6 +612,7 @@ def backup():
                 file.write(artists)
             with open("data_backup/key_info_bkup.json", 'w') as file:
                 file.write(key_info)
+            flash("Database successfully backed up")
             return redirect(url_for('register'))
         
         else:
@@ -661,6 +662,7 @@ def restore():
                 del key_info[ndx]["_id"]
                 key_info_db.insert_one(key_info[ndx])
             
+            flash("Database successfully restored from backup")
             return redirect(url_for('register'))
 
         else:
