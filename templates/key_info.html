@@ -10,7 +10,7 @@
     <fieldset>
         <legend class="mt-2">Event info</legend>
         <!-- If shows already exist, warn user -->
-        {% if show1_durations_total > 0 %}
+        {% if shows %}
         <p class="text-danger"><i class="bi bi-exclamation-circle-fill" aria-hidden="true"></i> You have already added at least one show to the Artists database. Please note that any changes made to dates and stages on this page will <strong>not</strong> be automatically applied to exisiting shows.</p>
         {% endif %}
         <div class="mb-3">

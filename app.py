@@ -367,19 +367,23 @@ def key_info():
             flash("Key info successfully updated")
             return redirect(url_for("key_info"))
         
-        # Return total duration of show1 entries (to allow for checking if shows have been added)
-        show1_durations = []
+        # Check if shows have been added
+        show1_stages = []
         artists = list(mongo.db.artists.find())
+        
         for artist in artists:
-            
             if artist["show1_start"] > datetime(1900,1,1):
-                show1_duration = int(artist["show1_duration"])
-                show1_durations.append(show1_duration)
+                if artist["show1_stage"] != "":
+                    show1_stage = artist["show1_stage"]
+                    show1_stages.append(show1_stage)
                 
-        show1_durations_total = sum(show1_durations)
+        if len(show1_stages) > 0:
+            shows = True
+        else:
+            shows = False
         
         key_info = mongo.db.key_info.find_one()
-        return render_template("key_info.html", show1_durations_total=show1_durations_total)
+        return render_template("key_info.html", shows=shows)
     
     else:
         abort(403)
@@ -687,4 +691,4 @@ def page_not_found(e):
 if __name__ == "__main__":
     app.run(host=os.environ.get("IP"),
             port=int(os.environ.get("PORT")),
-            debug=False)
+            debug=True)
