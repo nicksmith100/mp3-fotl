@@ -76,6 +76,11 @@ def lineup():
     artists = list(mongo.db.artists.find())
     for artist in artists:
         
+        if artist["show1_duration"] == "":
+            show1_duration = 0
+        else:
+            show1_duration = int(artist["show1_duration"])
+
         if artist["show1_start"] > datetime(1900,1,1):
             
             # Get showtime info from database
@@ -83,7 +88,7 @@ def lineup():
             showtime_artist = artist["artist_name"]
             showtime_day = artist["show1_start"].strftime('%A')
             showtime_start = artist["show1_start"]
-            showtime_duration = int(artist["show1_duration"])
+            showtime_duration = show1_duration
             showtime_end = showtime_start + timedelta(minutes=showtime_duration)
             
             # Add showtime information to list
@@ -96,6 +101,11 @@ def lineup():
                     "showtime_end": showtime_end
             })
         
+        if artist["show2_duration"] == "":
+            show2_duration = 0
+        else:
+            show2_duration = int(artist["show2_duration"])
+        
         if artist["show2_start"] > datetime(1900,1,1):
             
             # Get showtime info from database
@@ -103,7 +113,7 @@ def lineup():
             showtime_artist = artist["artist_name"]
             showtime_day = artist["show2_start"].strftime('%A') 
             showtime_start = artist["show2_start"]
-            showtime_duration = int(artist["show2_duration"])
+            showtime_duration = show2_duration
             showtime_end = showtime_start + timedelta(minutes=showtime_duration)
             
             # Add showtime information to list
@@ -116,6 +126,11 @@ def lineup():
                     "showtime_end": showtime_end
             })
 
+        if artist["show3_duration"] == "":
+            show2_duration = 0
+        else:
+            show3_duration = int(artist["show3_duration"])
+        
         if artist["show3_start"] > datetime(1900,1,1):
             
             # Get showtime info from database
@@ -123,7 +138,7 @@ def lineup():
             showtime_artist = artist["artist_name"]
             showtime_day = artist["show3_start"].strftime('%A') 
             showtime_start = artist["show3_start"]
-            showtime_duration = int(artist["show3_duration"])
+            showtime_duration = show3_duration
             showtime_end = showtime_start + timedelta(minutes=showtime_duration)
             
             # Add showtime information to list
