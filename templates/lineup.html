@@ -1,50 +1,52 @@
 {% extends "base.html" %}
 {% block content %}
 
-{% if display_schedule == "on" %}
+{% if artists|length > 0 %}
 
-    <div class="container mt-5">
-        <h2>Schedule</h2>
+    {% if display_schedule == "on" %}
 
-        <div class="accordion my-3" id="schedule">
-            {% for date in dates %}
-                <div class="accordion-item">
-                    <h2 class="accordion-header" id="heading-{{ date.strftime('%A') }}">
-                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#{{ date.strftime('%A') }}" aria-expanded="false" aria-controls="{{ date.strftime('%A') }}">
-                            <h3>{{ date.strftime('%A') }}</h3>
-                        </button>
-                    </h2>
-                    <div id="{{ date.strftime('%A') }}" class="accordion-collapse collapse" aria-labelledby="heading-{{ date.strftime('%A') }}" data-bs-parent="#schedule">
-                        <div class="accordion-body">
-                            <div class="row">
-                                {% for stage in stages %}
-                                    {% if showtimes|selectattr("showtime_stage", "equalto", stage)|selectattr("showtime_day", "equalto", date.strftime('%A'))|list|length > 0 %}
-                                        <div class="stage-listing col-12 col-sm-6 col-lg-3 mb-3">    
-                                            <h4>{{ stage }} Stage</h4>
-                                            {% for showtime in showtimes %}
-                                                {% if showtime.showtime_start.strftime('%A') == date.strftime('%A') %}
-                                                    {% if showtime.showtime_stage == stage %}
-                                                        {% if showtime.showtime_start == showtime.showtime_end %}
-                                                            <small>{{ showtime.showtime_start.strftime('%-I.%M%p')|lower }}</small>
-                                                        {% else %}
-                                                            <small>{{ showtime.showtime_start.strftime('%-I.%M%p')|lower }}-{{ showtime.showtime_end.strftime('%-I.%M%p')|lower }}</small>
-                                                        {% endif %}
-                                                        <p><a href="#{{ showtime.showtime_artist | replace(' ','') }}" class="link-dark">{{ showtime.showtime_artist }}</a></p>
-                                                    {% endif %}    
-                                                {% endif %}
-                                            {% endfor %}
-                                        </div>
-                                    {% endif %}
-                                {% endfor %}
+        <div class="container mt-5">
+            <h2>Schedule</h2>
+
+            <div class="accordion my-3" id="schedule">
+                {% for date in dates %}
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="heading-{{ date.strftime('%A') }}">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#{{ date.strftime('%A') }}" aria-expanded="false" aria-controls="{{ date.strftime('%A') }}">
+                                <h3>{{ date.strftime('%A') }}</h3>
+                            </button>
+                        </h2>
+                        <div id="{{ date.strftime('%A') }}" class="accordion-collapse collapse" aria-labelledby="heading-{{ date.strftime('%A') }}" data-bs-parent="#schedule">
+                            <div class="accordion-body">
+                                <div class="row">
+                                    {% for stage in stages %}
+                                        {% if showtimes|selectattr("showtime_stage", "equalto", stage)|selectattr("showtime_day", "equalto", date.strftime('%A'))|list|length > 0 %}
+                                            <div class="stage-listing col-12 col-sm-6 col-lg-3 mb-3">    
+                                                <h4>{{ stage }} Stage</h4>
+                                                {% for showtime in showtimes %}
+                                                    {% if showtime.showtime_start.strftime('%A') == date.strftime('%A') %}
+                                                        {% if showtime.showtime_stage == stage %}
+                                                            {% if showtime.showtime_start == showtime.showtime_end %}
+                                                                <small>{{ showtime.showtime_start.strftime('%-I.%M%p')|lower }}</small>
+                                                            {% else %}
+                                                                <small>{{ showtime.showtime_start.strftime('%-I.%M%p')|lower }}-{{ showtime.showtime_end.strftime('%-I.%M%p')|lower }}</small>
+                                                            {% endif %}
+                                                            <p><a href="#{{ showtime.showtime_artist | replace(' ','') }}" class="link-dark">{{ showtime.showtime_artist }}</a></p>
+                                                        {% endif %}    
+                                                    {% endif %}
+                                                {% endfor %}
+                                            </div>
+                                        {% endif %}
+                                    {% endfor %}
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-            {% endfor %}
+                {% endfor %}
+            </div>
         </div>
-    </div>
 
-{% endif %}
+    {% endif %}
 
 <div class="container mt-5" id="lineup-bios">
 
@@ -107,6 +109,13 @@
         {% endfor %}
     </div>
 </div>
+
+{% else %}
+    <div class="container mt-5" id="lineup-empty">
+        <h2>Line-up in progress</h2>
+        <p class="fs-5 mt-3">We're busy behind the scenes creating something special! Follow us on social media to be the first to know when our line-up is revealed, or check back here soon.</p>         
+    </div>
+{% endif %}
 
 {% endblock %}
 
