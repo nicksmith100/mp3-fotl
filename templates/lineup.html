@@ -24,8 +24,11 @@
                                             {% for showtime in showtimes %}
                                                 {% if showtime.showtime_start.strftime('%A') == date.strftime('%A') %}
                                                     {% if showtime.showtime_stage == stage %}
-                                                    
-                                                    <small>{{ showtime.showtime_start.strftime('%-I.%M%p')|lower }}-{{ showtime.showtime_end.strftime('%-I.%M%p')|lower }}</small>
+                                                        {% if showtime.showtime_start == showtime.showtime_end %}
+                                                            <small>{{ showtime.showtime_start.strftime('%-I.%M%p')|lower }}</small>
+                                                        {% else %}
+                                                            <small>{{ showtime.showtime_start.strftime('%-I.%M%p')|lower }}-{{ showtime.showtime_end.strftime('%-I.%M%p')|lower }}</small>
+                                                        {% endif %}
                                                         <p><a href="#{{ showtime.showtime_artist | replace(' ','') }}" class="link-dark">{{ showtime.showtime_artist }}</a></p>
                                                     {% endif %}    
                                                 {% endif %}
