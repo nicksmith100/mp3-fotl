@@ -44,4 +44,28 @@ $(document).ready(function(){
         } else { this.classList.toggle("flipped"); }
     });
 
+    
 });
+
+/* Prevent overlapping images in Masonry layout.
+Code from: https://kontext.tech/article/807/trigger-event-after-all-images-loaded */ 
+
+let $grid = document.querySelector('.row');
+let msnry = new Masonry($grid, {
+    itemSelector: '.col',
+    percentPosition: true
+});
+let $images = $grid.querySelectorAll('.card img');
+
+Promise.all(
+    Array.from($images).filter(img => !img.complete)
+        .map(img => new Promise(resolve => { 
+            img.addEventListener('load', resolve); 
+            img.addEventListener('error', resolve);
+        })
+        )
+).then(
+    () => {
+        msnry.layout();
+    }
+);
