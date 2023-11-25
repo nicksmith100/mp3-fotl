@@ -31,7 +31,7 @@ cloudinary.config(
     api_secret=os.environ.get("CLOUDINARY_API_SECRET")
 )
 
-# Utility apps ------------------------------------
+# Utility apps ---------------------------------------------------------------
 
 # Convert date strings to datetime objects
 # Set date 01-01-1900 if not provided
@@ -43,7 +43,7 @@ def ds_to_dt(date_string):
         return datetime.strptime("01-01-1900", "%d-%m-%Y")
 
 
-# Main applicaiton --------------------------------
+# Main application -----------------------------------------------------------
 
 # Inject content for base template
 @app.context_processor
@@ -378,6 +378,7 @@ def delete_event():
         now = datetime.now()
         date = now.strftime("%d-%m-%Y")
 
+        # Set values to blank or defaults
         key_info = {
                 "$set": {
                 "event_start": datetime.strptime("01-01-1900", "%d-%m-%Y"),
@@ -399,6 +400,7 @@ def delete_event():
 
     else:
         abort(403)
+
 
 @app.route("/artists")
 def artists():
@@ -465,6 +467,7 @@ def add_artist():
 
         abort(403)
 
+
 @app.route("/edit_artist/<artist_id>", methods=["GET", "POST"])
 def edit_artist(artist_id):
 
@@ -520,6 +523,7 @@ def edit_artist(artist_id):
 
         abort(403)
 
+
 @app.route("/delete_artist/<artist_id>")
 def delete_artist(artist_id):
 
@@ -534,6 +538,7 @@ def delete_artist(artist_id):
     else:
 
         abort(403)
+
 
 @app.route("/delete_all")
 def delete_all():
@@ -550,9 +555,10 @@ def delete_all():
         abort(403)
 
 
-#-------------DATA BACKUP-----------------------------
+# Data backup and restore ----------------------------------------------------
 
-# Backup functionality adapted from: https://github.com/abonello/food_nutrition/
+# Backup functionality adapted from:
+# https://github.com/abonello/food_nutrition/
 
 @app.route("/backup")
 def backup():
@@ -565,13 +571,12 @@ def backup():
         {"username": session["user"]})["is_superuser"]
 
         if user_is_superuser == "on":
-
-            admins = dumps(mongo.db.admins.find())
+            
+            # Get data from database
             artists = dumps(mongo.db.artists.find())
             key_info = dumps(mongo.db.key_info.find())
 
-            with open("data_backup/admins_bkup.json", 'w') as file:
-                file.write(admins)
+            # Write data to json files
             with open("data_backup/artists_bkup.json", 'w') as file:
                 file.write(artists)
             with open("data_backup/key_info_bkup.json", 'w') as file:
@@ -585,6 +590,7 @@ def backup():
     else:
         abort(403)
 
+
 @app.route("/restore")
 def restore():
 
@@ -597,23 +603,16 @@ def restore():
 
         if user_is_superuser == "on":    
 
-            admins = []
             artists = []
             key_info = []
             
-            with open("data_backup/admins_bkup.json", 'r') as file:
-                admins = loads(file.read())
+            # Read data from backup json files
             with open("data_backup/artists_bkup.json", 'r') as file:
                 artists = loads(file.read())
             with open("data_backup/key_info_bkup.json", 'r') as file:
                 key_info = loads(file.read())
-
-            admins_db = mongo.db.admins
-            admins_db.drop()
-            for ndx, each_admin in enumerate(admins):
-                del admins[ndx]["_id"]
-                admins_db.insert_one(admins[ndx])
-
+            
+            #Write data to database
             artists_db = mongo.db.artists
             artists_db.drop()
             for ndx, each_artist in enumerate(artists):
@@ -635,9 +634,11 @@ def restore():
     else:
         abort(403)
 
-#-------------ERROR HANDLERS-----------------------------
+# Error handlers -------------------------------------------------------------
 
-# Error handler code from: https://flask.palletsprojects.com/en/2.3.x/errorhandling/
+# Error handler code from:
+# https://flask.palletsprojects.com/en/2.3.x/errorhandling/
+
 @app.errorhandler(403)
 def forbidden(e):
     return render_template('403.html'), 403
