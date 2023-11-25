@@ -50,7 +50,7 @@ $(document).ready(function(){
 /* Prevent overlapping images in Masonry layout.
 Code from: https://kontext.tech/article/807/trigger-event-after-all-images-loaded */ 
 
-let $grid = document.querySelector('.row');
+let $grid = document.querySelector('.masonry-row');
 let msnry = new Masonry($grid, {
     itemSelector: '.col',
     percentPosition: true
@@ -68,4 +68,4 @@ Promise.all(
     () => {
         msnry.layout();
     }
-);
+); */
