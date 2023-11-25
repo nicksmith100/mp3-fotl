@@ -44,27 +44,16 @@ $(document).ready(function(){
         } else { this.classList.toggle("flipped"); }
     });
 
-    /* Prevent overlapping images in Masonry layout.
-    Code from: https://kontext.tech/article/807/trigger-event-after-all-images-loaded */ 
+    /* Prevent overlapping images in Masonry layout using imagesLoaded script
+    Code from: https://masonry.desandro.com/layout#imagesloaded */ 
 
-    let $grid = document.querySelector('.masonry-row');
-    let msnry = new Masonry($grid, {
+    let $grid = $('.masonry-row').masonry({
         itemSelector: '.flip-card',
         percentPosition: true
-    });
-    let $images = $grid.querySelectorAll('.card img');
-
-    Promise.all(
-        Array.from($images).filter(img => !img.complete)
-            .map(img => new Promise(resolve => { 
-                img.addEventListener('load', resolve); 
-                img.addEventListener('error', resolve);
-            })
-            )
-    ).then(
-        () => {
-            msnry.layout();
-        }
-    );
+      });
+        
+    $grid.imagesLoaded().progress( function() {
+        $grid.masonry('layout');
+      });
     
 });
