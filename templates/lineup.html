@@ -67,7 +67,11 @@
             <div id="{{ artist.artist_name | replace(' ','') }}" class="flip-card my-3 col-12 col-sm-6 col-lg-4">
                 <div class="flip-card-inner">    
                     <div class="card flip-card-front">
+                        {% if artist.artist_img != "" %}
                         <img src="{{ cloudinary_url }}{{ artist.artist_img }}" alt="{{ artist.artist_name }}" class="card-img-top">
+                        {% else %}
+                        <span class="card-img-top p-3"></span>
+                        {% endif %}
                         <div class="card-body">
                             <h3 class="card-title">{{ artist.artist_name }}</h3>
                         </div>
