@@ -1,6 +1,7 @@
 $(document).ready(function(){
 
-    /* Display confirmation modal with dynamic confirm button */
+    /* Display confirmation modal with dynamic confirm button
+    Code from: https://getbootstrap.com/docs/5.0/components/modal/#varying-modal-content */
 
     let confirmationModal = document.getElementById('modal-confirm');
     confirmationModal.addEventListener('show.bs.modal', function (event) {
@@ -22,7 +23,8 @@ $(document).ready(function(){
 
     });
 
-    /* Date-and-time picker using flatpickr plugin */
+    /* Date-and-time pickers using flatpickr plugin
+    Code from: https://flatpickr.js.org/examples */
 
     $(".showtime").flatpickr({
         enableTime: true,
@@ -31,12 +33,12 @@ $(document).ready(function(){
         maxDate: "16-07-2023"
     });
 
-    /* Date picker using flatpickr plugin */
-
     $(".event-date").flatpickr({
         dateFormat: "d-m-Y",
         minDate: "01-07-2022",
     });
+
+    /* Event listener for flip-card function */
 
     $("#lineup-bios").on("click", ".flip-card", function(e) {
         if($(e.target).is("a")) {
