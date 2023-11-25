@@ -94,18 +94,18 @@ def lineup():
 
         for show in shows:
 
-            if artist[show + "_duration"] == "":
+            if artist[f"{show}_duration"] == "":
                 showtime_duration = 0
             else:
-                showtime_duration = int(artist[show + "_duration"])
+                showtime_duration = int(artist[f"{show}_duration"])
 
-            if artist[show + "_start"] > datetime(1900,1,1):
+            if artist[f"{show}_start"] > datetime(1900,1,1):
                 
                 # Get showtime info from database
-                showtime_stage = artist[show + "_stage"]
+                showtime_stage = artist[f"{show}_stage"]
                 showtime_artist = artist["artist_name"]
-                showtime_day = artist[show + "_start"].strftime('%A')
-                showtime_start = artist[show + "_start"]
+                showtime_day = artist[f"{show}_start"].strftime('%A')
+                showtime_start = artist[f"{show}_start"]
                 showtime_end = showtime_start + timedelta(minutes=showtime_duration)
                 
                 # Add showtime information to list
