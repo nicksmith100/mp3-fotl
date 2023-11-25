@@ -49,7 +49,7 @@ $(document).ready(function(){
 
     let $grid = document.querySelector('.masonry-row');
     let msnry = new Masonry($grid, {
-        itemSelector: '.col',
+        itemSelector: '.flip-card',
         percentPosition: true
     });
     let $images = $grid.querySelectorAll('.card img');
