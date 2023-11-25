@@ -68,4 +68,4 @@ Promise.all(
     () => {
         msnry.layout();
     }
-); */
+);
