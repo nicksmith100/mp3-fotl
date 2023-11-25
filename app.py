@@ -31,6 +31,20 @@ cloudinary.config(
     api_secret=os.environ.get("CLOUDINARY_API_SECRET")
 )
 
+# Utility apps ------------------------------------
+
+# Convert date strings to datetime objects
+# Set date 01-01-1900 if not provided
+def ds_to_dt(date_string):
+
+    if date_string != "":
+        return datetime.strptime((date_string), "%d-%m-%Y %H:%M")
+    else:
+        return datetime.strptime("01-01-1900", "%d-%m-%Y")
+
+
+# Main applicaiton --------------------------------
+
 # Inject content for base template
 @app.context_processor
 def inject_content():
@@ -301,15 +315,9 @@ def key_info():
             date = now.strftime("%d-%m-%Y")
 
             # Convert date strings to datetime objects
-            if request.form.get("event_start") != "":
-                event_start = datetime.strptime(request.form.get("event_start"), "%d-%m-%Y")
-            else:
-                event_start = datetime.strptime("01-01-1900", "%d-%m-%Y")
-            if request.form.get("event_end") != "":
-                event_end = datetime.strptime(request.form.get("event_end"), "%d-%m-%Y")
-            else:
-                event_end = datetime.strptime("01-01-1900", "%d-%m-%Y")
-
+            event_start = ds_to_dt(request.form.get("event_start"))
+            event_end = ds_to_dt(request.form.get("event_end"))
+            
             # Convert comma separated string to list with no spaces
             stages_list = request.form.get("stages").replace(", ", ",").split(",")
 
@@ -418,19 +426,10 @@ def add_artist():
             date = now.strftime("%d-%m-%Y")
 
             # Convert date strings to datetime objects
-            if request.form.get("show1_start") != "":
-                show1_start = datetime.strptime(request.form.get("show1_start"), "%d-%m-%Y %H:%M")
-            else:
-                show1_start = datetime.strptime("01-01-1900", "%d-%m-%Y")
-            if request.form.get("show2_start") != "":
-                show2_start = datetime.strptime(request.form.get("show2_start"), "%d-%m-%Y %H:%M")
-            else:
-                show2_start = datetime.strptime("01-01-1900", "%d-%m-%Y")
-            if request.form.get("show3_start") != "":
-                show3_start = datetime.strptime(request.form.get("show3_start"), "%d-%m-%Y %H:%M")
-            else:
-                show3_start = datetime.strptime("01-01-1900", "%d-%m-%Y")          
-
+            show1_start = ds_to_dt(request.form.get("show1_start"))
+            show2_start = ds_to_dt(request.form.get("show2_start"))
+            show3_start = ds_to_dt(request.form.get("show3_start"))
+            
             # Upload image to Cloudinary and return public_id
             artist_img = request.files["artist_img"]
             if artist_img.filename.split(".")[-1].lower() in ALLOWED_EXTENSIONS:
@@ -479,20 +478,9 @@ def edit_artist(artist_id):
             date = now.strftime("%d-%m-%Y")
 
             # Convert date strings to datetime objects
-            if request.form.get("show1_start") != "":
-                show1_start = datetime.strptime(request.form.get("show1_start"), "%d-%m-%Y %H:%M")
-            else:
-                show1_start = datetime.strptime("01-01-1900", "%d-%m-%Y")
-
-            if request.form.get("show2_start") != "":
-                show2_start = datetime.strptime(request.form.get("show2_start"), "%d-%m-%Y %H:%M")
-            else:
-                show2_start = datetime.strptime("01-01-1900", "%d-%m-%Y")
-
-            if request.form.get("show3_start") != "":
-                show3_start = datetime.strptime(request.form.get("show3_start"), "%d-%m-%Y %H:%M")
-            else:
-                show3_start = datetime.strptime("01-01-1900", "%d-%m-%Y")          
+            show1_start = ds_to_dt(request.form.get("show1_start"))
+            show2_start = ds_to_dt(request.form.get("show2_start"))
+            show3_start = ds_to_dt(request.form.get("show3_start"))      
 
             # Get current artist_img ID and assign it to upload_result variable
             upload_result = artist["artist_img"]
