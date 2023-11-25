@@ -140,8 +140,7 @@ def superuser():
                     flash("Username already exists")
                     return redirect(url_for("superuser"))
 
-                ## Get current date
-
+                # Get current date
                 now = datetime.now()
                 date = now.strftime("%d-%m-%Y")
                         
@@ -212,6 +211,7 @@ def switch_superuser(admin_id):
 
             admin = mongo.db.admins.find_one({"_id": ObjectId(admin_id)})
             
+            # Toggle superuser status of selected admin
             is_superuser = "off" if admin.get('is_superuser') == "on" else "on"
             
             submit = {
@@ -241,12 +241,13 @@ def admin():
     # https://github.com/Code-Institute-Solutions/TaskManagerAuth/blob/main/02-UserAuthenticationAndAuthorization/04-login_functionality/app.py
     
     if request.method == "POST":
-        # check if username exists in db
+        
+        # Check if username exists in db
         existing_user = mongo.db.admins.find_one(
             {"username": request.form.get("username").lower()})
 
         if existing_user:
-            # ensure hashed password matches user input
+            # Ensure hashed password matches user input
             if check_password_hash(
                 existing_user["password"], request.form.get("password")):
                     session["user"] = request.form.get("username").lower()
@@ -349,12 +350,12 @@ def key_info():
                     show1_stages.append(show1_stage)
                 
         if len(show1_stages) > 0:
-            shows = True
+            shows_exist = True
         else:
-            shows = False
+            shows_exist = False
         
         key_info = mongo.db.key_info.find_one()
-        return render_template("key_info.html", shows=shows)
+        return render_template("key_info.html", shows_exist=shows_exist)
     
     else:
         abort(403)
