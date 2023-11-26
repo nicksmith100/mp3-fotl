@@ -54,28 +54,34 @@
                                 </thead>
                                 <tbody>
                                     {% if artist.show1_stage != "" %}
-                                    <tr>
-                                        <td>{{ artist.show1_start.strftime('%A %-d %B') }}</td>
-                                        <td>{{ artist.show1_stage|capitalize }}</td>
-                                        <td>{{ artist.show1_start.strftime('%-I.%M%p')|lower }}</td>
-                                        <td>{{ artist.show1_duration }}min</td>
-                                    </tr>
+                                        {% if artist.show1_start.year != 1900 %}
+                                        <tr>
+                                            <td>{{ artist.show1_start.strftime('%A %-d %B') }}</td>
+                                            <td>{{ artist.show1_stage|capitalize }}</td>
+                                            <td>{{ artist.show1_start.strftime('%-I.%M%p')|lower }}</td>
+                                            <td>{{ artist.show1_duration }}min</td>
+                                        </tr>
+                                        {% endif %}    
                                     {% endif %}
                                     {% if artist.show2_stage != "" %}
-                                        <tr>
-                                            <td>{{ artist.show2_start.strftime('%A %-d %B') }}</td>
-                                            <td>{{ artist.show2_stage|capitalize }}</td>
-                                            <td>{{ artist.show2_start.strftime('%-I.%M%p')|lower }}</td>
-                                            <td>{{ artist.show2_duration }}min</td>
-                                        </tr>
+                                        {% if artist.show2_start.year != 1900 %}
+                                            <tr>
+                                                <td>{{ artist.show2_start.strftime('%A %-d %B') }}</td>
+                                                <td>{{ artist.show2_stage|capitalize }}</td>
+                                                <td>{{ artist.show2_start.strftime('%-I.%M%p')|lower }}</td>
+                                                <td>{{ artist.show2_duration }}min</td>
+                                            </tr>
+                                        {% endif %}
                                     {% endif %}
                                     {% if artist.show3_stage != "" %}
-                                        <tr>
-                                            <td>{{ artist.show3_start.strftime('%A %-d %B') }}</td>
-                                            <td>{{ artist.show3_stage|capitalize }}</td>
-                                            <td>{{ artist.show3_start.strftime('%-I.%M%p')|lower }}</td>
-                                            <td>{{ artist.show3_duration }}min</td>
-                                        </tr>
+                                        {% if artist.show3_start.year != 1900 %}
+                                            <tr>
+                                                <td>{{ artist.show3_start.strftime('%A %-d %B') }}</td>
+                                                <td>{{ artist.show3_stage|capitalize }}</td>
+                                                <td>{{ artist.show3_start.strftime('%-I.%M%p')|lower }}</td>
+                                                <td>{{ artist.show3_duration }}min</td>
+                                            </tr>
+                                        {% endif %}
                                     {% endif %}
                                 </tbody>
                             </table>
