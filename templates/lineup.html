@@ -16,7 +16,7 @@
                                 <h3>{{ date.strftime('%A') }}</h3>
                             </button>
                         </h2>
-                        <div id="{{ date.strftime('%A') }}" class="accordion-collapse collapse" aria-labelledby="heading-{{ date.strftime('%A') }}" data-bs-parent="#schedule">
+                        <div id="{{ date.strftime('%A') }}" class="accordion-collapse collapse" aria-labelledby="heading-{{ date.strftime('%A') }}">
                             <div class="accordion-body">
                                 <div class="row">
                                     {% for stage in stages %}
