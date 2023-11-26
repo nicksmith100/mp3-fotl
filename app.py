@@ -358,16 +358,18 @@ def key_info():
             return redirect(url_for("key_info"))
         
         # Check if shows have been added
-        show1_stages = []
+        show_stages = []
         artists = list(mongo.db.artists.find())
+        shows = ["show1", "show2", "show3"]
         
         for artist in artists:
-            if artist["show1_start"] > datetime(1900,1,1):
-                if artist["show1_stage"] != "":
-                    show1_stage = artist["show1_stage"]
-                    show1_stages.append(show1_stage)
+            for show in shows:
+                if artist[f"{show}_start"] > datetime(1900,1,1):
+                    if artist[f"{show}_stage"] != "":
+                        show_stage = artist[f"{show}_stage"]
+                        show_stages.append(show_stage)
                 
-        if len(show1_stages) > 0:
+        if len(show_stages) > 0:
             shows_exist = True
         else:
             shows_exist = False
