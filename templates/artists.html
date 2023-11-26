@@ -39,7 +39,8 @@
                         {{ artist.artist_url }}</p>
                     
                     <!-- Show appearances if they exist-->
-                    {% if artist.show1_stage != "" %}
+
+                    {% if artist.show1_stage != "" or artist.show2_stage != "" or artist.show3_stage != ""  %}
                         <p class="artist-shows">
                             <strong>Appearing:</strong><p>
                             <table class="table w-auto mt-3 mb-5">
@@ -52,12 +53,14 @@
                                     </tr>
                                 </thead>
                                 <tbody>
+                                    {% if artist.show1_stage != "" %}
                                     <tr>
                                         <td>{{ artist.show1_start.strftime('%A %-d %B') }}</td>
                                         <td>{{ artist.show1_stage|capitalize }}</td>
                                         <td>{{ artist.show1_start.strftime('%-I.%M%p')|lower }}</td>
                                         <td>{{ artist.show1_duration }}min</td>
                                     </tr>
+                                    {% endif %}
                                     {% if artist.show2_stage != "" %}
                                         <tr>
                                             <td>{{ artist.show2_start.strftime('%A %-d %B') }}</td>
@@ -67,13 +70,13 @@
                                         </tr>
                                     {% endif %}
                                     {% if artist.show3_stage != "" %}
-                                    <tr>
-                                        <td>{{ artist.show3_start.strftime('%A %-d %B') }}</td>
-                                        <td>{{ artist.show3_stage|capitalize }}</td>
-                                        <td>{{ artist.show3_start.strftime('%-I.%M%p')|lower }}</td>
-                                        <td>{{ artist.show3_duration }}min</td>
-                                    </tr>
-                                {% endif %}
+                                        <tr>
+                                            <td>{{ artist.show3_start.strftime('%A %-d %B') }}</td>
+                                            <td>{{ artist.show3_stage|capitalize }}</td>
+                                            <td>{{ artist.show3_start.strftime('%-I.%M%p')|lower }}</td>
+                                            <td>{{ artist.show3_duration }}min</td>
+                                        </tr>
+                                    {% endif %}
                                 </tbody>
                             </table>
                     {% endif %}
