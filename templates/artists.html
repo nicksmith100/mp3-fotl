@@ -20,12 +20,12 @@
                             data-bs-url="{{ url_for('delete_all') }}" data-bs-text="Are you sure? This action will delete all artists and cannot be undone!"><i
                                 class="bi bi-x-circle-fill" aria-hidden="true"></i> Delete all</button>
         </div>
-        <div class="row mt-5 g-0">
+        <div class="row mt-5">
             <h2 class="mb-3">Artist info</h2>
 
             {% for artist in artists %}
 
-            <div id="{{ artist.artist_name | replace(' ','') }}" class="card mb-5 col-12 col-sm-4">
+            <div id="{{ artist.artist_name | replace(' ','') }}" class="card mx-2 mb-2 mb-lg-5 col-12 col-sm-9 col-lg-5 g-0">
                 <!-- Show image if it exists-->
                 {% if artist.artist_img != "" %}
                 <img src="{{ cloudinary_url }}{{ artist.artist_img }}" alt="{{ artist.artist_name }}" class="card-img-top">
@@ -96,7 +96,7 @@
                     <p class="text-muted mt-1">Last edited by {{ artist.last_edit_by }} on {{ artist.last_edit_on }}</p>
                 </div>
             </div>
-            <div id="{{ artist.artist_name }}" class="card artist-bio mb-5 col-12 col-sm-5 mx-2">
+            <div id="{{ artist.artist_name }}" class="card mx-2 artist-bio mb-5 col-12 col-sm-9 col-lg-5">
                 <div class="card-body">
                     <h3 class="card-title">Biography</h3>
                     <p class="bio">
