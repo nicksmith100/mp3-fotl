@@ -51,7 +51,6 @@
 <div class="container mt-5" id="lineup-bios">
 
     <h2>Artists</h2>
-    <p class="fs-4 mt-1">(Click artist card to reveal biography)</p>
 
     <div class="row">
         {% for artist in artists %}
@@ -74,6 +73,7 @@
                         {% endif %}
                         <div class="card-body">
                             <h3 class="card-title">{{ artist.artist_name }}</h3>
+                            <span class="fs-5">Click for biography <i class="bi bi-arrow-clockwise"></i></span>
                         </div>
                         <div class="card-footer">
                             <!-- Show appearances if they exist-->
