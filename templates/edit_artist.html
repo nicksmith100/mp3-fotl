@@ -167,3 +167,10 @@
 </form>
 
 {% endblock %}
+
+{% block scripts %}
+<script>
+    var event_start = {{ key_info.event_start.strftime('%d-%m-%Y')|tojson }}
+    var event_end = {{ key_info.event_end.strftime('%d-%m-%Y')|tojson }}
+</script>
+{% endblock %}

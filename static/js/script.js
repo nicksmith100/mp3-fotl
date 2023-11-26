@@ -29,8 +29,8 @@ $(document).ready(function(){
     $(".showtime").flatpickr({
         enableTime: true,
         dateFormat: "d-m-Y H:i",
-        minDate: "13-07-2023",
-        maxDate: "16-07-2023"
+        minDate: event_start,
+        maxDate: event_end
     });
 
     $(".event-date").flatpickr({
