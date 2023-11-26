@@ -149,6 +149,10 @@
     integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" 
     crossorigin="anonymous"></script>
     <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+    <script>
+        let event_start = {{ key_info.event_start.strftime('%d-%m-%Y')|tojson }};
+        let event_end = {{ key_info.event_end.strftime('%d-%m-%Y')|tojson }};
+    </script>
     {% block scripts %}
     {% endblock %}
     <!-- /.scripts -->
