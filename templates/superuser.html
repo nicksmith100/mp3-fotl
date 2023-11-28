@@ -9,7 +9,7 @@
 {% else %}
 <div class="container">
     <div class="row">
-        <div class="col-12 col-xl-4">
+        <div class="col-12">
             <h2 class="mt-5 text-center">Admin registration</h2>
 
             <div class="card mt-3 mx-auto" style="width: 24rem;">
@@ -53,7 +53,7 @@
 
             </div>
         </div>
-        <div class="col-12 col-xl-8">
+        <div class="col-12">
             <h2 class="mt-5 text-center">Existing admins</h2>
 
             <div class="table-responsive">
@@ -103,7 +103,7 @@
     </div>
     <div class="row">
         <div class="col-12 text-center">
-            <h2 class="mt-5 text-center">Database backup</h2>
+            <h2 class="mt-3 text-center">Database backup</h2>
             <button type="button" class="btn btn-dark btn-lg" data-bs-toggle="modal" data-bs-target="#modal-confirm"
                                     data-bs-url="{{ url_for('backup') }}" data-bs-text="Are you sure? This will overwrite the existing backup data with current data."><i
                                         class="bi database-fill-up" aria-hidden="true"></i> Backup</button>
