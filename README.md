@@ -97,7 +97,25 @@ Inevitably the presentation and content of these sites varies, but it is noted t
 
 ## User Stories
 
-(User stories)
+Based on the research and project goals outlined above, I have identified the following user stories. These are split into a number of categories, namely "visitors" (external users of the site, e.g. potential festival attendees), "admins" (festival team members who are trusted to update the website) and superusers (a small number of individuals who can perform more fundamental actions relating to the website, as well as all admin functions).  
+
+A. As a first-time visitor I want to:
+1. Determine key details of the festival such as location, dates and ticket information
+2. Discover more about the festival and whether it is likely to interest me
+  
+B. As a returning visitor I want to:  
+1. Find out who is playing the festival on which days
+2. Buy tickets if I decide to attend
+3. Find further sources of information such as social media accounts
+
+C. As an admin user I want to:
+1. Provide key information about the festival such as dates and ticket information
+2. Add line-up information and details of the artists playing
+3. Provide up-to-date messages to attendees (or potential attendees) in the lead-up to the festival
+
+D. As a superuser, in addition to the admin functions outlined above, I want to: 
+1. Add or remove admins and amend their privileges
+2. Back up important data, and restore it if necessary
 
 ## Design
 
