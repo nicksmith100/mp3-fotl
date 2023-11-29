@@ -1,10 +1,10 @@
 # Folk on the Lawn Website
 
-![Folk on the Lawn logo](readme_images/logo_static.png)
+![Folk on the Lawn logo](readme_images/logo.png)
 
-This project creates a website for a musical festival called Folk on the Lawn. It allows external users to find information about the festival, and allows site admins to update line-up and artist information. The site is designed to be responsive and accessible on a range of devices, making it easy to navigate for external users and site admins alike.
+This project creates a website for a music festival called Folk on the Lawn. It allows external users to find information about the festival, and allows site admins to update line-up and artist information. The site is designed to be responsive and accessible on a range of devices, making it easy to navigate for external users and site admins alike.
 
-[View the live project here]()
+[View the live project here](https://folk-on-the-lawn-5be73867df7e.herokuapp.com/)
 
 ![Folk on the Lawn website displayed on various devices](readme_images/responsive_screens.png)
 
@@ -26,27 +26,74 @@ This project creates a website for a musical festival called Folk on the Lawn. I
 
 ### Purpose
 
-(Purpose)
+A promotional website for a musical festival, which allows festival organisers to provide and update information about the festival with ease, while providing access that information to prospective festival goers.
 
 ### Client Goals
 
-(Client goals)
+The client is a team of volunteers who organise the Folk on the Lawn festival every year. Their goals are to:
+
+- Have an engaging site which promotes the festival and drives up audience numbers
+- Minimise avoidable contact by clearly providing the information sought by prospective festival goers 
+- Allow admin users to update information on the website quickly and easily, regardless of technical ability
 
 ### User Goals
 
-Detailed user stories are provided in the [User Stories](#user-stories) section below, but the primary goals of the user are to:
+The primary goals of the user are to:
 
-(Primary user goals)
-   
+- Find out key information about the festival such as location, dates and how to buy tickets
+- Find out information about who is playing at the festival and when
+- Find out where to go for more information or to contact the festival organisers
+
+Detailed user stories are provided in the [User Stories](#user-stories) section below.
+
 ## Research
 
 ### User research
 
-(User research)
+Before embarking on any design or development work, I used the festival's existing website and social media channels to gather user views. This research covered users' preferred online platforms, what particular information they were looking for when visiting the website, their experience of using the existing site to find that information, and any suggessted improvements.
+
+42% of users preferred using the website (rather than social media) to access information about Folk on the Lawn, suggesting the website remains an important way for the festival to engage with its audience.
+
+<details><summary>Preferred online platform</summary>
+
+  ![Preferred platform](readme_images/preferred_platform.png)
+
+</details>
+
+\
+The top 3 things users are seeking when visiting the website are:
+- Line-up and schedule
+- Dates and times
+- Ticketing information
+
+In terms of people's success finding that information on current platforms, the top rating of 5 scored highest, but the majority provided a rating of 4 or less, suggesting room for improvement.
+
+<details><summary>Success ratings</summary>
+
+  ![Success ratings](readme_images/success_ratings.png)
+
+</details>
+
+\
+When it came to suggested improvements, 50% of respondents mentioned providing more up-to-date information, while 33% mentioned improvements to navigation and presentation, especially on mobile devices.
+
+All of these factors were taken into account in developing the User Stories](#user-stories) below.
 
 ### Existing music festival websites
 
-(Existing music festival websites)
+To aid consideration of presentation and content, I also researched existing music festival websites, particularly those appealing to a similar clientele. These included smaller festivals, comparable in size to Folk on the Lawn itself, as well as larger, commercial festivals.
+
+#### Smaller festivals
+- [Off The Beaten Track](http://www.otbtfest.org/tickets.html)
+- [Bromyard Folk Festival](https://bromyardfolkfestival.co.uk/)
+- [Barn on the Farm](https://www.barnonthefarm.co.uk/)
+
+#### Larger festivals
+- [Green Man](https://www.greenman.net/)
+- [End of the Road](https://endoftheroadfestival.com/)
+- [Cambridge Folk Festival](https://www.cambridgelive.org.uk/folk-festival)
+
+Inevitably the presentation and content of these sites varies, but it is noted that line-up, dates and ticketing information are all prominent and accessible on each and every site - in line with the top three topics of interest identified through my user research. In addition, most of the sites provide highly visible social media and contact links. Many of the sites include a gallery, while further information such as location and camping details are less visible, often behind a broad "info" link.
 
 ## User Stories
 
@@ -56,7 +103,7 @@ Detailed user stories are provided in the [User Stories](#user-stories) section 
 
 ### Wireframes
 
-Wireframes were created using the Figma platform: [Figma - Folk on the Lawn](https://www.figma.com/file/IjXmZ89Phzn0gKjmCOi23H/Folk-On-The-Lawn?type=design&node-id=301-77&mode=design&t=Wg7msaTdH6gV8TMv-0).
+Wireframes were created using the Figma platform: [Figma - Folk on the Lawn](https://www.figma.com/file/IjXmZ89Phzn0gKjmCOi23H/Folk-On-The-Lawn?type=design&node-id=0%3A1&mode=design&t=OZXv6ccJLV76wfPm-1).
 
 <details><summary>Desktop wireframes</summary>
 
