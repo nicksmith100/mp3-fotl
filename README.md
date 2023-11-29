@@ -93,7 +93,9 @@ To aid consideration of presentation and content, I also researched existing mus
 - [End of the Road](https://endoftheroadfestival.com/)
 - [Cambridge Folk Festival](https://www.cambridgelive.org.uk/folk-festival)
 
-Inevitably the presentation and content of these sites varies, but it is noted that line-up, dates and ticketing information are all prominent and accessible on each and every site - in line with the top three topics of interest identified through my user research. In addition, most of the sites provide highly visible social media and contact links. Many of the sites include a gallery, while further information such as location and camping details are less visible, often behind a broad "info" link.
+Inevitably the presentation and content of these sites varies, but it is noted that line-up, dates and ticketing information are prominent and accessible on each and every site - in line with the top three topics of interest identified through my user research. In addition, most of the sites provide highly visible social media and contact links. Many of the sites include a gallery, while further information such as location and camping details are less visible, often behind a broad "info" link.
+
+Adding "/admin" to the roots of these sites confirmed that many of them also have an admin function behind the public-facing page, e.g. [Green Man Admin](https://www.greenman.net/admin/). While I was obviously unable to view the actual admin pages, this reinforced my view that a "/admin" page was typical for websites of this type. 
 
 ## User Stories
 
