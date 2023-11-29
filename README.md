@@ -125,21 +125,37 @@ D. As a superuser, in addition to the admin functions outlined above, I want to:
 
 Wireframes were created using the Figma platform: [Figma - Folk on the Lawn](https://www.figma.com/file/IjXmZ89Phzn0gKjmCOi23H/Folk-On-The-Lawn?type=design&node-id=0%3A1&mode=design&t=OZXv6ccJLV76wfPm-1).
 
-<details><summary>Desktop wireframes</summary>
+<details><summary>Desktop wireframes - public</summary>
 
-  ![Desktop wireframes](readme_images/desktop_wireframes.png)
-
-</details>
-
-<details><summary>Mobile wireframes</summary>
-
-  ![Mobile wireframes](readme_images/mobile_wireframes.png)
+  ![Desktop wireframes - public](readme_images/desktop_wireframes_public.png)
 
 </details>
 
+<details><summary>Desktop wireframes - admin/superuser</summary>
+
+  ![Desktop wireframes - admin/superuser](readme_images/desktop_wireframes_admin.png)
+
+</details>
+
+<details><summary>Mobile wireframes - public</summary>
+
+  ![Mobile wireframes - public](readme_images/mobile_wireframes.png)
+
+</details>
+
+\
 Based on prior experience I decided that desktop and mobile wireframes would be sufficient to keep the overall layout of the site on track, the expectation being that [Bootstrap's grid system](https://getbootstrap.com/docs/5.3/layout/grid/) would provide the responsiveness required at different device breakpoints in between (see [Layout and Styling](#layout-and-styling) section below).
 
-(Detail any differences)
+Furthermore, the mobile wireframes do not include the admin/superuser pages, as it was envisaged that these would generally be accessed using a desktop device, and seldom from a mobile device. While the site is of course accessible from any device and its content will respond accordingly, there was considered little value in producing specific wireframes for this purpose.
+
+#### Differences between wireframes and final design
+
+While the overall structure of the site stays true to the wireframes, there are some notable differences in the final design which came about for design and user experience reasons:
+
+- The schedule table on the Line-up page utilises the [Boostrap Accordion](https://getbootstrap.com/docs/5.3/components/accordion/) component. While this was always envisaged, it was not included in the wireframes.
+- During development I discovered [Boostrap Cards](https://getbootstrap.com/docs/5.3/components/card/), along with [Masonry layout](https://masonry.desandro.com/), providing an engaging design on the Line-up page quite different to that provided in the wireframes.
+
+In addition, while not affecting the overall design, a number of the pages include features or fields not included in the wireframes. See the [Features](#features) section for more details.
 
 ### Layout and Styling
 
