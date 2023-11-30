@@ -159,6 +159,8 @@ In addition, while not affecting the overall design, a number of the pages inclu
 
 ### Layout and Styling
 
+#### Bootstrap
+
 The site uses the [Bootstrap 5.3 Grid system](https://getbootstrap.com/docs/5.3/layout/grid/) to ensure it is fully responsive on all device and viewport sizes. Bootstrap 5.3 uses the following [breakpoints](https://getbootstrap.com/docs/5.3/layout/breakpoints/), the shorthand references for which are used throughout the rest of this document:
 
 | Breakpoint        | Shorthand   | Dimensions |
@@ -172,11 +174,21 @@ The site uses the [Bootstrap 5.3 Grid system](https://getbootstrap.com/docs/5.3/
 
 In addition, the site uses the following specific components from the Bootstrap library:
 
-(Specific components)
+- [Form components](https://getbootstrap.com/docs/5.3/forms/overview/) throughout the admin and superuser pages.
+- [Spacing](https://getbootstrap.com/docs/5.3/utilities/spacing/) and [typography](https://getbootstrap.com/docs/5.3/content/typography/) utility classes throughout, ensuring the layout and font are appropriate to the device in use.
+- [Color](https://getbootstrap.com/docs/5.3/utilities/colors/) utility classes to provide specific meaning to text throughout.
+- [Display property](https://getbootstrap.com/docs/5.3/utilities/display/) to toggle the visibility of some components at certain breakpoints.
+- [Modal plugin](https://getbootstrap.com/docs/5.3/components/modal/) to display alerts before items are deleted.
+- [Accordion](https://getbootstrap.com/docs/5.3/components/accordion/) to provide a collapsible menu for the schedule on the Line-up page.
+- [Cards](https://getbootstrap.com/docs/5.3/components/card/) to display artist information on the Line-up page (public) and the Artists page (admin).
+
+#### Masonry layout
+
+The Line-up page uses the [Masonry](https://masonry.desandro.com/) JavaScript grid layout library, placing the artist cards in optimal position based on available vertical space. 
 
 ### Imagery
 
-- **Logo**: (Logo deails))
+- **Logo**:
 
   <details><summary>Logo</summary>
   
