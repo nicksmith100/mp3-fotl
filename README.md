@@ -26,7 +26,7 @@ This project creates a website for a music festival called Folk on the Lawn. It 
 
 ### Purpose
 
-A promotional website for a musical festival, which allows festival organisers to provide and update information about the festival with ease, while providing access that information to prospective festival goers.
+A promotional website for a musical festival, which allows festival organisers to provide and update information about the festival with ease, while providing access to that information for prospective festival goers.
 
 ### Client Goals
 
@@ -77,7 +77,7 @@ In terms of people's success finding that information on current platforms, the 
 \
 When it came to suggested improvements, 50% of respondents mentioned providing more up-to-date information, while 33% mentioned improvements to navigation and presentation, especially on mobile devices.
 
-All of these factors were taken into account in developing the User Stories](#user-stories) below.
+All of these factors were taken into account in developing the [User Stories](#user-stories) below.
 
 ### Existing music festival websites
 
@@ -99,23 +99,23 @@ Adding "/admin" to the roots of these sites confirmed that many of them also hav
 
 ## User Stories
 
-Based on the research and project goals outlined above, I have identified the following user stories. These are split into a number of categories, namely "visitors" (external users of the site, e.g. potential festival attendees), "admins" (festival team members who are trusted to update the website) and superusers (a small number of individuals who can perform more fundamental actions relating to the website, as well as all admin functions).  
+Based on the research and project goals outlined above, I have identified the following user stories. These are split into a number of categories, namely **visitors** (external users of the site, e.g. potential festival attendees), **admins** (festival team members who are trusted to update the website) and **superusers** (a small number of individuals who can perform more fundamental actions relating to the website, as well as all admin functions).  
 
-A. As a first-time visitor I want to:
+A. As a **first-time visitor** I want to:
 1. Determine key details of the festival such as location, dates and ticket information
 2. Discover more about the festival and whether it is likely to interest me
   
-B. As a returning visitor I want to:  
+B. As a **returning visitor** I want to:  
 1. Find out who is playing the festival on which days
 2. Buy tickets if I decide to attend
 3. Find further sources of information such as social media accounts
 
-C. As an admin user I want to:
+C. As an **admin user** I want to:
 1. Provide key information about the festival such as dates and ticket information
 2. Add line-up information and details of the artists playing
 3. Provide up-to-date messages to attendees (or potential attendees) in the lead-up to the festival
 
-D. As a superuser, in addition to the admin functions outlined above, I want to: 
+D. As a **superuser**, in addition to the admin functions outlined above, I want to: 
 1. Add or remove admins and amend their privileges
 2. Back up important data, and restore it if necessary
 
@@ -152,8 +152,8 @@ Furthermore, the mobile wireframes do not include the admin/superuser pages, as 
 
 While the overall structure of the site stays true to the wireframes, there are some notable differences in the final design which came about for design and user experience reasons:
 
-- The schedule table on the Line-up page utilises the [Boostrap Accordion](https://getbootstrap.com/docs/5.3/components/accordion/) component. While this was always envisaged, it was not included in the wireframes.
-- During development I discovered [Boostrap Cards](https://getbootstrap.com/docs/5.3/components/card/), along with [Masonry layout](https://masonry.desandro.com/), providing an engaging design on the Line-up page quite different to that provided in the wireframes.
+- The schedule table on the **Line-up** page utilises the [Boostrap Accordion](https://getbootstrap.com/docs/5.3/components/accordion/) component. While this was always envisaged, it was not included in the wireframes.
+- During development I discovered [Boostrap Cards](https://getbootstrap.com/docs/5.3/components/card/), along with [Masonry layout](https://masonry.desandro.com/), providing an engaging design on the **Line-up** page quite different to that provided in the wireframes.
 
 In addition, while not affecting the overall design, a number of the pages include features or fields not included in the wireframes. See the [Features](#features) section for more details.
 
@@ -188,21 +188,9 @@ The Line-up page uses the [Masonry](https://masonry.desandro.com/) JavaScript gr
 
 ### Imagery
 
-- **Logo**:
 
-  <details><summary>Logo</summary>
-  
-  ![Static logo](readme_images/logo.png)
-  
-  </details>
 
-(Details of other images)
-
-- **404 image**: (404 image details)
-       
 ### Colour Scheme
-
-(Colour scheme details)
 
 <details><summary>Colour scheme palette</summary>
 
