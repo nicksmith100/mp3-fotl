@@ -238,32 +238,49 @@ The Line-up page uses the [Masonry](https://masonry.desandro.com/) JavaScript gr
 
 ### Typography
 
-- #### Logo
+- The **logo**, **headings** and **navigation items** use Effloresce, downloaded from [Dafont](https://www.dafont.com/effloresce.font) as a TrueType font and converted to @font-face using [Transfonter](https://transfonter.org/). The fallback font is Serif. Effloresce is a stylish serif font with a slight rustic feel, in keeping with the ethos of the festival.
 
-  (Logo font details)
+  <details><summary>Effloresce</summary>
 
-- #### Main heading
+  ![Effloresce](readme_images/effloresce.png)
 
-  (Main heading font details)
-  
-- #### Other headings, buttons and text
+  </details>  
 
-   (Other font details)
+- The **strapline** on the Home page uses Dancing Script, imported from [Google Fonts](https://fonts.google.com/specimen/Dancing+Script), with Sans Serif as the fallback font. Dancing Script is a playful but sophisticated script font which suits the content of the strapline "Innovative Folk for Innovative Folk".
 
-  
-- #### Icons
+  <details><summary>Dancing Script</summary>
 
-  [Bootstrap Icons](https://icons.getbootstrap.com/) have been used for the main menu buttons, utilised as classes in the `<i>` tag.
+  ![Dancing Script](readme_images/dancing_script.png)
 
-  <details><summary>Menu icons</summary>
+  </details>  
 
-  (Icon details)
+- The **body** and all other elements use Noto Serif, imported from [Google Fonts](https://fonts.google.com/noto/specimen/Noto+Serif), with Serif as the fallback font. Noto Serif is a straightforward serif font which complements the Effloresce font used for the logo and headings.
+
+  <details><summary>Noto Serif</summary>
+
+  ![Noto Serif](readme_images/noto_serif.png)
+
+  </details>  
+
+### Icons
+
+  [Bootstrap Icons](https://icons.getbootstrap.com/) have been used for **navigation items**, **social media links**, **buttons** and **form elements**, utilised as classes in the `<i>` tag.
+
+  <details><summary>Navigation icons</summary>
+
+  ![Navigation icons](readme_images/nav_icons.png)
+
+  </details>
+
+  <details><summary>Button icons</summary>
+
+  ![Navigation icons](readme_images/button_icons.png)
 
   </details>
   
-- #### Favicon
+### Favicon
 
-   The favicon is (...), generated using [Favicon Generator](https://www.favicon-generator.org/). This proved more effective than trying to use the main logo as a favicon, as the detail of it was lost at such a small size.
+   The favicon is a grass icon using the site's colour scheme, generated using [Favicon Generator](https://www.favicon-generator.org/).
 
   <details><summary>Favicon</summary>
 
