@@ -213,12 +213,28 @@ The Line-up page uses the [Masonry](https://masonry.desandro.com/) JavaScript gr
   </details>
 
 ### Colour Scheme
+  
+- The **primary colour** of the website is a dark shade of green (#022832), reflecting the "lawn" of the festival name. This is used for the **header**, **headings** and **primary buttons** throughout the site, as well as the background of artist cards on the **Line-up** page.
 
-<details><summary>Colour scheme palette</summary>
+- The **logo** uses Bootstrap's .text-light utility class (#F8F9FA). The **dates** and **location** also use this class, but with an opacity of 75% so that they show more of the green background and are less pronounced.
 
-![Website colour scheme palette](readme_images/palette.png)
+- The **navbar** uses Bootstrap's .navbar-dark class, providing the navigation items with white text with approximately 50% opacity (#FFFFFF8C).
 
-</details>
+- The **admin menu** uses the same shade of green as the main header, but with 20% opacity (#02283233) so that it appears lighter, while complementing the darker shade of the main header. It uses Bootstrap's .navbar-light class which provides darker navigation items (#000000A6).
+
+- The **footer** uses the primary green used elsewhere (#022832), along with complementary lighter shades (#7CA3AE, #426973), providing a similar colour contrast as the header.
+
+- The **background** is an off-white (#F9F9FA), providing a contrast to the dark header and body text.
+
+- Primary **buttons** use the main green colour (#022832) mentioned above, while buttons used on forms throughout the site use Bootstrap's .bg-danger (#DC3545) and .bg-warning (#FFC107) utility classes.
+
+- Body **text** is black (#000000), while Boostrap's utility classes are used to convey meaning to text throughout, in particular .text-danger (#DC3545) for urgent warnings, and .text-info (#0DCAF0) for flash messages.
+
+  <details><summary>Colour scheme palette</summary>
+
+  ![Website colour scheme palette](readme_images/palette.png)
+
+  </details>
 
 ### Typography
 
