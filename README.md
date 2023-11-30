@@ -294,15 +294,26 @@ The Line-up page uses the [Masonry](https://masonry.desandro.com/) JavaScript gr
 
 - #### Minimum Viable Product
 
-(MVP details)
+  To be viable as a music festival website and meet the stated [Project Goals](#project-goals), the website **must have**:
+  1. A public front-end website including key information about the festival such as location, dates, how to buy tickets and line-up.
+  2. An admin portal which allows admin users to update line-up and artist information on the website quickly and easily, regardless of technical ability.
          
 - #### Additional Features (in scope)
 
-(Additional features)
+  To provide a good user experience in line with the stated [Project Goals](#project-goals), the website **should have**:
+  1. Contact information and social media links.
+  2. A schedule visible to public users which is automatically generated based on showtimes provided by admin users. 
+  3. The ability for admins to add and edit key information about the festival such as dates and stage names, allowing the website to be updated year on year without adjusting any code.
+  4. The ability for admins to provide up-to-date messages to attendees (or potential attendees) in the lead-up to the festival.
+  5. A superuser dashboard, allowing admins to be added and deleted, and data to be backed up and restored.
    
 - #### Future Ideas (not currently in scope)
   
-(Future ideas)
+   To provide a better user experience and better meet the stated [Project Goals](#project-goals), the website also **could have**:
+   1. A schedule builder, allowing public users to build their own schedule of artists they wish to see from the overall schedule.
+   2. An application portal, allowing artists to apply to perform at the festival.
+   3. An artist booking system, allowing information about artists to be submitted to a page only visible by admins, and allowing bookings to be confirmed or denied once a decision on the artist's suitability has been made, the artist information then becoming public. 
+
 
 ### Page Elements and Interaction
 
