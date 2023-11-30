@@ -188,7 +188,29 @@ The Line-up page uses the [Masonry](https://masonry.desandro.com/) JavaScript gr
 
 ### Imagery
 
+- **Main image**: The main image displayed on the **Home** page is editable by admin users, providing a customisation option. For demonstration purposes the image provided is a man carrying an acoustic guitar standing in a grass field, courtesy of [Ben White on Unsplash](https://unsplash.com/photos/man-carrying-brown-cutaway-acoustic-guitar-standing-on-green-grass-field-iPyQg9QfepM).
 
+- **Footer image** The footer includes a stylised image of a lawn in various shades of green, on a transparent background.
+
+- **Artist images**: Artist images are uploaded by admin users, and displayed on the **Line-up** page (public) and **Artists** page (admin).
+
+- **403 image**: The **403 (Forbidden)** error page includes an image of a person holding their hand to the camera to indicate that access is denied, courtesy of [Nadine Shaabana on Unsplash](https://unsplash.com/photos/close-up-photography-of-person-lifting-hands-DRzYMtae-vA).
+
+- **404 image**: The **404 (Page Not Found)** error page includes an image of a microphone on an empty stage, courtesy of [Oscar Keys on Unsplash](https://unsplash.com/photos/photo-of-microphone-on-foggy-stage-ojVMh1QTVGY).
+
+- **Logo**: The logo is simply a stylised representation of the festival name using the [Effloresce font](https://www.dafont.com/effloresce.font). The logo appears in its full form on sm devices and above, and adjusts to a compressed format of "FotL" on xs devices.
+
+  <details><summary>Full Logo</summary>
+  
+  ![Full logo](readme_images/logo.png)
+  
+  </details>
+
+  <details><summary>Compressed Logo</summary>
+  
+  ![Small logo](readme_images/logo_xs.png)
+   
+  </details>
 
 ### Colour Scheme
 
