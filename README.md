@@ -175,6 +175,7 @@ The site uses the [Bootstrap 5.3 Grid system](https://getbootstrap.com/docs/5.3/
 
 In addition, the site uses the following specific components from the Bootstrap library:
 
+- [Navbar](https://getbootstrap.com/docs/5.3/components/navbar/) for the header and subheader.
 - [Form components](https://getbootstrap.com/docs/5.3/forms/overview/) throughout the admin and superuser pages.
 - [Spacing](https://getbootstrap.com/docs/5.3/utilities/spacing/) and [typography](https://getbootstrap.com/docs/5.3/content/typography/) utility classes throughout, ensuring the layout and font are appropriate to the device in use.
 - [Color](https://getbootstrap.com/docs/5.3/utilities/colors/) utility classes to provide specific meaning to text throughout.
