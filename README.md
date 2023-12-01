@@ -154,6 +154,7 @@ While the overall structure of the site stays true to the wireframes, there are 
 
 - The schedule table on the **Line-up** page utilises the [Boostrap Accordion](https://getbootstrap.com/docs/5.3/components/accordion/) component. While this was always envisaged, it was not included in the wireframes.
 - During development I discovered [Boostrap Cards](https://getbootstrap.com/docs/5.3/components/card/), along with [Masonry layout](https://masonry.desandro.com/), providing an engaging design on the **Line-up** page quite different to that provided in the wireframes.
+- The **Register** page was renamed **Superuser dashboard** due to the additional backup and restore functionality.
 
 In addition, while not affecting the overall design, a number of the pages include features or fields not included in the wireframes. See the [Features](#features) section for more details.
 
