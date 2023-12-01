@@ -199,6 +199,8 @@ The Line-up page uses the [Masonry](https://masonry.desandro.com/) JavaScript gr
 
 - **404 image**: The **404 (Page Not Found)** error page includes an image of a microphone on an empty stage, courtesy of [Oscar Keys on Unsplash](https://unsplash.com/photos/photo-of-microphone-on-foggy-stage-ojVMh1QTVGY).
 
+- **500 image**: The **500 (Internal Server Error)** error page includes an image of an acoustic guitar on fire, courtesy of [Dark Rider on Unsplash](https://unsplash.com/photos/flaming-guitar-digital-wallpaper-JmVaNyemtN8).
+
 - **Logo**: The logo is simply a stylised representation of the festival name using the [Effloresce font](https://www.dafont.com/effloresce.font). The logo appears in its full form on sm devices and above, and adjusts to a compressed format of "FotL" on xs devices.
 
   <details><summary>Full Logo</summary>
