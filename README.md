@@ -240,27 +240,27 @@ The Line-up page uses the [Masonry](https://masonry.desandro.com/) JavaScript gr
 
 - The **logo**, **headings** and **navigation items** use Effloresce, downloaded from [Dafont](https://www.dafont.com/effloresce.font) as a TrueType font and converted to @font-face using [Transfonter](https://transfonter.org/). The fallback font is Serif. Effloresce is a stylish serif font with a slight rustic feel, in keeping with the ethos of the festival.
 
-  <details><summary>Effloresce</summary>
+    <details><summary>Effloresce</summary>
 
-  ![Effloresce](readme_images/effloresce.png)
+    ![Effloresce](readme_images/effloresce.png)
 
-  </details>  
+    </details>
 
 - The **strapline** on the Home page uses Dancing Script, imported from [Google Fonts](https://fonts.google.com/specimen/Dancing+Script), with Sans Serif as the fallback font. Dancing Script is a playful but sophisticated script font which suits the content of the strapline "Innovative Folk for Innovative Folk".
 
-  <details><summary>Dancing Script</summary>
+    <details><summary>Dancing Script</summary>
 
-  ![Dancing Script](readme_images/dancing_script.png)
+    ![Dancing Script](readme_images/dancing_script.png)
 
-  </details>  
+    </details>
 
 - The **body** and all other elements use Noto Serif, imported from [Google Fonts](https://fonts.google.com/noto/specimen/Noto+Serif), with Serif as the fallback font. Noto Serif is a straightforward serif font which complements the Effloresce font used for the logo and headings.
 
-  <details><summary>Noto Serif</summary>
+    <details><summary>Noto Serif</summary>
 
-  ![Noto Serif](readme_images/noto_serif.png)
+    ![Noto Serif](readme_images/noto_serif.png)
 
-  </details>  
+    </details>
 
 ### Icons
 
@@ -317,54 +317,211 @@ The Line-up page uses the [Masonry](https://masonry.desandro.com/) JavaScript gr
 
 ### Page Elements and Interaction
 
-(Details)
+The website is divided between public-facing pages which provide information to external users, and admin pages (for logged in users) which allow admins to update information via a database. There is also a superuser dashboard which is only visible to logged in users with superuser credentials. 
 
-- #### Header
+#### Public pages and elements
 
-  (Header details)
+- **Header**: All pages include a header with branding on the left-hand side, a navigation menu on the right-hand side, and festival date and location with flexible positioning (see below). The header is fully responsive:
+  - The branding (festival name) is displayed in its full form on sm viewports and above, but compresses to a shortened form on xs viewports.
+  - The festival dates and location are displayed beneath the branding on sm viewports and above, but centred on xs viewports.
+  - The navigation menu is displayed as a single line on lg viewports and above, but collapses to a hamburger menu on smaller viewports.
          
-  <details><summary>Header (lg)</summary>
-      
-  ![Header (lg)](readme_images/header_lg.png)
+    <details><summary>Header (lg)</summary>
+          
+    ![Header (lg)](readme_images/header_lg.png)
 
-  </details>
+    </details>
+        
+    <details><summary>Header (sm)</summary>
+          
+    ![Header (sm)](readme_images/header_sm.png)
+
+    </details>
+        
+    <details><summary>Header (xs)</summary>
+          
+    ![Header (xs)](readme_images/header_xs.png)
+
+    </details>
+
+- **Home page**: Provides general information about the festival, and includes:
+  - A **Hero Image** which is editable by admin users, overlaid with a strapline of "Innovative Folk for Innovative Folk" against a light, semi-transparent background.
+  - An optional **Banner Message** which is editable by admin users.
+  - A **Support the Festival** call to action with a donation button which opens a fundraising page in a separate tab.
+  - An **About** section with general information.
+  - A **Location** section with an embedded Google map and directions.
+
+    <details><summary>Home (lg)</summary>
+
+    - Hero image and banner<br>  
+      ![Home - Hero image and Banner (lg)](readme_images/home_hero_banner_lg.png)
     
-  <details><summary>Header (md)</summary>
-      
-  ![Header (md)](readme_images/header_md.png)
+    - Support, About and Location<br>    
+      ![Home - support, about and location (lg)](readme_images/home_support_about_location_lg.png)
 
-  </details>
+    </details>
+
+    <details><summary>Home (xs)</summary>
     
-  <details><summary>Header (sm)</summary>
-      
-  ![Header (xs)](readme_images/header_xs.png)
+    - Hero image, Banner and Support<br>
+      ![Home - hero image, banner and support (xs)](readme_images/home_hero_banner_support_xs.png)
+    
+    - About<br>
+      ![Home - about (xs)](readme_images/home_about_xs.png)
+
+    - Location<br>
+      ![Home - location (xs)](readme_images/home_location_xs.png)
+
+    </details>
+
+- **Line-up page**: Provides schedule information and details of artists playing, including:
+  - A day-by-day **Schedule** with collapsible menu utilising the [Boostrap Accordion](https://getbootstrap.com/docs/5.3/components/accordion/) component.
+  - An **Artist Index** with hyperlinks to provide easy access to artist information.
+  - Individual **Artist Cards** utilising [Boostrap Cards](https://getbootstrap.com/docs/5.3/components/card/), and [Masonry layout](https://masonry.desandro.com/), providing a photo of the artist, a list of their appearances, and an external link to their website. Each card also includes a transition which flips the card to display the artist's biography.  
+
+  All elements are responsive, for example the stage listings within the Schedule appearing side-by-side on lg viewports but vertically stacked on xs viewports, and the Artist Cards behaving similarly.
+
+    <details><summary>Line-up page (lg)</summary>
+
+    - Schedule<br>
+      ![Line-up - schedule (lg)](readme_images/schedule_lg.png)
+    
+    - Artist Index<br>
+      ![Line-up - artist index (lg)](readme_images/artist_index_lg.png)
+
+    - Artist Cards<br>
+      ![Line-up - artist cards (lg)](readme_images/artist_cards_lg.png)
+
+    </details>
+
+    <details><summary>Line-up page (xs)</summary>
+
+    - Schedule<br>
+      ![Line-up - schedule (xs)](readme_images/schedule_xs.png)
+    
+    - Artist Index<br>
+      ![Line-up - artist index (xs)](readme_images/artist_index_xs.png)
+    
+    - Artist Cards<br>
+      ![Line-up - artist cards (xs)](readme_images/artist_cards_xs.png)
+
+    </details>
+
+- **Confirmation modal**: For any change which will result in irreversible changes to data, e.g. deletion, a warning is displayed asking the user if they would wish to proceed.
+
+  <details><summary>Confirmation modal</summary>
+
+  ![Confirmation modal](readme_images/confirmation.png)
 
   </details>
 
+- **403 (Forbidden)**: A 403 (Forbidden) error is displayed in the event that a user tries to browse to a page that they do not have the credentials to see. The 403 page includes an image of a person holding their hand to the camera to indicate that access is denied, together with the message "Sorry, this area is for crew only! Please select an item from the navigation menu above." 
+
+- **404 (Page Not Found)**: A 404 (Page Not Found) error is displayed in the event that a user tries to browse to a page that does not exist. The 404 page includes an image of a microphone on an empty stage, together with the message "Sorry, this stage is empty! Please select an item from the navigation menu above." 
+
+- **500 (Internal Server Error)**: A 500 (Internal Server Error) error is displayed in the event of an error in the application or the server. The 500 page includes an image of an acoustic guitar on fire, along with the message "Well, this wasn't meant to happen! Please select an item from the navigation menu above to start again." 
+
+#### Admin pages and elements
+
+While all the admin pages below are fully responsive, screenshots are shown in desktop format only, as they would be expected to be accessed primarily by desktop.
+
+-  **Subheader**: All admin pages include an additional subheader, beneath the main header, with a label ("Admin menu") on the left-hand side and a navigation menu on the right-hand side.
+
+    <details><summary>Subheader</summary>
+          
+    ![Subheader)](readme_images/subheader.png)
+
+    </details>
+        
+- **Login**: Includes a simple login form with username and password, and an email link if the user has forgotten their password.
+
+    <details><summary>Login form</summary>
+          
+    ![Login form](readme_images/login.png)
+
+    </details>
+
+- **Key Info**: Provides a form allowing key information about the festival to be submitted by admins, in particular:
+  - Start date
+  - End date
+  - Stage names
+  - Whether the Schedule should be displayed on the Line-up page (toggle switch)
+  - Main image for the Home page (with a preview of the current image)
+  - Banner heading and text for the Home page
+  - Fundraising link accessible through the button on the Home page
+
+  The page includes a button to save changes, as well as one to delete the event.
+
+  <details><summary>Key Info</summary>
+          
+  ![Key Info 1](readme_images/key_info1.png)
+  ![Key Info 2](readme_images/key_info2.png)
+
+  </details>
+      
+- **Artists**: Displays an index of artists already added, along with buttons to add an artist or delete all. Details of existing artists are displayed using [Bootstrap Cards](https://getbootstrap.com/docs/5.3/components/card/), along with buttons to delete the artist or edit their details.
+
+  <details><summary>Artists</summary>
+          
+  ![Artist Index - admin](readme_images/artist_index_admin.png)
+  ![Artist Cards - admin](readme_images/artist_cards_admin.png)
+
+  </details>
+
+- **Add Artist**: Provides a form allowing artist information to be submitted by admins, in particular:
+  - Name
+  - Biography
+  - Website
+  - Image
+  - Show information for up to three shows - including stage, date and time, and duration
+
+The page includes a button to add the artist using the submitted details.
+
+<details><summary>Add artist</summary>
+          
+  ![Add artist 1](readme_images/add_artist1.png)
+  ![Add artist 2](readme_images/add_artist2.png)
+
+</details>
+
+- **Edit artist**: As above for "Add artist", but existing information is presented to the user, including a preview of any image already submitted. The page includes a button to save changes.
+
+  <details><summary>Add artist</summary>
+          
+  ![Edit artist 1](readme_images/edit_artist1.png)
+  ![Edit artist 2](readme_images/edit_artist2.png)
+
+  </details>
+
+#### Superuser dashboard
+
+The site includes a Superuser Dasboard, accessed through a link in the admin menu only visible to logged in users with superuser credentials.
+
+  <details><summary>Superuser link</summary>
+          
+  ![Superuser link](readme_images/subheader_superuser.png)
   
-- #### Home page
-
-- #### Line-up page
-
-- #### Edit line-up (Admin)
-
-- #### Edit artist (Admin)
-
-- #### 404 page
-
-  A 404 page is provided in the event that the user browses to a page which does not exist. It depicts (...details...)
-
-  <details><summary>404 page (lg)</summary>
-    
-  ![404 page (lg)](readme_images/404_lg.png)
-
   </details>
 
-  <details><summary>404 page (xs)</summary>
-    
-  ![404 page (xs)](readme_images/404_xs.png)
+The dashboard allows an admin with superuser access to:
+- Register new admins
+- Toggle the superuser status of an existing admin
+- View all registered admins
+- Backup and restore the festival key information and artists
 
-  </details>    
+  <details><summary>Superuser dashboard</summary>
+
+  - Registration<br>     
+    ![Superuser dashboard - registration](readme_images/registration.png)
+  
+  - Existing admins<br>
+    ![Superuser dashboard - existing admins](readme_images/existing_admins.png)
+
+  - Backup and restore<br>
+    ![Superuser dashboard - backup and restore](readme_images/backup_restore.png)
+  
+  </details>
+
 
 ### JavaScript Functionality
 
