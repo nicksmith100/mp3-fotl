@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 {% block content %}
 
-
+{% if key_info.main_img != "" %}
 <div id="hero-image-container" class="primary-image-container">
     <img src="{{ cloudinary_url }}{{ key_info.main_img }}"
         alt=""
@@ -10,6 +10,7 @@
         <p id="strapline-text" class="fs-1">Innovative Folk for Innovative Folk</p>
     </div>
 </div>
+{% endif %}
 
 <div class="container">
     {% if key_info.banner_text != "" %}
