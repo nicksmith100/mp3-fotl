@@ -13,13 +13,22 @@
         {% if shows_exist %}
         <p class="text-danger"><i class="bi bi-exclamation-circle-fill" aria-hidden="true"></i> You have already added at least one show to the Artists database. Please note that any changes made to dates and stages on this page will <strong>not</strong> be automatically applied to exisiting shows.</p>
         {% endif %}
+
         <div class="mb-3">
             <label for="event_start" class="form-label"><i class="bi bi-calendar-check" aria-hidden="true"></i> Start date<br></label>
+            {% if key_info.event_start.year != 1900 %}
             <input id="event_start" name="event_start" value="{{ key_info.event_start.strftime('%d-%m-%Y') }}" class="validate form-control event-date">
+            {% else %}
+            <input id="event_start" name="event_start" class="validate form-control event-date">
+            {% endif %}
         </div>
         <div class="mb-3">
             <label for="event_end" class="form-label"><i class="bi bi-calendar-x" aria-hidden="true"></i> End date<br></label>
+            {% if key_info.event_end.year != 1900 %}
             <input id="event_end" name="event_end" value="{{ key_info.event_end.strftime('%d-%m-%Y') }}" class="validate form-control event-date">
+            {% else %}
+            <input id="event_end" name="event_end" class="validate form-control event-date">
+            {% endif %}
         </div>
         <div class="mb-3">
             <label for="stages" class="form-label"><i class="bi bi-mic" aria-hidden="true"></i> Stages<br></label>
