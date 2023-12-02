@@ -32,8 +32,8 @@ A promotional website for a musical festival, which allows festival organisers t
 
 The client is a team of volunteers who organise the Folk on the Lawn festival every year. Their goals are to:
 
-- Have an engaging site which promotes the festival and drives up audience numbers
-- Minimise avoidable contact by clearly providing the information sought by prospective festival goers 
+- Have an engaging site which promotes the festival and attracts attendees
+- Minimise avoidable contact by clearly providing the information sought by prospective attendees 
 - Allow admin users to update information on the website quickly and easily, regardless of technical ability
 
 ### User Goals
@@ -56,11 +56,10 @@ Before embarking on any design or development work, I used the festival's existi
 
 <details><summary>Preferred online platform</summary>
 
-  ![Preferred platform](readme_images/preferred_platform.png)
+![Preferred platform](readme_images/preferred_platform.png)
 
-</details>
+</details><br>
 
-\
 The top 3 things users are seeking when visiting the website are:
 - Line-up and schedule
 - Dates and times
@@ -70,12 +69,13 @@ In terms of people's success finding that information on current platforms, the 
 
 <details><summary>Success ratings</summary>
 
-  ![Success ratings](readme_images/success_ratings.png)
+![Success ratings](readme_images/success_ratings.png)
 
-</details>
+</details><br>
 
-\
-When it came to suggested improvements, 50% of respondents mentioned providing more up-to-date information, while 33% mentioned improvements to navigation and presentation, especially on mobile devices.
+When it came to suggested improvements:
+- 50% of respondents mentioned providing more up-to-date information
+- 33% mentioned improvements to navigation and presentation, especially on mobile devices
 
 All of these factors were taken into account in developing the [User Stories](#user-stories) below.
 
@@ -95,11 +95,11 @@ To aid consideration of presentation and content, I also researched existing mus
 
 Inevitably the presentation and content of these sites varies, but it is noted that line-up, dates and ticketing information are prominent and accessible on each and every site - in line with the top three topics of interest identified through my user research. In addition, most of the sites provide highly visible social media and contact links. Many of the sites include a gallery, while further information such as location and camping details are less visible, often behind a broad "info" link.
 
-Adding "/admin" to the roots of these sites confirmed that many of them also have an admin function behind the public-facing page, e.g. [Green Man Admin](https://www.greenman.net/admin/). While I was obviously unable to view the actual admin pages, this reinforced my view that a "/admin" page was typical for websites of this type. 
+Adding "/admin" to the roots of these sites confirmed that many of them also have an admin function behind the public-facing page, e.g. [Green Man Admin](https://www.greenman.net/admin/). While I was obviously unable to view the actual admin pages, this reinforced my view that an admin function behind a login page was typical for websites of this type. 
 
 ## User Stories
 
-Based on the research and project goals outlined above, I have identified the following user stories. These are split into a number of categories, namely **visitors** (external users of the site, e.g. potential festival attendees), **admins** (festival team members who are trusted to update the website) and **superusers** (a small number of individuals who can perform more fundamental actions relating to the website, as well as all admin functions).  
+Based on the research and project goals outlined above, I have identified the following user stories. These are split into a number of categories, namely **visitors** (external users of the site, e.g. potential festival attendees), **admins** (festival team members who are trusted to update the website) and **superusers** (a small number of individuals who can perform more fundamental actions relating to the website, in addition to all admin functions).  
 
 A. As a **first-time visitor** I want to:
 1. Determine key details of the festival such as location, dates and ticket information
@@ -108,7 +108,7 @@ A. As a **first-time visitor** I want to:
 B. As a **returning visitor** I want to:  
 1. Find out who is playing the festival on which days
 2. Buy tickets if I decide to attend
-3. Find further sources of information such as social media accounts
+3. Find further sources of information such as social media pages
 
 C. As an **admin user** I want to:
 1. Provide key information about the festival such as dates and ticket information
@@ -127,32 +127,31 @@ Wireframes were created using the Figma platform: [Figma - Folk on the Lawn](htt
 
 <details><summary>Desktop wireframes - public</summary>
 
-  ![Desktop wireframes - public](readme_images/desktop_wireframes_public.png)
+![Desktop wireframes - public](readme_images/desktop_wireframes_public.png)
 
 </details>
 
 <details><summary>Desktop wireframes - admin/superuser</summary>
 
-  ![Desktop wireframes - admin/superuser](readme_images/desktop_wireframes_admin.png)
+![Desktop wireframes - admin/superuser](readme_images/desktop_wireframes_admin.png)
 
 </details>
 
 <details><summary>Mobile wireframes - public</summary>
 
-  ![Mobile wireframes - public](readme_images/mobile_wireframes.png)
+![Mobile wireframes - public](readme_images/mobile_wireframes.png)
 
-</details>
+</details><br>
 
-\
 Based on prior experience I decided that desktop and mobile wireframes would be sufficient to keep the overall layout of the site on track, the expectation being that [Bootstrap's grid system](https://getbootstrap.com/docs/5.3/layout/grid/) would provide the responsiveness required at different device breakpoints in between (see [Layout and Styling](#layout-and-styling) section below).
 
-Furthermore, the mobile wireframes do not include the admin/superuser pages, as it was envisaged that these would generally be accessed using a desktop device, and seldom from a mobile device. While the site is of course accessible from any device and its content will respond accordingly, there was considered little value in producing specific wireframes for this purpose.
+Furthermore, the mobile wireframes do not include the admin/superuser pages, as I envisaged that these would generally be accessed using a desktop device, and seldom from a mobile device. While the site is of course accessible from any device and its content will adjust accordingly, I considered there to be little value in producing specific wireframes for this purpose.
 
 #### Differences between wireframes and final design
 
 While the overall structure of the site stays true to the wireframes, there are some notable differences in the final design which came about for design and user experience reasons:
 
-- The schedule table on the **Line-up** page utilises the [Boostrap Accordion](https://getbootstrap.com/docs/5.3/components/accordion/) component. While this was always envisaged, it was not included in the wireframes.
+- The schedule table on the **Line-up** page utilises the [Boostrap Accordion](https://getbootstrap.com/docs/5.3/components/accordion/) component. While this was envisaged from an early stage, it was not included in the wireframes.
 - During development I discovered [Boostrap Cards](https://getbootstrap.com/docs/5.3/components/card/), along with [Masonry layout](https://masonry.desandro.com/), providing an engaging design on the **Line-up** page quite different to that provided in the wireframes.
 - The **Register** page was renamed **Superuser dashboard** due to the additional backup and restore functionality.
 
@@ -186,13 +185,13 @@ In addition, the site uses the following specific components from the Bootstrap 
 
 #### Masonry layout
 
-The Line-up page uses the [Masonry](https://masonry.desandro.com/) JavaScript grid layout library, placing the artist cards in optimal position based on available vertical space. 
+The Line-up page uses [Masonry](https://masonry.desandro.com/) grid layout, placing the artist cards in optimal position based on available vertical space. 
 
 ### Imagery
 
 - **Main image**: The main image displayed on the **Home** page is editable by admin users, providing a customisation option. For demonstration purposes the image provided is a man carrying an acoustic guitar standing in a grass field, courtesy of [Ben White on Unsplash](https://unsplash.com/photos/man-carrying-brown-cutaway-acoustic-guitar-standing-on-green-grass-field-iPyQg9QfepM).
 
-- **Footer image** The footer includes a stylised image of a lawn in various shades of green, on a transparent background.
+- **Footer image** The footer includes a stylised image of a lawn in various shades of green aligned with the overall [colour scheme](#colour-scheme), on a transparent background.
 
 - **Artist images**: Artist images are uploaded by admin users, and displayed on the **Line-up** page (public) and **Artists** page (admin).
 
@@ -214,13 +213,13 @@ The Line-up page uses the [Masonry](https://masonry.desandro.com/) JavaScript gr
   
   ![Small logo](readme_images/logo_xs.png)
    
-  </details>
+  </details><br>
 
 ### Colour Scheme
   
 - The **primary colour** of the website is a dark shade of green (#022832), reflecting the "lawn" of the festival name. This is used for the **header**, **headings** and **primary buttons** throughout the site, as well as the background of artist cards on the **Line-up** page.
 
-- The **logo** uses Bootstrap's .text-light utility class (#F8F9FA). The **dates** and **location** also use this class, but with an opacity of 75% so that they show more of the green background and are less pronounced.
+- The **logo** uses Bootstrap's .text-light utility class (#F8F9FA). The **dates** and **location** also use this class, but with an opacity of 75% so that they show more of the green background, making them less pronounced.
 
 - The **navbar** uses Bootstrap's .navbar-dark class, providing the navigation items with white text with approximately 50% opacity (#FFFFFF8C).
 
@@ -230,7 +229,7 @@ The Line-up page uses the [Masonry](https://masonry.desandro.com/) JavaScript gr
 
 - The **background** is an off-white (#F9F9FA), providing a contrast to the dark header and body text.
 
-- Primary **buttons** use the main green colour (#022832) mentioned above, while buttons used on forms throughout the site use Bootstrap's .bg-danger (#DC3545) and .bg-warning (#FFC107) utility classes.
+- Primary **buttons** use the main green colour (#022832) mentioned above, while buttons used on forms throughout the site use Bootstrap's .bg-danger (#DC3545) and .bg-warning (#FFC107) utility classes depending on their function.
 
 - Body **text** is black (#000000), while Boostrap's utility classes are used to convey meaning to text throughout, in particular .text-danger (#DC3545) for urgent warnings, and .text-info (#0DCAF0) for flash messages.
 
@@ -248,7 +247,7 @@ The Line-up page uses the [Masonry](https://masonry.desandro.com/) JavaScript gr
 
     ![Effloresce](readme_images/effloresce.png)
 
-    </details>
+    </details><br>
 
 - The **strapline** on the Home page uses Dancing Script, imported from [Google Fonts](https://fonts.google.com/specimen/Dancing+Script), with Sans Serif as the fallback font. Dancing Script is a playful but sophisticated script font which suits the content of the strapline "Innovative Folk for Innovative Folk".
 
@@ -256,7 +255,7 @@ The Line-up page uses the [Masonry](https://masonry.desandro.com/) JavaScript gr
 
     ![Dancing Script](readme_images/dancing_script.png)
 
-    </details>
+    </details><br>
 
 - The **body** and all other elements use Noto Serif, imported from [Google Fonts](https://fonts.google.com/noto/specimen/Noto+Serif), with Serif as the fallback font. Noto Serif is a straightforward serif font which complements the Effloresce font used for the logo and headings.
 
@@ -264,7 +263,7 @@ The Line-up page uses the [Masonry](https://masonry.desandro.com/) JavaScript gr
 
     ![Noto Serif](readme_images/noto_serif.png)
 
-    </details>
+    </details><br>
 
 ### Icons
 
@@ -316,20 +315,21 @@ The Line-up page uses the [Masonry](https://masonry.desandro.com/) JavaScript gr
    To provide a better user experience and better meet the stated [Project Goals](#project-goals), the website also **could have**:
    1. A schedule builder, allowing public users to build their own schedule of artists they wish to see from the overall schedule.
    2. An application portal, allowing artists to apply to perform at the festival.
-   3. An artist booking system, allowing information about artists to be submitted to a page only visible by admins, and allowing bookings to be confirmed or denied once a decision on the artist's suitability has been made, the artist information then becoming public. 
+   3. An artist booking system, allowing information about artists to be submitted to a page only visible by admins, allowing admins to comment on and/or vote on artists, and allowing bookings to be confirmed or denied once a decision has been made, the artist information then becoming public.
+   4. A gallery page, either using a portal to allow admins to upload photos directly, or embedding the festival's Instagram feed.
 
 ### Python Functionality using Flask
 
 Python has been used to build the core backend application which underpins the site, utilising the [Flask web framework](https://flask.palletsprojects.com/en/3.0.x/). In particular, Python and Flask have been used to:
 
-- Provide routing, allowing meaningful URLs to be used to return content to the user
-- Connect to the backend database to retrieve information and serve it to the site, and to allow creation, updating and deletion of records
-- Provide login functionality and security, ensuring only authorised users can access and edit particular information 
-- Display flash messages to the user
+- Provide routing of pages, allowing meaningful URLs to be used to return pages and content to the user.
+- Connect to the backend database to retrieve information and serve it to the site, and to allow creation, updating and deletion of records.
+- Provide login functionality and security, ensuring only authorised users can access and edit particular information.
+- Display flash messages to the user.
 
 ### Database
 
-The backend application connects to a database hosted on [MongoDB](https://www.mongodb.com/), which contains three collections.
+The backend application connects to a database hosted on [MongoDB](https://www.mongodb.com/), which contains three collections as outlined below.
 
 #### Admins
 
@@ -349,7 +349,7 @@ Contains entries for all admins registered on the site.
 
 #### Key Info
 
-Contains a single entry providing key details of the festival and other information for the site.
+Contains a single entry providing key details of the festival and other information for displaying on the site.
 
 - Example key_info entry:
   ```
@@ -404,10 +404,10 @@ The website is divided between public-facing pages which provide information to 
 
 #### Public pages and elements
 
-- **Header**: All pages include a header with branding on the left-hand side, a navigation menu on the right-hand side, and festival dates and location with flexible positioning (see below). The festival dates are retrieved from the database. The header is fully responsive:
+- **Header**: All pages include a header with branding on the left-hand side, a navigation menu on the right-hand side, and festival dates and location with flexible positioning (see below). The festival dates are retrieved from the database by the backend application and served to the template, which parses the information and displays it accordingly. The header is fully responsive:
   - The branding (festival name) is displayed in its full form on sm viewports and above, but compresses to a shortened form on xs viewports.
-  - The festival dates and location are displayed beneath the branding on sm viewports and above, but centred on xs viewports.
-  - The navigation menu is displayed as a single line on lg viewports and above, but collapses to a hamburger menu on smaller viewports.
+  - The festival dates and location are displayed beneath the branding on sm viewports and above, but horizontally centred on xs viewports.
+  - The navigation menu is displayed as a single line on lg viewports and above, but collapses to a hamburger menu on md viewports and below.
          
     <details><summary>Header (lg)</summary>
           
@@ -425,14 +425,14 @@ The website is divided between public-facing pages which provide information to 
           
     ![Header (xs)](readme_images/header_xs.png)
 
-    </details>
+    </details><br>
 
 - **Home page**: Provides general information about the festival, and includes:
   - A **Hero Image** which is editable by admin users, overlaid with a strapline of "Innovative Folk for Innovative Folk" against a light, semi-transparent background.
   - An optional **Banner Message** which is editable by admin users.
-  - A **Support the Festival** call to action with a donation button which opens a fundraising page in a separate tab.
-  - An **About** section with general information.
-  - A **Location** section with an embedded Google map and directions.
+  - A call to action to **Support the Festival** with a donation button which opens a fundraising page in a separate tab.
+  - An **About** section with general background information.
+  - A **Location** section with an embedded map from [Google Maps](https://developers.google.com/maps/documentation/embed/get-started) and directions.
 
     <details><summary>Home (lg)</summary>
 
@@ -455,14 +455,14 @@ The website is divided between public-facing pages which provide information to 
     - Location<br>
       ![Home - location (xs)](readme_images/home_location_xs.png)
 
-    </details>
+    </details><br>
 
 - **Line-up page**: Provides schedule information and details of artists playing, including:
   - A day-by-day **Schedule** with collapsible menu utilising the [Boostrap Accordion](https://getbootstrap.com/docs/5.3/components/accordion/) component. Showtime information is compiled in the backend application using information from the database and served to the template, which parses the information and displays it accordingly. 
-  - An **Artist Index** with hyperlinks to provide easy access to artist information. The list of artists is retrieved from the database by the backend application and served to the template to form the links.
-  - Individual **Artist Cards** utilising [Boostrap Cards](https://getbootstrap.com/docs/5.3/components/card/), and [Masonry layout](https://masonry.desandro.com/), providing a photo of the artist, a list of their appearances, and an external link to their website. Each card also includes a transition which flips the card to display the artist's biography. The information provided in each card is retrieved from the database by the backend application and served to the template. 
+  - An **Artist Index** with hyperlinks to provide easy access to artist information. The list of artists is retrieved from the database by the backend application and served to the template to form the links, which point to separate ```<div>``` elements for each artist.
+  - Individual **Artist Cards** utilising [Boostrap Cards](https://getbootstrap.com/docs/5.3/components/card/), and [Masonry layout](https://masonry.desandro.com/), providing a photo of the artist, a list of their appearances, and an external link to their website. Each card also includes a transition which flips the card to display the artist's biography. The information provided in each card is retrieved from the database by the backend application and served to the template, which parses the information and displays it accordingly. 
 
-  All elements are responsive, for example the stage listings within the Schedule appearing side-by-side on lg viewports but vertically stacked on xs viewports, and the Artist Cards behaving similarly.
+  All elements are responsive, for example the stage listings within the Schedule appear side-by-side on lg viewports but vertically stacked on xs viewports, with the Artist Cards behaving similarly.
 
     <details><summary>Line-up page (lg)</summary>
 
@@ -488,15 +488,15 @@ The website is divided between public-facing pages which provide information to 
     - Artist Cards<br>
       ![Line-up - artist cards (xs)](readme_images/artist_cards_xs.png)
 
-    </details>
+    </details><br>
 
-- **Confirmation modal**: For any change which will result in irreversible changes to data, e.g. deletion, a warning is displayed asking the user if they wish to proceed. In such cases the delete button is coded to trigger the modal, and data attributes are used to provide the wording of the warning and the target for the confirm button. Pressing the confirm button then directs the user to the relevant target, triggering the intended action.
+- **Confirmation modal**: For any change which will result in irreversible changes to data, e.g. deletion, a warning is displayed asking the user if they are sure. In such cases the delete button is coded to trigger the modal, and data attributes are used to provide the wording of the warning and the target for the confirm button. Pressing the confirm button then directs the user to the relevant target, triggering the intended action.
 
   <details><summary>Confirmation modal</summary>
 
   ![Confirmation modal](readme_images/confirmation.png)
 
-  </details>
+  </details><br>
 
 - **Flash messages**: Flash messages are displayed to provide information to the user, e.g. when logging in and logging out, or when changes are made to database entries.
 
@@ -507,7 +507,7 @@ The website is divided between public-facing pages which provide information to 
     
   </details>
 
-- **403 (Forbidden)**: A 403 (Forbidden) error is displayed in the event that a user tries to browse to a page that they do not have the credentials to see. The 403 page includes an image of a person holding their hand to the camera to indicate that access is denied, together with the message "Sorry, this area is for crew only! Please select an item from the navigation menu above." 
+- **403 (Forbidden)**: A 403 (Forbidden) error is displayed in the event that a user tries to browse to a page that they are not authorised for. The 403 page includes an image of a person holding their hand to the camera to indicate that access is denied, together with the message "Sorry, this area is for crew only! Please select an item from the navigation menu above." 
 
 - **404 (Page Not Found)**: A 404 (Page Not Found) error is displayed in the event that a user tries to browse to a page that does not exist. The 404 page includes an image of a microphone on an empty stage, together with the message "Sorry, this stage is empty! Please select an item from the navigation menu above." 
 
@@ -515,7 +515,7 @@ The website is divided between public-facing pages which provide information to 
 
 #### Admin pages and elements
 
-While all the admin pages below are fully responsive, screenshots are shown in desktop format only, as they would be expected to be accessed primarily by desktop.
+While all admin pages are fully responsive, screenshots below are shown in desktop format only, as they would be expected to be accessed primarily by desktop.
 
 -  **Subheader**: All admin pages include an additional subheader, beneath the main header, with a label ("Admin menu") on the left-hand side and a navigation menu on the right-hand side.
 
@@ -525,7 +525,7 @@ While all the admin pages below are fully responsive, screenshots are shown in d
 
     </details>
         
-- **Login**: Includes a simple login form with username and password, and an email link if the user has forgotten their password. The backend application puts the user in session if the username and password are correct, or displays an error flash message otherwise. If an event start date has been provided (see below) and it is in the past, the user is directed to the Key Info page (since an event in the past indicates that the key information requires updating). Otherwise the user is directed to the Artists page.
+- **Login**: Includes a simple login form with username and password, and an email link if the user has forgotten their password. The backend application puts the user in session if the username and password are correct, or alerts the user with a flash message otherwise. If an event start date has been provided (see below) and it is in the past, the user is directed to the Key Info page (since an event in the past indicates that the key information requires updating). Otherwise the user is directed to the Artists page.
 
     <details><summary>Login form</summary>
           
@@ -542,27 +542,29 @@ While all the admin pages below are fully responsive, screenshots are shown in d
   - Banner heading and text for the Home page
   - Fundraising link accessible through the button on the Home page
 
-  The image is uploaded to the [Cloudinary](https://cloudinary.com/) image hosting platform, which returns a unique ID for the image. The ID is stored in the database and used along with a base URL to render the image wherever it is required.
+    The **start date** and **end date** utilise the [flatpickr](#flatpickr) date picker plugin.
+    
+    The **main image** is uploaded to the [Cloudinary](https://cloudinary.com/) image hosting platform, which returns a unique ID for the image. The ID is stored in the database and used along with a base URL provided in the backend application to render the image wherever it is required.
   
-  The page includes a **Save changes** button. It also includes a **Delete event** button, although this actually submits blank values to the database (or 01-01-1900 in the case of dates), rather than actually deleting the entry in the database.
+    The page includes a **Save changes** button. It also includes a **Delete event** button, although this actually submits blank values to the database (01-01-1900 in the case of dates), rather than actually deleting the entry in the database.
 
   <details><summary>Key Info</summary>
           
   ![Key Info 1](readme_images/key_info1.png)
   ![Key Info 2](readme_images/key_info2.png)
 
-  </details>
+  </details><br>
       
 - **Artists**:
 
-  - Displays an index of artists already added, along with buttons to add an artist or delete all. Details of existing artists are displayed using [Bootstrap Cards](https://getbootstrap.com/docs/5.3/components/card/), along with buttons to delete the artist or edit their details. The information provided in each card is retrieved from the database by the backend application and served to the template.
+  - Displays an index of artists already added, along with buttons to add an artist or delete all. Details of existing artists are displayed using [Bootstrap Cards](https://getbootstrap.com/docs/5.3/components/card/), along with buttons to delete the artist or edit their details. The information provided in each card is retrieved from the database by the backend application and served to the template, which parses the information and displays it accordingly.
   
     <details><summary>Artists</summary>
             
     ![Artist Index - admin](readme_images/artist_index_admin.png)
     ![Artist Cards - admin](readme_images/artist_cards_admin.png)
 
-    </details>
+    </details><br>
   
   - If no artists have yet been added but dates and stages have been added to the Key Info collection, the user is informed that no artists have yet been added, and is presented with the Add Artist button.
   
@@ -570,15 +572,15 @@ While all the admin pages below are fully responsive, screenshots are shown in d
           
     ![No artists warning](readme_images/no_artists.png)
 
-    </details>
+    </details><br>
 
-  - If there are no artists and dates or stages are missing, the user is informed that they must provide this information before artists can be added.
+  - If there are no artists, and dates or stages are missing from the Key Info database, the user is informed that they must provide this information before artists can be added.
 
     <details><summary>No dates warning</summary>
           
     ![Key Info 1](readme_images/no_dates.png)
 
-    </details>
+    </details><br>
 
 - **Add Artist**: Provides a form allowing artist information to be submitted by admins, in particular:
   - Name
@@ -587,41 +589,49 @@ While all the admin pages below are fully responsive, screenshots are shown in d
   - Image
   - Show information for up to three shows - including stage, date and time, and duration
 
-  The image is uploaded to the [Cloudinary](https://cloudinary.com/) image hosting platform, which returns a unique ID for the image. The ID is stored in the database and used along with a base URL to render the image wherever it is required.
+    The image is uploaded to the [Cloudinary](https://cloudinary.com/) image hosting platform, which returns a unique ID for the image. The ID is stored in the database and used along with a base URL in the backend application to render the image wherever it is required.
 
-  The page includes an **Add** button to add the artist to the database using the submitted details.
+    The entry for date and time for each show utilises the [flatpickr](#flatpickr) date picker plugin, with dates limited to those provided by the Key Info database.
+
+    <details><summary>Show date picker</summary>
+            
+    ![Show date picker](readme_images/show_date.png)
+    
+    </details><br>
+
+    The page includes an **Add** button to add the artist to the database using the submitted details.
 
   <details><summary>Add artist</summary>
             
     ![Add artist 1](readme_images/add_artist1.png)
     ![Add artist 2](readme_images/add_artist2.png)
 
-  </details>
+  </details><br>
 
-- **Edit artist**: As above for "Add artist", but existing information is presented to the user, including a preview of any image already submitted. The page includes a button to save changes.
+- **Edit artist**: As above for "Add artist", but existing information is presented to the user, including a preview of any image already submitted. The page includes a **Save changes** button which updates the database with the edited values.
 
-  <details><summary>Add artist</summary>
+  <details><summary>Edit artist</summary>
           
   ![Edit artist 1](readme_images/edit_artist1.png)
   ![Edit artist 2](readme_images/edit_artist2.png)
 
-  </details>
+  </details><br>
 
 #### Superuser dashboard
 
-The site includes a Superuser Dasboard, accessed through a link in the admin menu only visible to logged in users with superuser credentials.
+The site includes a Superuser Dasboard, accessed through a link in the admin menu which is only visible to logged in users with superuser credentials.
 
   <details><summary>Superuser link</summary>
           
   ![Superuser link](readme_images/subheader_superuser.png)
   
-  </details>
+  </details><br>
 
 The dashboard allows an admin with superuser access to:
-- Register new admins
-- Toggle the superuser status of an existing admin
-- View all registered admins
-- Backup and restore the festival key information and artists
+- Register new admins.
+- Toggle the superuser status of an existing admin.
+- View all registered admins.
+- Backup and restore the festival key information and artists.
 
   <details><summary>Superuser dashboard</summary>
 
@@ -634,8 +644,7 @@ The dashboard allows an admin with superuser access to:
   - Backup and restore<br>
     ![Superuser dashboard - backup and restore](readme_images/backup_restore.png)
   
-  </details>
-
+  </details><br>
 
 
 ### JavaScript Functionality
@@ -646,13 +655,13 @@ The dashboard allows an admin with superuser access to:
 
 #### flatpickr
 
-- The flatpickr plugin has been used to provide date pickers for festival dates and showtimes.
+- The [flatpickr plugin](https://flatpickr.js.org/) has been used to provide date pickers for festival dates and showtimes.
 
   <details><summary>Date picker</summary>
 
   ![Date picker](readme_images/flatpickr.png)
   
-  </details>
+  </details><br>
 
 #### Flip cards
 
@@ -660,11 +669,11 @@ The dashboard allows an admin with superuser access to:
 
 #### Masonry and imagesLoaded
 
-- The artist cards on the **Line-up** page use the [Masonry](https://masonry.desandro.com/) JavaScript library to provide the offset grid layout. The [imagesLoaded](https://imagesloaded.desandro.com/) libary is also used to [prevent unloaded images throwing off the layout](https://masonry.desandro.com/layout#imagesloaded).
+- The artist cards on the **Line-up** page use the [Masonry](https://masonry.desandro.com/) JavaScript library to provide the particular grid layout. The [imagesLoaded](https://imagesloaded.desandro.com/) libary is also used to [prevent unloaded images throwing off the layout](https://masonry.desandro.com/layout#imagesloaded).
 
 #### Varying modal content
 
-- A JavaScript snippet from the [Boostrap documentation](https://getbootstrap.com/docs/5.3/components/modal/#varying-modal-content) has been adapted, to vary the content and function of confirmation modals using the data attributes of the buttons which trigger them. 
+- A JavaScript snippet from the [Boostrap documentation](https://getbootstrap.com/docs/5.3/components/modal/#varying-modal-content) has been adapted, allowing the content and function of confirmation modals to be varied using the data attributes of the buttons which trigger them. 
 
 
 ## Testing
