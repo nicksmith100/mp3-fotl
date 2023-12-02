@@ -108,12 +108,15 @@
                 {% endfor %}
             </div>
             {% else %}
-            <div class="col-12">
-                <p class="fs-3 text-danger"><i class="bi bi-exclamation-circle-fill" aria-hidden="true"></i> No artists have yet been added</p>
-                <a href="{{ url_for('add_artist') }}" class="btn btn-dark btn-lg"><i class="bi bi-plus-circle-fill"
-                    aria-hidden="true"></i> Add artist</a>
-            </div>
-            
+                <div class="col-12">
+                    {% if key_info.event_start.year == 1900 or key_info.event_start.year == 1900 or key_info.stages == ""  %}
+                    <p class="fs-3 text-danger"><i class="bi bi-exclamation-circle-fill" aria-hidden="true"></i> You must enter dates and stages on the Key Info page before adding artists.</p>
+                    {% else %}
+                    <p class="fs-3 text-danger"><i class="bi bi-exclamation-circle-fill" aria-hidden="true"></i> No artists have yet been added</p>
+                    <a href="{{ url_for('add_artist') }}" class="btn btn-dark btn-lg mt-2"><i class="bi bi-plus-circle-fill"
+                        aria-hidden="true"></i> Add artist</a>
+                    {% endif %}
+                </div>        
             {% endif %}
     </div>
 </div>
