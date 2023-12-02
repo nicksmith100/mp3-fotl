@@ -682,12 +682,38 @@ The dashboard allows an admin with superuser access to:
 
 - #### HTML validation with [W3C Markup Validator](https://validator.w3.org/)
 
+  | **Error/Warning**         | **Location**           | **Fix**                                                                              |
+  |---------------------------|------------------------------|--------------------------------------------------------------------------------------|
+  | Warning: ```<section>``` lacks heading | Base template: Flash messages ```<section>``` | - N/A: ```<section>``` remains the most relevant tag and this is only a warning |
+  | Error: Element ```<h3>``` not allowed as child of element button in this context | Line-up page: Accordion headers | - Changed ```<h3>``` to ```<span>``` with Bootstrap class ```"fs-3"``` |
+  | Warning: Empty heading | Line-up page: Accordion headers | - N/A: The heading is provided in the Boostrap code, and this is only a warning |
+  | Error: No ```<p>``` element in scope but a ```</p>``` end tag seen | Line-up page: Show listings in footer of each card | - Changed ```<p>``` to ```<div>``` |
+  | Info: Trailing slash on void elements has no effect and interacts badly with unquoted attribute values | Key Info page: ```<input>```element for main image | - Remove trailing slash |
+  | Error: Bad value (Artist Name) for attribute ```id``` on element ```<div>```: An ID must not contain whitespace | Artists page: Biography ```<div>``` for each artist | - Remove whitespace from parsed artist name in ```<div>``` |
+  | Error: Duplicate ID (Artist Name) | Artists page: Biography ```<div>``` for each artist  | - Added ```"-bio``` suffix to biography ```<div>``` |
+  | Info: Trailing slash on void elements has no effect and interacts badly with unquoted attribute values | Add Artist page: ```<input>```element for artist image | - Remove trailing slash |
+  | Info: Trailing slash on void elements has no effect and interacts badly with unquoted attribute values | Edit Artist page: ```<input>```element for artist image | - Remove trailing slash |
+  | Error: Attribute ```value``` not allowed on element ```<select>``` at this point | Show 2 stage ```<select>``` element | - Delete ```value``` |
+
 - #### CSS validation with [W3C CSS Validator](https://jigsaw.w3.org/css-validator/)
+
+  No errors found
 
 - #### JavaScript validation using [JSHint](https://jshint.com/)
 
-- #### Python validation using (...)
+  | **Error/Warning**         | **Location**           | **Fix**                                                                              |
+  |---------------------------|------------------------------|--------------------------------------------------------------------------------------|
+  | Two undefined variables: ```event_start```, ```event_end``` | script.js lines 32, 33 | - N/A: These variables are declared within ```<script>``` tags in the base template, which is necessary in order to parse the values retrieved from the database |
 
+- #### Python validation using [CI Python Linter](https://pep8ci.herokuapp.com/)
+
+  | **Error/Warning**         | **Location**           | **Fix**                                                                              |
+  |---------------------------|------------------------------|--------------------------------------------------------------------------------------|
+  | E501 line too long | Throughout app.py | - Lines shortened |
+  | E302 expected 2 blank lines, found 1 | app.py, line 46 | - Added blank line |
+  | W291 trailing whitespace | app.py, line 87 | - Deleted whitespace |
+  | W293 blank line contains whitespace | app.py, line 722 | - Deleted whitespace |
+  
 - #### Accessibility using [Lighthouse accessibility](https://developer.chrome.com/docs/lighthouse/accessibility/)
 
   Lighthouse audit scores (accessed through Chrome DevTools) show that the site is fully accessible and complies with best practices.
