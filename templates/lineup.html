@@ -77,11 +77,13 @@
                         </div>
                         <div class="card-footer">
                             <!-- Show appearances if they exist-->
-                            {% if artist.show1_stage != "" %}
+                            {% if artist.show1_stage != "" or artist.show2_stage != "" or artist.show3_stage != ""  %}
                                 <p class="lineup-shows">
                                     <strong>Appearing:</strong><br>
                                     <ul>
+                                        {% if artist.show1_stage != "" %}
                                         <li>{{ artist.show1_start.strftime('%A %-d %B') }} at {{ artist.show1_start.strftime('%-I.%M%p')|lower }} on the {{ artist.show1_stage|capitalize }} stage</li>
+                                        {% endif %}
                                         {% if artist.show2_stage != "" %}
                                             <li>{{ artist.show2_start.strftime('%A %-d %B') }} at {{ artist.show2_start.strftime('%-I.%M%p')|lower }} on the {{ artist.show2_stage|capitalize }} stage</li>
                                         {% endif %}
