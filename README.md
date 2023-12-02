@@ -400,11 +400,11 @@ Contains entries for all artists
 
 ### Page Elements and Interaction
 
-The website is divided between public-facing pages which provide information to external users, and admin pages (for logged in users) which allow admins to update information via a database. There is also a superuser dashboard which is only visible to logged in users with superuser credentials. 
+The website is divided between public-facing pages which provide information to external users sourced from the database, and admin pages (for logged in users) which allow admins to update information in the database. There is also a superuser dashboard which is only visible to logged in users with superuser credentials. 
 
 #### Public pages and elements
 
-- **Header**: All pages include a header with branding on the left-hand side, a navigation menu on the right-hand side, and festival date and location with flexible positioning (see below). The header is fully responsive:
+- **Header**: All pages include a header with branding on the left-hand side, a navigation menu on the right-hand side, and festival dates and location with flexible positioning (see below). The festival dates are retrieved from the database. The header is fully responsive:
   - The branding (festival name) is displayed in its full form on sm viewports and above, but compresses to a shortened form on xs viewports.
   - The festival dates and location are displayed beneath the branding on sm viewports and above, but centred on xs viewports.
   - The navigation menu is displayed as a single line on lg viewports and above, but collapses to a hamburger menu on smaller viewports.
@@ -458,9 +458,9 @@ The website is divided between public-facing pages which provide information to 
     </details>
 
 - **Line-up page**: Provides schedule information and details of artists playing, including:
-  - A day-by-day **Schedule** with collapsible menu utilising the [Boostrap Accordion](https://getbootstrap.com/docs/5.3/components/accordion/) component.
-  - An **Artist Index** with hyperlinks to provide easy access to artist information.
-  - Individual **Artist Cards** utilising [Boostrap Cards](https://getbootstrap.com/docs/5.3/components/card/), and [Masonry layout](https://masonry.desandro.com/), providing a photo of the artist, a list of their appearances, and an external link to their website. Each card also includes a transition which flips the card to display the artist's biography.  
+  - A day-by-day **Schedule** with collapsible menu utilising the [Boostrap Accordion](https://getbootstrap.com/docs/5.3/components/accordion/) component. Showtime information is compiled in the backend application using information from the database and served to the template, which parses the information and displays it accordingly. 
+  - An **Artist Index** with hyperlinks to provide easy access to artist information. The list of artists is retrieved from the database by the backend application and served to the template to form the links.
+  - Individual **Artist Cards** utilising [Boostrap Cards](https://getbootstrap.com/docs/5.3/components/card/), and [Masonry layout](https://masonry.desandro.com/), providing a photo of the artist, a list of their appearances, and an external link to their website. Each card also includes a transition which flips the card to display the artist's biography. The information provided in each card is retrieved from the database by the backend application and served to the template. 
 
   All elements are responsive, for example the stage listings within the Schedule appearing side-by-side on lg viewports but vertically stacked on xs viewports, and the Artist Cards behaving similarly.
 
@@ -490,12 +490,21 @@ The website is divided between public-facing pages which provide information to 
 
     </details>
 
-- **Confirmation modal**: For any change which will result in irreversible changes to data, e.g. deletion, a warning is displayed asking the user if they would wish to proceed.
+- **Confirmation modal**: For any change which will result in irreversible changes to data, e.g. deletion, a warning is displayed asking the user if they wish to proceed. In such cases the delete button is coded to trigger the modal, and data attributes are used to provide the wording of the warning and the target for the confirm button. Pressing the confirm button then directs the user to the relevant target, triggering the intended action.
 
   <details><summary>Confirmation modal</summary>
 
   ![Confirmation modal](readme_images/confirmation.png)
 
+  </details>
+
+- **Flash messages**: Flash messages are displayed to provide information to the user, e.g. when logging in and logging out, or when changes are made to database entries.
+
+  <details><summary>Flash messages</summary>
+
+  ![Flash message - logout](readme_images/logout.png)<br>
+  ![Flash message - artist updated](readme_images/artist_updated.png)
+    
   </details>
 
 - **403 (Forbidden)**: A 403 (Forbidden) error is displayed in the event that a user tries to browse to a page that they do not have the credentials to see. The 403 page includes an image of a person holding their hand to the camera to indicate that access is denied, together with the message "Sorry, this area is for crew only! Please select an item from the navigation menu above." 
@@ -516,7 +525,7 @@ While all the admin pages below are fully responsive, screenshots are shown in d
 
     </details>
         
-- **Login**: Includes a simple login form with username and password, and an email link if the user has forgotten their password.
+- **Login**: Includes a simple login form with username and password, and an email link if the user has forgotten their password. The backend application puts the user in session if the username and password are correct, or displays an error flash message otherwise. If an event start date has been provided (see below) and it is in the past, the user is directed to the Key Info page (since an event in the past indicates that the key information requires updating). Otherwise the user is directed to the Artists page.
 
     <details><summary>Login form</summary>
           
@@ -524,16 +533,18 @@ While all the admin pages below are fully responsive, screenshots are shown in d
 
     </details>
 
-- **Key Info**: Provides a form allowing key information about the festival to be submitted by admins, in particular:
+- **Key Info**: Provides a form allowing key information about the festival to be submitted by admins and saved in the database, in particular:
   - Start date
   - End date
-  - Stage names
+  - Stage names (as comma separated values)
   - Whether the Schedule should be displayed on the Line-up page (toggle switch)
   - Main image for the Home page (with a preview of the current image)
   - Banner heading and text for the Home page
   - Fundraising link accessible through the button on the Home page
 
-  The page includes a button to save changes, as well as one to delete the event.
+  The image is uploaded to the [Cloudinary](https://cloudinary.com/) image hosting platform, which returns a unique ID for the image. The ID is stored in the database and used along with a base URL to render the image wherever it is required.
+  
+  The page includes a **Save changes** button. It also includes a **Delete event** button, although this actually submits blank values to the database (or 01-01-1900 in the case of dates), rather than actually deleting the entry in the database.
 
   <details><summary>Key Info</summary>
           
@@ -542,14 +553,32 @@ While all the admin pages below are fully responsive, screenshots are shown in d
 
   </details>
       
-- **Artists**: Displays an index of artists already added, along with buttons to add an artist or delete all. Details of existing artists are displayed using [Bootstrap Cards](https://getbootstrap.com/docs/5.3/components/card/), along with buttons to delete the artist or edit their details.
+- **Artists**:
 
-  <details><summary>Artists</summary>
+  - Displays an index of artists already added, along with buttons to add an artist or delete all. Details of existing artists are displayed using [Bootstrap Cards](https://getbootstrap.com/docs/5.3/components/card/), along with buttons to delete the artist or edit their details. The information provided in each card is retrieved from the database by the backend application and served to the template.
+  
+    <details><summary>Artists</summary>
+            
+    ![Artist Index - admin](readme_images/artist_index_admin.png)
+    ![Artist Cards - admin](readme_images/artist_cards_admin.png)
+
+    </details>
+  
+  - If no artists have yet been added but dates and stages have been added to the Key Info collection, the user is informed that no artists have yet been added, and is presented with the Add Artist button.
+  
+    <details><summary>No artists warning</summary>
           
-  ![Artist Index - admin](readme_images/artist_index_admin.png)
-  ![Artist Cards - admin](readme_images/artist_cards_admin.png)
+    ![No artists warning](readme_images/no_artists.png)
 
-  </details>
+    </details>
+
+  - If there are no artists and dates or stages are missing, the user is informed that they must provide this information before artists can be added.
+
+    <details><summary>No dates warning</summary>
+          
+    ![Key Info 1](readme_images/no_dates.png)
+
+    </details>
 
 - **Add Artist**: Provides a form allowing artist information to be submitted by admins, in particular:
   - Name
@@ -558,7 +587,9 @@ While all the admin pages below are fully responsive, screenshots are shown in d
   - Image
   - Show information for up to three shows - including stage, date and time, and duration
 
-  The page includes a button to add the artist using the submitted details.
+  The image is uploaded to the [Cloudinary](https://cloudinary.com/) image hosting platform, which returns a unique ID for the image. The ID is stored in the database and used along with a base URL to render the image wherever it is required.
+
+  The page includes an **Add** button to add the artist to the database using the submitted details.
 
   <details><summary>Add artist</summary>
             
