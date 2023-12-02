@@ -13,7 +13,7 @@
                     <div class="accordion-item">
                         <h2 class="accordion-header" id="heading-{{ date.strftime('%A') }}">
                             <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#{{ date.strftime('%A') }}" aria-expanded="false" aria-controls="{{ date.strftime('%A') }}">
-                                <h3>{{ date.strftime('%A') }}</h3>
+                                <span class="fs-3">{{ date.strftime('%A') }}</span>
                             </button>
                         </h2>
                         <div id="{{ date.strftime('%A') }}" class="accordion-collapse collapse" aria-labelledby="heading-{{ date.strftime('%A') }}">
@@ -78,11 +78,11 @@
                         <div class="card-footer">
                             <!-- Show appearances if they exist-->
                             {% if artist.show1_stage != "" or artist.show2_stage != "" or artist.show3_stage != ""  %}
-                                <p class="lineup-shows">
+                                <div class="lineup-shows">
                                     <strong>Appearing:</strong><br>
                                     <ul>
                                         {% if artist.show1_stage != "" %}
-                                        <li>{{ artist.show1_start.strftime('%A %-d %B') }} at {{ artist.show1_start.strftime('%-I.%M%p')|lower }} on the {{ artist.show1_stage|capitalize }} stage</li>
+                                            <li>{{ artist.show1_start.strftime('%A %-d %B') }} at {{ artist.show1_start.strftime('%-I.%M%p')|lower }} on the {{ artist.show1_stage|capitalize }} stage</li>
                                         {% endif %}
                                         {% if artist.show2_stage != "" %}
                                             <li>{{ artist.show2_start.strftime('%A %-d %B') }} at {{ artist.show2_start.strftime('%-I.%M%p')|lower }} on the {{ artist.show2_stage|capitalize }} stage</li>
@@ -91,7 +91,7 @@
                                             <li>{{ artist.show3_start.strftime('%A %-d %B') }} at {{ artist.show3_start.strftime('%-I.%M%p')|lower }} on the {{ artist.show3_stage|capitalize }} stage</li>
                                         {% endif %}
                                     </ul>
-                                </p>
+                                </div>
                             {% endif %}
                             <!-- Show website if it exists-->
                             {% if artist.artist_url != "" %}
