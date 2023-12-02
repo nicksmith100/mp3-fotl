@@ -7,104 +7,114 @@
             <h2>Artist index</h2>
         </div>
 
-        {% for artist in artists %}
-        <div class="col-12 col-sm-4 col-lg-3">
-            <a href="#{{ artist.artist_name | replace(' ','') }}" class="link-dark">{{ artist.artist_name }}</a>
-        </div>
-        {% endfor %}
-
-        <div class="my-5">
-            <a href="{{ url_for('add_artist') }}" class="btn btn-dark btn-lg"><i class="bi bi-plus-circle-fill"
-                    aria-hidden="true"></i> Add artist</a>
-            <button type="button" class="btn btn-danger btn-lg" data-bs-toggle="modal" data-bs-target="#modal-confirm"
-                            data-bs-url="{{ url_for('delete_all') }}" data-bs-text="Are you sure? This action will delete all artists and cannot be undone!"><i
-                                class="bi bi-x-circle-fill" aria-hidden="true"></i> Delete all</button>
-        </div>
-        <div class="row mt-5">
-            <h2 class="mb-3">Artist info</h2>
+        {% if artists|length > 0 %}
 
             {% for artist in artists %}
-
-            <div id="{{ artist.artist_name | replace(' ','') }}" class="card mx-2 mb-2 mb-lg-5 col-12 col-sm-9 col-lg-5 g-0">
-                <!-- Show image if it exists-->
-                {% if artist.artist_img != "" %}
-                <img src="{{ cloudinary_url }}{{ artist.artist_img }}" alt="{{ artist.artist_name }}" class="card-img-top">
-                {% else %}
-                <p class="card-img-top p-1">No image yet supplied</p>
-                {% endif %}
-                <div class="card-body">
-                    <h3 class="card-title">{{ artist.artist_name }}</h3>
-                    <p class="artist-url">
-                        <strong>Website:</strong><br>
-                        {{ artist.artist_url }}</p>
-                    
-                    <!-- Show appearances if they exist-->
-
-                    {% if artist.show1_stage != "" or artist.show2_stage != "" or artist.show3_stage != ""  %}
-                        <p class="artist-shows">
-                            <strong>Appearing:</strong><p>
-                            <table class="table w-auto mt-3 mb-5">
-                                <thead>
-                                    <tr>
-                                        <th scope="col">Day</th>
-                                        <th scope="col">Stage</th>
-                                        <th scope="col">Start</th>
-                                        <th scope="col">Duration</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    {% if artist.show1_stage != "" %}
-                                        {% if artist.show1_start.year != 1900 %}
-                                        <tr>
-                                            <td>{{ artist.show1_start.strftime('%A %-d %B') }}</td>
-                                            <td>{{ artist.show1_stage|capitalize }}</td>
-                                            <td>{{ artist.show1_start.strftime('%-I.%M%p')|lower }}</td>
-                                            <td>{{ artist.show1_duration }}min</td>
-                                        </tr>
-                                        {% endif %}    
-                                    {% endif %}
-                                    {% if artist.show2_stage != "" %}
-                                        {% if artist.show2_start.year != 1900 %}
-                                            <tr>
-                                                <td>{{ artist.show2_start.strftime('%A %-d %B') }}</td>
-                                                <td>{{ artist.show2_stage|capitalize }}</td>
-                                                <td>{{ artist.show2_start.strftime('%-I.%M%p')|lower }}</td>
-                                                <td>{{ artist.show2_duration }}min</td>
-                                            </tr>
-                                        {% endif %}
-                                    {% endif %}
-                                    {% if artist.show3_stage != "" %}
-                                        {% if artist.show3_start.year != 1900 %}
-                                            <tr>
-                                                <td>{{ artist.show3_start.strftime('%A %-d %B') }}</td>
-                                                <td>{{ artist.show3_stage|capitalize }}</td>
-                                                <td>{{ artist.show3_start.strftime('%-I.%M%p')|lower }}</td>
-                                                <td>{{ artist.show3_duration }}min</td>
-                                            </tr>
-                                        {% endif %}
-                                    {% endif %}
-                                </tbody>
-                            </table>
-                    {% endif %}
-                </div>
-                <div class="card-footer">
-                    <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#modal-confirm"
-                        data-bs-url="{{ url_for('delete_artist', artist_id=artist._id) }}" data-bs-text="Are you sure? This action cannot be undone!"><i
-                            class="bi bi-x-circle-fill" aria-hidden="true"></i> Delete</button>
-                    <a href="{{ url_for('edit_artist', artist_id=artist._id) }}" class="btn btn-warning"><i
-                            class="bi bi-pencil-fill" aria-hidden="true"></i> Edit</a>
-                    <p class="text-muted mt-1">Last edited by {{ artist.last_edit_by }} on {{ artist.last_edit_on }}</p>
-                </div>
-            </div>
-            <div id="{{ artist.artist_name }}" class="card mx-2 artist-bio mb-5 col-12 col-sm-9 col-lg-5">
-                <div class="card-body">
-                    <h3 class="card-title">Biography</h3>
-                    <p class="bio">
-                        {{ artist.artist_bio }}</p>
-                </div>
+            <div class="col-12 col-sm-4 col-lg-3">
+                <a href="#{{ artist.artist_name | replace(' ','') }}" class="link-dark">{{ artist.artist_name }}</a>
             </div>
             {% endfor %}
-        </div>
+
+            <div class="my-5">
+                <a href="{{ url_for('add_artist') }}" class="btn btn-dark btn-lg"><i class="bi bi-plus-circle-fill"
+                        aria-hidden="true"></i> Add artist</a>
+                <button type="button" class="btn btn-danger btn-lg" data-bs-toggle="modal" data-bs-target="#modal-confirm"
+                                data-bs-url="{{ url_for('delete_all') }}" data-bs-text="Are you sure? This action will delete all artists and cannot be undone!"><i
+                                    class="bi bi-x-circle-fill" aria-hidden="true"></i> Delete all</button>
+            </div>
+            <div class="row mt-5">
+                <h2 class="mb-3">Artist info</h2>
+
+                {% for artist in artists %}
+
+                <div id="{{ artist.artist_name | replace(' ','') }}" class="card mx-2 mb-2 mb-lg-5 col-12 col-sm-9 col-lg-5 g-0">
+                    <!-- Show image if it exists-->
+                    {% if artist.artist_img != "" %}
+                    <img src="{{ cloudinary_url }}{{ artist.artist_img }}" alt="{{ artist.artist_name }}" class="card-img-top">
+                    {% else %}
+                    <p class="card-img-top p-1">No image yet supplied</p>
+                    {% endif %}
+                    <div class="card-body">
+                        <h3 class="card-title">{{ artist.artist_name }}</h3>
+                        <p class="artist-url">
+                            <strong>Website:</strong><br>
+                            {{ artist.artist_url }}</p>
+                        
+                        <!-- Show appearances if they exist-->
+
+                        {% if artist.show1_stage != "" or artist.show2_stage != "" or artist.show3_stage != ""  %}
+                            <p class="artist-shows">
+                                <strong>Appearing:</strong><p>
+                                <table class="table w-auto mt-3 mb-5">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">Day</th>
+                                            <th scope="col">Stage</th>
+                                            <th scope="col">Start</th>
+                                            <th scope="col">Duration</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {% if artist.show1_stage != "" %}
+                                            {% if artist.show1_start.year != 1900 %}
+                                            <tr>
+                                                <td>{{ artist.show1_start.strftime('%A %-d %B') }}</td>
+                                                <td>{{ artist.show1_stage|capitalize }}</td>
+                                                <td>{{ artist.show1_start.strftime('%-I.%M%p')|lower }}</td>
+                                                <td>{{ artist.show1_duration }}min</td>
+                                            </tr>
+                                            {% endif %}    
+                                        {% endif %}
+                                        {% if artist.show2_stage != "" %}
+                                            {% if artist.show2_start.year != 1900 %}
+                                                <tr>
+                                                    <td>{{ artist.show2_start.strftime('%A %-d %B') }}</td>
+                                                    <td>{{ artist.show2_stage|capitalize }}</td>
+                                                    <td>{{ artist.show2_start.strftime('%-I.%M%p')|lower }}</td>
+                                                    <td>{{ artist.show2_duration }}min</td>
+                                                </tr>
+                                            {% endif %}
+                                        {% endif %}
+                                        {% if artist.show3_stage != "" %}
+                                            {% if artist.show3_start.year != 1900 %}
+                                                <tr>
+                                                    <td>{{ artist.show3_start.strftime('%A %-d %B') }}</td>
+                                                    <td>{{ artist.show3_stage|capitalize }}</td>
+                                                    <td>{{ artist.show3_start.strftime('%-I.%M%p')|lower }}</td>
+                                                    <td>{{ artist.show3_duration }}min</td>
+                                                </tr>
+                                            {% endif %}
+                                        {% endif %}
+                                    </tbody>
+                                </table>
+                        {% endif %}
+                    </div>
+                    <div class="card-footer">
+                        <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#modal-confirm"
+                            data-bs-url="{{ url_for('delete_artist', artist_id=artist._id) }}" data-bs-text="Are you sure? This action cannot be undone!"><i
+                                class="bi bi-x-circle-fill" aria-hidden="true"></i> Delete</button>
+                        <a href="{{ url_for('edit_artist', artist_id=artist._id) }}" class="btn btn-warning"><i
+                                class="bi bi-pencil-fill" aria-hidden="true"></i> Edit</a>
+                        <p class="text-muted mt-1">Last edited by {{ artist.last_edit_by }} on {{ artist.last_edit_on }}</p>
+                    </div>
+                </div>
+                <div id="{{ artist.artist_name }}" class="card mx-2 artist-bio mb-5 col-12 col-sm-9 col-lg-5">
+                    <div class="card-body">
+                        <h3 class="card-title">Biography</h3>
+                        <p class="bio">
+                            {{ artist.artist_bio }}</p>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+            {% else %}
+            <div class="col-12">
+                <p class="fs-3 text-danger"><i class="bi bi-exclamation-circle-fill" aria-hidden="true"></i> No artists have yet been added</p>
+                <a href="{{ url_for('add_artist') }}" class="btn btn-dark btn-lg"><i class="bi bi-plus-circle-fill"
+                    aria-hidden="true"></i> Add artist</a>
+            </div>
+            
+            {% endif %}
     </div>
 </div>
 {% endblock %}
