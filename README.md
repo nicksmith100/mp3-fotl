@@ -479,14 +479,14 @@ While all the admin pages below are fully responsive, screenshots are shown in d
   - Image
   - Show information for up to three shows - including stage, date and time, and duration
 
-The page includes a button to add the artist using the submitted details.
+  The page includes a button to add the artist using the submitted details.
 
-<details><summary>Add artist</summary>
-          
-  ![Add artist 1](readme_images/add_artist1.png)
-  ![Add artist 2](readme_images/add_artist2.png)
+  <details><summary>Add artist</summary>
+            
+    ![Add artist 1](readme_images/add_artist1.png)
+    ![Add artist 2](readme_images/add_artist2.png)
 
-</details>
+  </details>
 
 - **Edit artist**: As above for "Add artist", but existing information is presented to the user, including a preview of any image already submitted. The page includes a button to save changes.
 
@@ -529,9 +529,33 @@ The dashboard allows an admin with superuser access to:
 
 ### JavaScript Functionality
 
-- #### Presentation and navigation
+#### jQuery
 
-### Python Functionality
+- The jQuery libary has been used to faciliate the use of JavaScript, in particular for adding event listeners.
+
+#### flatpickr
+
+- The flatpickr plugin has been used to provide date pickers for festival dates and showtimes.
+
+  <details><summary>Date picker</summary>
+
+  ![Date picker](readme_images/flatpickr.png)
+  
+  </details>
+
+#### Flip cards
+
+- The flip card function on the **Line-up** page uses CSS, but JavaScript has been used to add an event listener for toggling the "flipped" class. This functionality is ignored for anchor tags to allow the artist website to be linked from the card without flipping it.
+
+#### Masonry and imagesLoaded
+
+- The artist cards on the **Line-up** page use the [Masonry](https://masonry.desandro.com/) JavaScript library to provide the offset grid layout. The [imagesLoaded](https://imagesloaded.desandro.com/) libary is also used to [prevent unloaded images throwing off the layout](https://masonry.desandro.com/layout#imagesloaded).
+
+#### Varying modal content
+
+- A JavaScript snippet from the [Boostrap documentation](https://getbootstrap.com/docs/5.3/components/modal/#varying-modal-content) has been adapted, to vary the content and function of confirmation modals using the data attributes of the buttons which trigger them. 
+
+ 
 
 ## Testing
 
