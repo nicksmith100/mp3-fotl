@@ -98,7 +98,7 @@
                         <p class="text-muted mt-1">Last edited by {{ artist.last_edit_by }} on {{ artist.last_edit_on }}</p>
                     </div>
                 </div>
-                <div id="{{ artist.artist_name }}" class="card mx-2 artist-bio mb-5 col-12 col-sm-9 col-lg-5">
+                <div id="{{ artist.artist_name| replace(' ','') }}-bio" class="card mx-2 artist-bio mb-5 col-12 col-sm-9 col-lg-5">
                     <div class="card-body">
                         <h3 class="card-title">Biography</h3>
                         <p class="bio">
