@@ -536,17 +536,19 @@ While all admin pages are fully responsive, screenshots below are shown in deskt
 - **Key Info**: Provides a form allowing key information about the festival to be submitted by admins and saved in the database, in particular:
   - Start date
   - End date
+
+    - The **start date** and **end date** utilise the [flatpickr](#flatpickr) date picker plugin.
+
   - Stage names (as comma separated values)
   - Whether the Schedule should be displayed on the Line-up page (toggle switch)
   - Main image for the Home page (with a preview of the current image)
+
+    - The **main image** is uploaded to the [Cloudinary](https://cloudinary.com/) image hosting platform, which returns a unique ID for the image. The ID is stored in the database and used along with a base URL provided in the backend application to render the image wherever it is required.
+
   - Banner heading and text for the Home page
   - Fundraising link accessible through the button on the Home page
 
-    The **start date** and **end date** utilise the [flatpickr](#flatpickr) date picker plugin.
-    
-    The **main image** is uploaded to the [Cloudinary](https://cloudinary.com/) image hosting platform, which returns a unique ID for the image. The ID is stored in the database and used along with a base URL provided in the backend application to render the image wherever it is required.
-  
-    The page includes a **Save changes** button. It also includes a **Delete event** button, although this actually submits blank values to the database (01-01-1900 in the case of dates), rather than actually deleting the entry in the database.
+  The page includes a **Save changes** button. It also includes a **Delete event** button, although this actually submits blank values to the database (01-01-1900 in the case of dates), rather than actually deleting the entry in the database.
 
   <details><summary>Key Info</summary>
           
@@ -587,19 +589,22 @@ While all admin pages are fully responsive, screenshots below are shown in deskt
   - Biography
   - Website
   - Image
+
+    - The image is uploaded to the [Cloudinary](https://cloudinary.com/) image hosting platform, which returns a unique ID for the image. The ID is stored in the database and used along with a base URL in the backend application to render the image wherever it is required.
+
   - Show information for up to three shows - including stage, date and time, and duration
 
-    The image is uploaded to the [Cloudinary](https://cloudinary.com/) image hosting platform, which returns a unique ID for the image. The ID is stored in the database and used along with a base URL in the backend application to render the image wherever it is required.
+    - The entry for date and time for each show utilises the [flatpickr](#flatpickr) date picker plugin, with dates limited to those provided by the Key Info database.
 
-    The entry for date and time for each show utilises the [flatpickr](#flatpickr) date picker plugin, with dates limited to those provided by the Key Info database.
+    - The stage selection for each show is generated from the information provided on the Key Info page and saved in the database.
 
-    <details><summary>Show date picker</summary>
-            
-    ![Show date picker](readme_images/show_date.png)
-    
-    </details><br>
+      <details><summary>Show date picker</summary>
+                
+      ![Show date picker](readme_images/show_date.png)
+        
+      </details><br>
 
-    The page includes an **Add** button to add the artist to the database using the submitted details.
+  The page includes an **Add** button to add the artist to the database using the submitted details.
 
   <details><summary>Add artist</summary>
             
@@ -730,13 +735,179 @@ The dashboard allows an admin with superuser access to:
 
   The site was tested against the user stories as follows. (See [User story screenshots](#user-story-screenshots) below table for associated screenshots.)
 
-    (User stories table)
+  | **User goal**                                                                    | **How it is achieved** |
+  |----------------------------------------------------------------------------------|------------------------|
+  | _A. As a first-time visitor I want to:_ |                        |
+  | 1. Determine key details of the festival such as location, dates and ticket information | Location and dates of the festival are displayed prominently in the page header on every page. Ticket information is displayed on the Home page as a call to action under the heading "Support the Festival", so it is one of the first things a visitor sees. |
+  | 2. Discover more about the festival and whether it is likely to interest me | The "About" section on the Home page provides comprehensive background information about the festival and the types of artists which will be playing. |
+  | _B. As a returning visitor I want to:_  |                        |
+  | 1. Find out who is playing the festival on which days | The Line-up page contains full details on the artists playing along with a day-by-day schedule. |
+  | 2. Buy tickets if I decide to attend | The call to action on the Home page includes a link to donate to the festival, which is effectively buying a wristband in advance. |
+  | 3. Find further sources of information such as social media accounts | Social media links are easily accessible from the header, either directly or using the hamburger menu. |
+  | _C. As an admin user I want to:_  |                        |
+  | 1. Provide key information about the festival such as dates and ticket information | The Key Info page allows admin users to provide key information such as dates, and to update the ticket link provided on the Home page, which are then provided to external users. |
+  | 2. Add line-up information and details of the artists playing   | The Add Artist page allows admin users to provide information about an artist including where and when they are playing, this information then being provided to external users. |
+  | 3. Provide up-to-date messages to attendees (or potential attendees) in the lead-up to the festival   | The Key Info page allows admin users to provide a "banner message" which is displayed at the top of the Home page. |
+  | _D. As a superuser, in addition to the admin functions outlined above, I want to:_ |                        |
+  | 1. Add or remove admins and amend their privileges    | The Superuser Dashboard allows superusers to add or delete admins, and to toggle their superuser status. |
+  | 2. Back up important data, and restore it if necessary  | The Superuser Dashboard allows superusers to back up key info and artist info to an external file, and to restore data from that file. |
 
 - #### User story screenshots
 
-  Screenshots are shown for xs viewports (i.e. mobile devices) because this is how the majority of users are expected to access the site. Screenshots for lg viewports (tablets, laptops and desktops) can be found in the [Features](#features) section. 
+  Screenshots for admin pages are only shown on lg viewports (as this is how they will be accessed primarily). 
 
-  (User stories screenshots)
+  - A1: Location and dates of the festival in page header
+
+    <details><summary>Header (lg)</summary>
+          
+    ![Header (lg)](readme_images/header_lg.png)
+
+    </details>
+        
+    <details><summary>Header (sm)</summary>
+          
+    ![Header (sm)](readme_images/header_sm.png)
+
+    </details>
+        
+    <details><summary>Header (xs)</summary>
+          
+    ![Header (xs)](readme_images/header_xs.png)
+
+    </details><br>
+
+  - A1: Ticket information on Home page
+
+    <details><summary>Ticket information (lg)</summary>
+ 
+    ![Ticket information (lg)](readme_images/home_support_about_location_lg.png)
+
+    </details>
+
+    <details><summary>Ticket information (xs)</summary>
+    
+    ![Ticket information (xs)](readme_images/home_hero_banner_support_xs.png)
+    
+    </details><br>
+
+  - A2: About section on Home page
+
+    <details><summary>About section (lg)</summary>
+ 
+    ![About section (lg)](readme_images/home_support_about_location_lg.png)
+
+    </details>
+
+    <details><summary>About section (xs)</summary>
+ 
+    ![About section (xs)](readme_images/home_about_xs.png)
+
+    </details><br>
+  
+  - B1: Line-up schedule
+
+    <details><summary>Schedule (lg)</summary>
+ 
+    ![Schedule (lg)](readme_images/schedule_lg.png)
+
+    </details>
+
+    <details><summary>Schedule (xs)</summary>
+ 
+    ![Schedule (xs)](readme_images/schedule_xs.png)
+
+    </details><br> 
+
+  - B1: Artist information
+
+    <details><summary>Artist information (lg)</summary>
+
+    ![Artist information (lg)](readme_images/artist_cards_lg.png)
+
+    </details>
+
+    <details><summary>Artist information (xs)</summary>
+
+    ![Artist information (xs)](readme_images/artist_cards_xs.png)
+
+    </details><br>
+
+  - B2: Ticket link on Home page
+
+    <details><summary>Ticket information (lg)</summary>
+ 
+    ![Ticket information (lg)](readme_images/home_support_about_location_lg.png)
+
+    </details>
+
+    <details><summary>Ticket information (xs)</summary>
+    
+    ![Ticket information (xs)](readme_images/home_hero_banner_support_xs.png)
+    
+    </details><br>
+
+  - B3: Social media links in page header
+
+    <details><summary>Social media links (lg)</summary>
+          
+    ![Social media links (lg)](readme_images/header_lg.png)
+
+    </details>
+
+    <details><summary>Social media links (xs)</summary>
+          
+    ![Social media links (xs)](readme_images/socials_xs.png)
+
+    </details><br>
+
+  - C1: Key info page
+
+    <details><summary>Key Info page</summary>
+            
+    ![Key Info 1](readme_images/key_info1.png)
+    ![Key Info 2](readme_images/key_info2.png)
+
+    </details><br>
+
+  - C2: Add Artist page
+
+    <details><summary>Add artist</summary>
+            
+    ![Add artist 1](readme_images/add_artist1.png)
+    ![Add artist 2](readme_images/add_artist2.png)
+
+    </details><br>
+
+  - C3: Banner message input and display
+
+    <details><summary>Banner message input</summary>
+            
+    ![Banner input](readme_images/key_info2.png)
+
+    </details>
+
+    <details><summary>Banner message display</summary>
+            
+    ![Banner display](readme_images/home_hero_banner_lg.png)
+
+    </details><br>
+
+  - D1: Admin registration
+
+    <details><summary>Admin registration</summary>
+            
+    ![Admin registration](readme_images/registration.png)
+    ![Existing admins](readme_images/existing_admins.png)
+
+    </details><br>
+
+  - D2: Backup and restore
+
+    <details><summary>Backup and restore</summary>
+            
+    ![Backup and restore](readme_images/backup_restore.png)
+
+    </details><br>
 
 - #### Feature testing
 
