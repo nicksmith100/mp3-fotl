@@ -318,6 +318,85 @@ The Line-up page uses the [Masonry](https://masonry.desandro.com/) JavaScript gr
    2. An application portal, allowing artists to apply to perform at the festival.
    3. An artist booking system, allowing information about artists to be submitted to a page only visible by admins, and allowing bookings to be confirmed or denied once a decision on the artist's suitability has been made, the artist information then becoming public. 
 
+### Python Functionality using Flask
+
+Python has been used to build the core backend application which underpins the site, utilising the [Flask web framework](https://flask.palletsprojects.com/en/3.0.x/). In particular, Python and Flask have been used to:
+
+- Provide routing, allowing meaningful URLs to be used to return content to the user
+- Connect to the backend database to retrieve information and serve it to the site, and to allow creation, updating and deletion of records
+- Provide login functionality and security, ensuring only authorised users can access and edit particular information 
+- Display flash messages to the user
+
+### Database
+
+The backend application connects to a database hosted on [MongoDB](https://www.mongodb.com/), which contains three collections.
+
+#### Admins
+
+Contains entries for all admins registered on the site.
+
+- Example admin entry:
+  ```
+  {
+    _id: (unique value)
+    name: "Nick Smith"
+    username: "nicksmith"
+    password: (hashed password)
+    is_superuser: "on"
+    date_added: "03/11/2023"
+  }
+  ```
+
+#### Key Info
+
+Contains a single entry providing key details of the festival and other information for the site.
+
+- Example key_info entry:
+  ```
+  {
+    _id: (unique value)
+    event_start: 2023-07-13T00:00:00.000+00:00
+    event_end: 2023-07-16T00:00:00.000+00:00
+    stages: Array (4)
+      0: "River"
+      1: "Mill"
+      2: "Cottage"
+      3: "Bar"
+    display_schedule: "on"
+    main_img: "w93ykgjdg5dwi4es2zni"
+    banner_heading: "Schedule now live!"
+    banner_text: "Please take a look on the line-up page."
+    fundraising_url: "https://www.justgiving.com/crowdfunding/fotl2023new"
+    last_edit_by: "nicksmith"
+    last_edit_on: "21-11-2023"
+  }
+  ```
+
+#### Artists
+
+Contains entries for all artists
+
+- Example artists entry:
+  ```
+  {
+    _id: (unique value)  
+    artist_name: "Anna My Charlotte"
+    artist_bio: "Anna was at the top of our ‘hit list’ for each FotL for a number of ye…"
+    artist_url: "https://annamycharlotte.bandcamp.com/"
+    artist_img: "bgc00xfj70g79c8s24xc"
+    show1_stage: "Cottage"
+    show1_start: 2023-07-15T18:00:00.000+00:00
+    show1_duration: "45"
+    show2_stage: "River"
+    show2_start: 2023-07-16T11:00:00.000+00:00
+    show2_duration: "45"
+    show3_stage: ""
+    show3_start: 1900-01-01T00:00:00.000+00:00
+    show3_duration: ""
+    last_edit_by: "nicksmith"
+    last_edit_on: "21-11-2023"
+  }
+  ```
 
 ### Page Elements and Interaction
 
@@ -527,6 +606,7 @@ The dashboard allows an admin with superuser access to:
   </details>
 
 
+
 ### JavaScript Functionality
 
 #### jQuery
@@ -555,7 +635,6 @@ The dashboard allows an admin with superuser access to:
 
 - A JavaScript snippet from the [Boostrap documentation](https://getbootstrap.com/docs/5.3/components/modal/#varying-modal-content) has been adapted, to vary the content and function of confirmation modals using the data attributes of the buttons which trigger them. 
 
- 
 
 ## Testing
 
