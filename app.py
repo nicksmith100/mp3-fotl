@@ -39,7 +39,8 @@ cloudinary.config(
     api_secret=os.environ.get("CLOUDINARY_API_SECRET"),
 )
 
-# Utility functions ---------------------------------------------------------------
+
+# Utility functions -----------------------------------------------------------
 
 # Convert date string to datetime object
 # Set date 01-01-1900 if not provided
@@ -72,17 +73,18 @@ def inject_content():
 
     # Get superuser status from database
     if "user" in session:
-        is_superuser = mongo.db.admins.find_one({"username": session["user"]})[
-            "is_superuser"
-        ]
+        is_superuser = mongo.db.admins.find_one(
+            {"username": session["user"]})["is_superuser"]
     else:
         is_superuser = "off"
 
     # Set Cloudinary base url
-    cloudinary_url = "https://res.cloudinary.com/dpy1aevmo/image/upload/f_auto,q_auto/"
+    cloudinary_url = \
+        "https://res.cloudinary.com/dpy1aevmo/image/upload/f_auto,q_auto/"
 
     return dict(
-        key_info=key_info, is_superuser=is_superuser, cloudinary_url=cloudinary_url
+        key_info=key_info, is_superuser=is_superuser,
+        cloudinary_url=cloudinary_url
     )
 
 
@@ -90,7 +92,8 @@ def inject_content():
 @app.route("/home")
 def home():
     GOOGLE_MAPS_API_KEY = os.environ.get("GOOGLE_MAPS_API_KEY")
-    return render_template("home.html", GOOGLE_MAPS_API_KEY=GOOGLE_MAPS_API_KEY)
+    return render_template("home.html",
+                           GOOGLE_MAPS_API_KEY=GOOGLE_MAPS_API_KEY)
 
 
 @app.route("/lineup")
@@ -127,7 +130,8 @@ def lineup():
                 showtime_artist = artist["artist_name"]
                 showtime_day = artist[f"{show}_start"].strftime("%A")
                 showtime_start = artist[f"{show}_start"]
-                showtime_end = showtime_start + timedelta(minutes=showtime_duration)
+                showtime_end = showtime_start + timedelta(
+                    minutes=showtime_duration)
 
                 # Add showtime information to list
                 showtimes.append(
@@ -169,9 +173,8 @@ def superuser():
     if "user" in session:
 
         # Check user is superuser
-        user_is_superuser = mongo.db.admins.find_one({"username": session["user"]})[
-            "is_superuser"
-        ]
+        user_is_superuser = mongo.db.admins.find_one(
+            {"username": session["user"]})["is_superuser"]
 
         if user_is_superuser == "on":
 
@@ -193,7 +196,8 @@ def superuser():
                 register = {
                     "name": request.form.get("name"),
                     "username": request.form.get("username"),
-                    "password": generate_password_hash(request.form.get("password")),
+                    "password": generate_password_hash(
+                        request.form.get("password")),
                     "is_superuser": request.form.get("superuser-check"),
                     "date_added": date,
                 }
@@ -201,7 +205,8 @@ def superuser():
 
                 # Confirm registration with flash message
                 flash(
-                    "New admin {} successfully added".format(request.form.get("name"))
+                    "New admin {} successfully added".format(
+                        request.form.get("name"))
                 )
 
             # Get list of existing admins to display
@@ -224,13 +229,13 @@ def delete_admin(admin_id):
     if "user" in session:
 
         # Check user is superuser
-        user_is_superuser = mongo.db.admins.find_one({"username": session["user"]})[
-            "is_superuser"
-        ]
+        user_is_superuser = mongo.db.admins.find_one(
+            {"username": session["user"]})["is_superuser"]
 
         if user_is_superuser == "on":
 
-            deleted_admin = mongo.db.admins.find_one({"_id": ObjectId(admin_id)})[
+            deleted_admin = mongo.db.admins.find_one(
+                {"_id": ObjectId(admin_id)})[
                 "username"
             ]
             mongo.db.admins.delete_one({"_id": ObjectId(admin_id)})
@@ -253,9 +258,8 @@ def switch_superuser(admin_id):
     if "user" in session:
 
         # Check user is superuser
-        user_is_superuser = mongo.db.admins.find_one({"username": session["user"]})[
-            "is_superuser"
-        ]
+        user_is_superuser = mongo.db.admins.find_one(
+            {"username": session["user"]})["is_superuser"]
 
         if user_is_superuser == "on":
 
@@ -266,7 +270,8 @@ def switch_superuser(admin_id):
 
             submit = {"$set": {"is_superuser": is_superuser}}
 
-            switched_admin = mongo.db.admins.find_one({"_id": ObjectId(admin_id)})[
+            switched_admin = mongo.db.admins.find_one(
+                {"_id": ObjectId(admin_id)})[
                 "username"
             ]
             mongo.db.admins.update_one({"_id": ObjectId(admin_id)}, submit)
@@ -303,7 +308,7 @@ def admin():
                 session["user"] = request.form.get("username").lower()
                 flash("Welcome, {}".format(request.form.get("username")))
 
-                # Direct user to key_info template if festival dates in the past,
+                # Direct user to key_info template if festival dates in past,
                 # otherwise artists template
                 now = datetime.now()
                 event_start = mongo.db.key_info.find_one()["event_start"]
@@ -356,7 +361,8 @@ def key_info():
             event_end = ds_to_date(request.form.get("event_end"))
 
             # Convert comma separated string to list with no spaces
-            stages_list = request.form.get("stages").replace(", ", ",").split(",")
+            stages_list = request.form.get(
+                "stages").replace(", ", ",").split(",")
 
             # Get current main_img ID and assign it to upload_result variable
             upload_result = mongo.db.key_info.find_one()["main_img"]
@@ -364,7 +370,8 @@ def key_info():
             # Upload image to Cloudinary and return public_id
             main_img = request.files["main_img"]
             if main_img.filename.split(".")[-1].lower() in ALLOWED_EXTENSIONS:
-                upload_result = cloudinary.uploader.upload(main_img)["public_id"]
+                upload_result = cloudinary.uploader.upload(
+                    main_img)["public_id"]
 
             key_info = {
                 "$set": {
@@ -473,8 +480,10 @@ def add_artist():
 
             # Upload image to Cloudinary and return public_id
             artist_img = request.files["artist_img"]
-            if artist_img.filename.split(".")[-1].lower() in ALLOWED_EXTENSIONS:
-                upload_result = cloudinary.uploader.upload(artist_img)["public_id"]
+            if artist_img.filename.split(".")[-1].lower(
+                    ) in ALLOWED_EXTENSIONS:
+                upload_result = cloudinary.uploader.upload(
+                    artist_img)["public_id"]
             else:
                 upload_result = ""
 
@@ -497,7 +506,8 @@ def add_artist():
             }
             mongo.db.artists.insert_one(artist)
             flash(
-                "Artist {} successfully added".format(request.form.get("artist_name"))
+                "Artist {} successfully added".format(request.form.get(
+                    "artist_name"))
             )
             return redirect(url_for("artists"))
 
@@ -531,8 +541,10 @@ def edit_artist(artist_id):
 
             # Upload image to Cloudinary and return public_id
             artist_img = request.files["artist_img"]
-            if artist_img.filename.split(".")[-1].lower() in ALLOWED_EXTENSIONS:
-                upload_result = cloudinary.uploader.upload(artist_img)["public_id"]
+            if artist_img.filename.split(".")[-1].lower(
+                    ) in ALLOWED_EXTENSIONS:
+                upload_result = cloudinary.uploader.upload(
+                    artist_img)["public_id"]
 
             edited_artist = {
                 "$set": {
@@ -553,14 +565,17 @@ def edit_artist(artist_id):
                     "last_edit_on": date,
                 }
             }
-            mongo.db.artists.update_one({"_id": ObjectId(artist_id)}, edited_artist)
+            mongo.db.artists.update_one({"_id": ObjectId(
+                artist_id)}, edited_artist)
             flash(
-                "Artist {} successfully updated".format(request.form.get("artist_name"))
+                "Artist {} successfully updated".format(request.form.get(
+                    "artist_name"))
             )
             return redirect(url_for("artists"))
 
         stages = mongo.db.key_info.find_one()["stages"]
-        return render_template("edit_artist.html", artist=artist, stages=stages)
+        return render_template(
+                "edit_artist.html", artist=artist, stages=stages)
 
     else:
 
@@ -573,7 +588,8 @@ def delete_artist(artist_id):
     # Check user is admin
     if "user" in session:
 
-        deleted_artist = mongo.db.artists.find_one({"_id": ObjectId(artist_id)})[
+        deleted_artist = mongo.db.artists.find_one(
+            {"_id": ObjectId(artist_id)})[
             "artist_name"
         ]
         mongo.db.artists.delete_one({"_id": ObjectId(artist_id)})
@@ -613,9 +629,8 @@ def backup():
     if "user" in session:
 
         # Check user is superuser
-        user_is_superuser = mongo.db.admins.find_one({"username": session["user"]})[
-            "is_superuser"
-        ]
+        user_is_superuser = mongo.db.admins.find_one(
+            {"username": session["user"]})["is_superuser"]
 
         if user_is_superuser == "on":
 
@@ -645,9 +660,8 @@ def restore():
     if "user" in session:
 
         # Check user is superuser
-        user_is_superuser = mongo.db.admins.find_one({"username": session["user"]})[
-            "is_superuser"
-        ]
+        user_is_superuser = mongo.db.admins.find_one(
+            {"username": session["user"]})["is_superuser"]
 
         if user_is_superuser == "on":
 
@@ -703,7 +717,8 @@ def page_not_found(e):
 def internal_error(e):
 
     return render_template("500.html"), 500
-    
+
 
 if __name__ == "__main__":
-    app.run(host=os.environ.get("IP"), port=int(os.environ.get("PORT")), debug=True)
+    app.run(host=os.environ.get("IP"), port=int(
+        os.environ.get("PORT")), debug=True)
