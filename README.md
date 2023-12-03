@@ -1019,9 +1019,70 @@ To detect if any shows had been added, I was using a method which relied on summ
 
 ## Deployment
 
-### Heroku
+### Live deployment
 
-(Deploment info, including local deployment instructions)
+The site is deployed to Heroku: [View the live project here](https://folk-on-the-lawn-5be73867df7e.herokuapp.com/)
+
+### Deployment pre-requisites
+
+In order to deploy the project successfully, you will need:
+
+- A [MongoDB](https://cloud.mongodb.com/) account, with a database comprising three collections: key_info, admins and artists. The MONGO_DBNAME and MONGO_URI required for deployment can be found by clicking "Connect" from the "Overview" page for the database.
+- A [Cloudinary](https://cloudinary.com/) account. The CLOUDINARY_API_KEY, CLOUDINARY_API_SECRET and CLOUDINARY_CLOUD_NAME required for deployment can be found in the Cloudinary dashboard.
+- A [Google Maps](https://developers.google.com/maps) API key.
+
+Free accounts on all of these platforms are sufficient.
+
+### Local deployment
+
+To deploy this project locally, you must first either [fork](https://docs.github.com/en/get-started/quickstart/fork-a-repo) or [clone](https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository) this [repository](https://github.com/nicksmith100/mp3-fotl).
+
+After forking or cloning the repository, within your IDE:
+
+- Run ```pip3 install -r requirements.txt``` to install all dependencies.
+- Create an ```env.py``` file for storing environment variables, ensuring it is added to ```.gitignore```.
+- Add the following code to your ```env.py``` file, replacing the placeholder values with those identified under [Deployment pre-requisites](#deployment-pre-requisites) above.
+
+  ```
+  import os
+
+  os.environ.setdefault("IP", "0.0.0.0")
+  os.environ.setdefault("PORT", "5000")
+  os.environ.setdefault("SECRET_KEY", "_Secret Key_")
+  os.environ.setdefault("MONGO_URI", "_MongoDB Connection String_")
+  os.environ.setdefault("MONGO_DBNAME", "_MongoDB Database Name_")
+  os.environ.setdefault("CLOUDINARY_CLOUD_NAME", "_Cloudinary Name_")
+  os.environ.setdefault("CLOUDINARY_API_KEY", "_Cloudinary API key_")
+  os.environ.setdefault("CLOUDINARY_API_SECRET", "_Cloudinary API Secret_")
+  os.environ.setdefault("GOOGLE_MAPS_API_KEY", "_Google Maps API key_")
+  ```
+
+### Deployment to Heroku
+
+To deploy to [Heroku](https://www.heroku.com/):
+
+1. In your IDE run `pip3 freeze > requirements.txt` to create/update a requirements.txt file containing project dependencies.
+2. In your IDE run `echo web: python app.py > Procfile` to create a Procfile. Check that the file contains the text 'web: python app.py' and delete any blank lines at the bottom.
+3. Push the 2 new files to the GitHub repository.
+4. Login to Heroku, select 'Create New App', create a unique name for the app and select your nearest region. Click 'Create App'.
+5. Navigate to the Deploy tab on Heroku dashboard and select Github, search for your repository by name and click 'connect'.
+6. Navigate to 'settings', click reveal config vars and input the the following:
+
+  | Key | Value |
+  | :---: | :---: |
+  | CLOUDINARY_API_KEY | _Cloudinary API key_ |
+  | CLOUDINARY_API_SECRET | _Cloudinary API secret_ |
+  | CLOUDINARY_CLOUD_NAME | _Cloudinary Name_   |
+  | GOOGLE_MAPS_API_KEY | _Google Maps API key_ |
+  | IP | 0.0.0.0 |
+  | PORT | 5000 |
+  | MONGO_DBNAME | _MongoDB Database Name_ |
+  | MONGO_URI | _MongoDB Connection String_ | 
+  | SECRET_KEY | _Secret Key_ |
+
+7. Go back to the Deploy tab and click on 'Enable Automatic Deploys'.
+8. Click deploy branch.
+9. Once build is complete click on 'View' to launch the new app.
 
 ## Credits
 
