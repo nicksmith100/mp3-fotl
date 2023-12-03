@@ -972,7 +972,16 @@ The dashboard allows an admin with superuser access to:
 
   The above features were tested on the following browsers and devices:
 
-  (Browser and device compatibility table)
+  | Browser        | Version                                  | Device                                      | Operating Sytem       | Results                                                        |
+  |----------------|------------------------------------------|---------------------------------------------|-----------------------|----------------------------------------------------------------|
+  | Firefox        | 120.0.1 (64-bit)                         | Dell Latitude E6420 laptop                  | Windows 10 Home       | Fully functional                                               |
+  | Google Chrome  | 119.0.6045.199 (Official Build) (64-bit) | Dell Latitude E6420 laptop                  | Windows 10 Home       | Fully functional            |
+  | Google Chrome  | 119.0.6045.163                           | Samsung Galaxy S9 SM-G960F                  | Android 10            | Fully functional            |
+  | Google Chrome  | 119.0.6045.169                           | Apple iPad Pro (12.9-inch) (4th generation) | iPadOS 17.1.2         | Fully functional            |
+  | Microsoft Edge | 119.0.2151.93 (Official build) (64-bit)  | Dell Latitude E6420 laptop                  | Windows 10 Home       | Fully functional            |
+  | Safari         | 17.1.2                                   | Apple iPad Pro (12.9-inch) (4th generation) | iPadOS 17.1.2         | Fully functional            |
+
+  In addition, a number of friends, family and colleagues tested the device on a range of devices and operating systems, with no oustanding issues. 
 
 ### Bugs and fixes
 
