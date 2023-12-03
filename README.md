@@ -1127,5 +1127,5 @@ All written content is my own, apart from the text in the **About** section whic
 
 ### README content
 
-- [Emma Hewson](https://github.com/emmahewson) - inspiration for elements of this README, especially Heroku deployment instructions.
+- [Emma Hewson](https://github.com/emmahewson/mp3-swimmon#Deployment) - inspiration for elements of this README, especially Heroku deployment instructions.
 - [Paul Woods](https://github.com/pawoods/project3/blob/main/README.md#deployment) - local deployment instructions.
