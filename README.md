@@ -596,11 +596,17 @@ While all admin pages are fully responsive, screenshots below are shown in deskt
 
     - The entry for date and time for each show utilises the [flatpickr](#flatpickr) date picker plugin, with dates limited to those provided by the Key Info database.
 
-    - The stage selection for each show is generated from the information provided on the Key Info page and saved in the database.
-
       <details><summary>Show date picker</summary>
                 
       ![Show date picker](readme_images/show_date.png)
+        
+      </details><br>
+
+    - The stage selection for each show is generated from the information provided on the Key Info page and saved in the database.
+
+      <details><summary>Show stage select</summary>
+                
+      ![Show stage select](readme_images/stage_select.png)
         
       </details><br>
 
@@ -708,7 +714,7 @@ The dashboard allows an admin with superuser access to:
 
   | **Error/Warning**         | **Location**           | **Fix**                                                                              |
   |---------------------------|------------------------------|--------------------------------------------------------------------------------------|
-  | Two undefined variables: ```event_start```, ```event_end``` | script.js lines 32, 33 | - N/A: These variables are declared within ```<script>``` tags in the base template, which is necessary in order to parse the values retrieved from the database |
+  | Two undefined variables: ```event_start```, ```event_end``` | script.js lines 32, 33 | - N/A: These variables are declared within ```<script>``` tags in the base template, which is necessary in order to parse the values retrieved from the database using [Jinja](#languages) |
 
 - #### Python validation using [CI Python Linter](https://pep8ci.herokuapp.com/)
 
@@ -744,8 +750,8 @@ The site was tested against the user stories as follows. (See [User story screen
 | 2. Buy tickets if I decide to attend | The call to action on the Home page includes a link to donate to the festival, which is effectively buying a wristband in advance. |
 | 3. Find further sources of information such as social media accounts | Social media links are easily accessible from the header, either directly or using the hamburger menu. |
 | _C. As an admin user I want to:_  |                        |
-| 1. Provide key information about the festival such as dates and ticket information | The Key Info page allows admin users to provide key information such as dates, and to update the ticket link rovided on the Home page, which are then provided to external users. |
-| 2. Add line-up information and details of the artists playing   | The Add Artist page allows admin users to provide information about an artist including where and when they are playing, this nformation then being provided to external users. |
+| 1. Provide key information about the festival such as dates and ticket information | The Key Info page allows admin users to provide key information such as dates, and to update the ticket link provided on the Home page, which are then provided to external users. |
+| 2. Add line-up information and details of the artists playing   | The Add Artist page allows admin users to provide information about an artist including where and when they are playing, this information then being provided to external users. |
 | 3. Provide up-to-date messages to attendees (or potential attendees) in the lead-up to the festival   | The Key Info page allows admin users to provide a "banner message" which is displayed at he top of the Home page. |
 | _D. As a superuser, in addition to the admin functions outlined above, I want to:_ |                        |
 | 1. Add or remove admins and amend their privileges    | The Superuser Dashboard allows superusers to add or delete admins, and to toggle their superuser status. |
@@ -879,6 +885,7 @@ Screenshots for admin pages are only shown on lg viewports (as this is how they 
   | Admin: Login page                                       | Entering "/admin" after site root takes user to admin login page.                                                                                                              | User is taken to login page                                                                | Pass       |
   | Admin: Login page                                       | Entering incorrect credentials results in flash message informing the user that details are correct, and redirects user back to login page.                                    | Flash message is displayed and user is redirected to login page                            | Pass       |
   | Admin: Login page                                       | Entering correct credentials directs user to Key Info page (if event dates in database are in the past) or Artists page (if event dates in database are in present or future). | User is directed appropriately depending on event dates                                    | Pass       |
+  | Admin: Logout                            | User is logged out and confirmation message displayed.                                    | User logged out, confirmation message displayed    | Pass       |
   | Key Info: Warning                                       | If artist details already exist, message warns user that changes to dates and stages will not be applied to existing shows.                                                    | Warning message displayed                                                                  | Pass       |
   | Key Info: Start date and End date                       | Clicking input triggers date picker.                                                                                                                                           | Date picker is triggered                                                                   | Pass       |
   | Key Info: Display schedule                              | Switch toggles visibility of schedule on Line-up page.                                                                                                                         | Visibility of schedule is toggled                                                          | Pass       |
@@ -1048,13 +1055,13 @@ After forking or cloning the repository, within your IDE:
 
   os.environ.setdefault("IP", "0.0.0.0")
   os.environ.setdefault("PORT", "5000")
-  os.environ.setdefault("SECRET_KEY", "_Secret Key_")
-  os.environ.setdefault("MONGO_URI", "_MongoDB Connection String_")
-  os.environ.setdefault("MONGO_DBNAME", "_MongoDB Database Name_")
-  os.environ.setdefault("CLOUDINARY_CLOUD_NAME", "_Cloudinary Name_")
-  os.environ.setdefault("CLOUDINARY_API_KEY", "_Cloudinary API key_")
-  os.environ.setdefault("CLOUDINARY_API_SECRET", "_Cloudinary API Secret_")
-  os.environ.setdefault("GOOGLE_MAPS_API_KEY", "_Google Maps API key_")
+  os.environ.setdefault("SECRET_KEY", "[Secret Key]")
+  os.environ.setdefault("MONGO_URI", "[MongoDB Connection String]")
+  os.environ.setdefault("MONGO_DBNAME", "[MongoDB Database Name]")
+  os.environ.setdefault("CLOUDINARY_CLOUD_NAME", "[Cloudinary Name]")
+  os.environ.setdefault("CLOUDINARY_API_KEY", "[Cloudinary API key]")
+  os.environ.setdefault("CLOUDINARY_API_SECRET", "[Cloudinary API Secret]")
+  os.environ.setdefault("GOOGLE_MAPS_API_KEY", "[Google Maps API key]")
   ```
 
 ### Deployment to Heroku
@@ -1063,7 +1070,7 @@ To deploy to [Heroku](https://www.heroku.com/):
 
 1. In your IDE run `pip3 freeze > requirements.txt` to create/update a requirements.txt file containing project dependencies.
 2. In your IDE run `echo web: python app.py > Procfile` to create a Procfile. Check that the file contains the text 'web: python app.py' and delete any blank lines at the bottom.
-3. Push the 2 new files to the GitHub repository.
+3. Push these two new files to the GitHub repository.
 4. Login to Heroku, select 'Create New App', create a unique name for the app and select your nearest region. Click 'Create App'.
 5. Navigate to the Deploy tab on Heroku dashboard and select Github, search for your repository by name and click 'connect'.
 6. Navigate to 'settings', click reveal config vars and input the the following:
@@ -1081,7 +1088,7 @@ To deploy to [Heroku](https://www.heroku.com/):
   | SECRET_KEY | _Secret Key_ |
 
 7. Go back to the Deploy tab and click on 'Enable Automatic Deploys'.
-8. Click deploy branch.
+8. Click 'Deploy Branch'.
 9. Once build is complete click on 'View' to launch the new app.
 
 ## Credits
@@ -1101,7 +1108,7 @@ Any other code snippets are credited in comments in the relevant files.
 
 ### Content
 
-All written content is my own, apart from the text in the **About** section which was written by Jon Airdrie of Folk on the Lawn.
+All written content is my own, apart from the text in the **About** section which was written by Jon Airdrie of the Folk on the Lawn team.
 
 ### Media
 
@@ -1115,10 +1122,10 @@ All written content is my own, apart from the text in the **About** section whic
 
 ### Acknowledgements
 
-- My Mentor [Rory Patrick Sheridan](https://github.com/Ri-Dearg) for many helpful pointers.
+- My Mentor [Rory Patrick Sheridan](https://github.com/Ri-Dearg) for many helpful pointers as always!
 - Our Cohort Facilitator [Iris Smok](https://github.com/Iris-Smok/Iris-Smok) for providing helpful guidance on project requirements throughout.
 
 ### README content
 
-- [Emma Hewson](https://github.com/emmahewson) - inspiration for elements of this README, especially deployment instructions.
-- [Paul Woods](https://github.com/pawoods/project3/blob/main/README.md#deployment) - deployment instructions.
+- [Emma Hewson](https://github.com/emmahewson) - inspiration for elements of this README, especially Heroku deployment instructions.
+- [Paul Woods](https://github.com/pawoods/project3/blob/main/README.md#deployment) - local deployment instructions.
