@@ -1088,19 +1088,37 @@ To deploy to [Heroku](https://www.heroku.com/):
 
 ### Code
 
-- [Bootstrap 5.3](https://getbootstrap.com/docs/5.3/layout/grid/): Bootstrap Library used throughout the project, including responsive layout and specific components as outlined above.
-- All other code snippets are credited in comments in the relevant files.
+- [Bootstrap 5.3](https://getbootstrap.com/docs/5.3/layout/grid/)
+- [Displaying datetime](https://www.reddit.com/r/flask/comments/hgvf9b/display_datetime_in_flask_with_python/)
+- [Varying content of modal](https://getbootstrap.com/docs/5.0/components/modal/)
+- [Flask context processors](https://flask.palletsprojects.com/en/2.3.x/templating/)
+- [Checking if session exists](https://pythonbasics.org/flask-sessions/)
+- [Uploading and retrieving images using Cloudinary](https://www.section.io/engineering-education/image-gallery-flask-cloudinary-mongo/)
+- [Creating a list of dates from a range](https://pynative.com/python-create-list-of-dates-within-range/#h-how-to-create-a-list-of-dates-within-a-date-range-in-python)
+- [Backing up and restoring data in database](https://github.com/abonello/food_nutrition/)
+
+Any other code snippets are credited in comments in the relevant files.
 
 ### Content
 
-(Content info)
+All written content is my own, apart from the text in the **About** section which was written by Jon Airdrie of Folk on the Lawn.
 
 ### Media
 
-(Media info)   
+- Hero image: [Ben White on Unsplash](https://unsplash.com/photos/man-carrying-brown-cutaway-acoustic-guitar-standing-on-green-grass-field-iPyQg9QfepM)
+- 403 image: [Nadine Shaabana on Unsplash](https://unsplash.com/photos/close-up-photography-of-person-lifting-hands-DRzYMtae-vA)
+- 404 image: [Oscar Keys on Unsplash](https://unsplash.com/photos/photo-of-microphone-on-foggy-stage-ojVMh1QTVGY)
+- 500 image: [Dark Rider on Unsplash](https://unsplash.com/photos/flaming-guitar-digital-wallpaper-JmVaNyemtN8)
+- Footer: [PNG Tree](https://pngtree.com/freepng/grass-green-realistic-leaves_6861016.html)
+- Favicon: [Flaticon](https://www.flaticon.com/free-icon/grass_5980812)
+- Artist images courtesy of the artists themselves, provided for promotional purposes.
 
 ### Acknowledgements
 
 - My Mentor [Rory Patrick Sheridan](https://github.com/Ri-Dearg) for many helpful pointers.
 - Our Cohort Facilitator [Iris Smok](https://github.com/Iris-Smok/Iris-Smok) for providing helpful guidance on project requirements throughout.
-- [Emma Hewson](https://github.com/emmahewson) (...Swimmon project details...)
+
+### README content
+
+- [Emma Hewson](https://github.com/emmahewson) - inspiration for elements of this README, especially deployment instructions.
+- [Paul Woods](https://github.com/pawoods/project3/blob/main/README.md#deployment) - deployment instructions.
