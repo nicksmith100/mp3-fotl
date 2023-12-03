@@ -731,185 +731,134 @@ The dashboard allows an admin with superuser access to:
 
 ### Manual Testing
 
-- #### User stories
+#### User stories
 
-  The site was tested against the user stories as follows. (See [User story screenshots](#user-story-screenshots) below table for associated screenshots.)
+The site was tested against the user stories as follows. (See [User story screenshots](#user-story-screenshots) below table for associated screenshots.)
+| **User goal**                                                                    | **How it is achieved** |
+|----------------------------------------------------------------------------------|------------------------|
+| _A. As a first-time visitor I want to:_ |                        |
+| 1. Determine key details of the festival such as location, dates and ticket information | Location and dates of the festival are displayed prominently in the page header on every page. Ticket nformation is displayed on the Home page as a call to action under the heading "Support the Festival", so it is one of the first things a visitor sees. |
+| 2. Discover more about the festival and whether it is likely to interest me | The "About" section on the Home page provides comprehensive background information about the festival and the types f artists which will be playing. |
+| _B. As a returning visitor I want to:_  |                        |
+| 1. Find out who is playing the festival on which days | The Line-up page contains full details on the artists playing along with a day-by-day schedule. |
+| 2. Buy tickets if I decide to attend | The call to action on the Home page includes a link to donate to the festival, which is effectively buying a wristband in advance. |
+| 3. Find further sources of information such as social media accounts | Social media links are easily accessible from the header, either directly or using the hamburger menu. |
+| _C. As an admin user I want to:_  |                        |
+| 1. Provide key information about the festival such as dates and ticket information | The Key Info page allows admin users to provide key information such as dates, and to update the ticket link rovided on the Home page, which are then provided to external users. |
+| 2. Add line-up information and details of the artists playing   | The Add Artist page allows admin users to provide information about an artist including where and when they are playing, this nformation then being provided to external users. |
+| 3. Provide up-to-date messages to attendees (or potential attendees) in the lead-up to the festival   | The Key Info page allows admin users to provide a "banner message" which is displayed at he top of the Home page. |
+| _D. As a superuser, in addition to the admin functions outlined above, I want to:_ |                        |
+| 1. Add or remove admins and amend their privileges    | The Superuser Dashboard allows superusers to add or delete admins, and to toggle their superuser status. |
+| 2. Back up important data, and restore it if necessary  | The Superuser Dashboard allows superusers to back up key info and artist info to an external file, and to restore data from that file. |
 
-  | **User goal**                                                                    | **How it is achieved** |
-  |----------------------------------------------------------------------------------|------------------------|
-  | _A. As a first-time visitor I want to:_ |                        |
-  | 1. Determine key details of the festival such as location, dates and ticket information | Location and dates of the festival are displayed prominently in the page header on every page. Ticket information is displayed on the Home page as a call to action under the heading "Support the Festival", so it is one of the first things a visitor sees. |
-  | 2. Discover more about the festival and whether it is likely to interest me | The "About" section on the Home page provides comprehensive background information about the festival and the types of artists which will be playing. |
-  | _B. As a returning visitor I want to:_  |                        |
-  | 1. Find out who is playing the festival on which days | The Line-up page contains full details on the artists playing along with a day-by-day schedule. |
-  | 2. Buy tickets if I decide to attend | The call to action on the Home page includes a link to donate to the festival, which is effectively buying a wristband in advance. |
-  | 3. Find further sources of information such as social media accounts | Social media links are easily accessible from the header, either directly or using the hamburger menu. |
-  | _C. As an admin user I want to:_  |                        |
-  | 1. Provide key information about the festival such as dates and ticket information | The Key Info page allows admin users to provide key information such as dates, and to update the ticket link provided on the Home page, which are then provided to external users. |
-  | 2. Add line-up information and details of the artists playing   | The Add Artist page allows admin users to provide information about an artist including where and when they are playing, this information then being provided to external users. |
-  | 3. Provide up-to-date messages to attendees (or potential attendees) in the lead-up to the festival   | The Key Info page allows admin users to provide a "banner message" which is displayed at the top of the Home page. |
-  | _D. As a superuser, in addition to the admin functions outlined above, I want to:_ |                        |
-  | 1. Add or remove admins and amend their privileges    | The Superuser Dashboard allows superusers to add or delete admins, and to toggle their superuser status. |
-  | 2. Back up important data, and restore it if necessary  | The Superuser Dashboard allows superusers to back up key info and artist info to an external file, and to restore data from that file. |
+#### User story screenshots
 
-- #### User story screenshots
+Screenshots for admin pages are only shown on lg viewports (as this is how they will be accessed primarily). 
 
-  Screenshots for admin pages are only shown on lg viewports (as this is how they will be accessed primarily). 
-
-  - A1: Location and dates of the festival in page header
-
-    <details><summary>Header (lg)</summary>
-          
-    ![Header (lg)](readme_images/header_lg.png)
-
-    </details>
+- A1: Location and dates of the festival in page header
+  <details><summary>Header (lg)</summary>
         
-    <details><summary>Header (sm)</summary>
-          
-    ![Header (sm)](readme_images/header_sm.png)
-
-    </details>
+  ![Header (lg)](readme_images/header_lg.png)
+  </details>
+      
+  <details><summary>Header (sm)</summary>
         
-    <details><summary>Header (xs)</summary>
-          
-    ![Header (xs)](readme_images/header_xs.png)
+  ![Header (sm)](readme_images/header_sm.png)
+  </details>
+      
+  <details><summary>Header (xs)</summary>
+        
+  ![Header (xs)](readme_images/header_xs.png)
+  </details><br>
+- A1: Ticket information on Home page
+  <details><summary>Ticket information (lg)</summary>
 
-    </details><br>
-
-  - A1: Ticket information on Home page
-
-    <details><summary>Ticket information (lg)</summary>
- 
-    ![Ticket information (lg)](readme_images/home_support_about_location_lg.png)
-
-    </details>
-
-    <details><summary>Ticket information (xs)</summary>
-    
-    ![Ticket information (xs)](readme_images/home_hero_banner_support_xs.png)
-    
-    </details><br>
-
-  - A2: About section on Home page
-
-    <details><summary>About section (lg)</summary>
- 
-    ![About section (lg)](readme_images/home_support_about_location_lg.png)
-
-    </details>
-
-    <details><summary>About section (xs)</summary>
- 
-    ![About section (xs)](readme_images/home_about_xs.png)
-
-    </details><br>
+  ![Ticket information (lg)](readme_images/home_support_about_location_lg.png)
+  </details>
+  <details><summary>Ticket information (xs)</summary>
   
-  - B1: Line-up schedule
+  ![Ticket information (xs)](readme_images/home_hero_banner_support_xs.png)
+  
+  </details><br>
+- A2: About section on Home page
+  <details><summary>About section (lg)</summary>
 
-    <details><summary>Schedule (lg)</summary>
- 
-    ![Schedule (lg)](readme_images/schedule_lg.png)
+  ![About section (lg)](readme_images/home_support_about_location_lg.png)
+  </details>
+  <details><summary>About section (xs)</summary>
 
-    </details>
+  ![About section (xs)](readme_images/home_about_xs.png)
+  </details><br>
 
-    <details><summary>Schedule (xs)</summary>
- 
-    ![Schedule (xs)](readme_images/schedule_xs.png)
+- B1: Line-up schedule
+  <details><summary>Schedule (lg)</summary>
 
-    </details><br> 
+  ![Schedule (lg)](readme_images/schedule_lg.png)
+  </details>
+  <details><summary>Schedule (xs)</summary>
 
-  - B1: Artist information
+  ![Schedule (xs)](readme_images/schedule_xs.png)
+  </details><br> 
+- B1: Artist information
+  <details><summary>Artist information (lg)</summary>
+  ![Artist information (lg)](readme_images/artist_cards_lg.png)
+  </details>
+  <details><summary>Artist information (xs)</summary>
+  ![Artist information (xs)](readme_images/artist_cards_xs.png)
+  </details><br>
+- B2: Ticket link on Home page
+  <details><summary>Ticket information (lg)</summary>
 
-    <details><summary>Artist information (lg)</summary>
-
-    ![Artist information (lg)](readme_images/artist_cards_lg.png)
-
-    </details>
-
-    <details><summary>Artist information (xs)</summary>
-
-    ![Artist information (xs)](readme_images/artist_cards_xs.png)
-
-    </details><br>
-
-  - B2: Ticket link on Home page
-
-    <details><summary>Ticket information (lg)</summary>
- 
-    ![Ticket information (lg)](readme_images/home_support_about_location_lg.png)
-
-    </details>
-
-    <details><summary>Ticket information (xs)</summary>
-    
-    ![Ticket information (xs)](readme_images/home_hero_banner_support_xs.png)
-    
-    </details><br>
-
-  - B3: Social media links in page header
-
-    <details><summary>Social media links (lg)</summary>
+  ![Ticket information (lg)](readme_images/home_support_about_location_lg.png)
+  </details>
+  <details><summary>Ticket information (xs)</summary>
+  
+  ![Ticket information (xs)](readme_images/home_hero_banner_support_xs.png)
+  
+  </details><br>
+- B3: Social media links in page header
+  <details><summary>Social media links (lg)</summary>
+        
+  ![Social media links (lg)](readme_images/header_lg.png)
+  </details>
+  <details><summary>Social media links (xs)</summary>
+        
+  ![Social media links (xs)](readme_images/socials_xs.png)
+  </details><br>
+- C1: Key info page
+  <details><summary>Key Info page</summary>
           
-    ![Social media links (lg)](readme_images/header_lg.png)
-
-    </details>
-
-    <details><summary>Social media links (xs)</summary>
+  ![Key Info 1](readme_images/key_info1.png)
+  ![Key Info 2](readme_images/key_info2.png)
+  </details><br>
+- C2: Add Artist page
+  <details><summary>Add artist</summary>
           
-    ![Social media links (xs)](readme_images/socials_xs.png)
+  ![Add artist 1](readme_images/add_artist1.png)
+  ![Add artist 2](readme_images/add_artist2.png)
+  </details><br>
+- C3: Banner message input and display
+  <details><summary>Banner message input</summary>
+          
+  ![Banner input](readme_images/key_info2.png)
+  </details>
+  <details><summary>Banner message display</summary>
+          
+  ![Banner display](readme_images/home_hero_banner_lg.png)
+  </details><br>
+- D1: Admin registration
+  <details><summary>Admin registration</summary>
+          
+  ![Admin registration](readme_images/registration.png)
+  ![Existing admins](readme_images/existing_admins.png)
+  </details><br>
+- D2: Backup and restore
+  <details><summary>Backup and restore</summary>
+          
+  ![Backup and restore](readme_images/backup_restore.png)
+  </details><br>
 
-    </details><br>
-
-  - C1: Key info page
-
-    <details><summary>Key Info page</summary>
-            
-    ![Key Info 1](readme_images/key_info1.png)
-    ![Key Info 2](readme_images/key_info2.png)
-
-    </details><br>
-
-  - C2: Add Artist page
-
-    <details><summary>Add artist</summary>
-            
-    ![Add artist 1](readme_images/add_artist1.png)
-    ![Add artist 2](readme_images/add_artist2.png)
-
-    </details><br>
-
-  - C3: Banner message input and display
-
-    <details><summary>Banner message input</summary>
-            
-    ![Banner input](readme_images/key_info2.png)
-
-    </details>
-
-    <details><summary>Banner message display</summary>
-            
-    ![Banner display](readme_images/home_hero_banner_lg.png)
-
-    </details><br>
-
-  - D1: Admin registration
-
-    <details><summary>Admin registration</summary>
-            
-    ![Admin registration](readme_images/registration.png)
-    ![Existing admins](readme_images/existing_admins.png)
-
-    </details><br>
-
-  - D2: Backup and restore
-
-    <details><summary>Backup and restore</summary>
-            
-    ![Backup and restore](readme_images/backup_restore.png)
-
-    </details><br>
-
-- #### Feature testing
+#### Feature testing
 
   | **Feature**                                             | **Expected outcome**                                                                                                                                                           | **Actual outcome (tested on various devices and Chrome Dev Tools)**                        | **Result** |
   |---------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------|------------|
@@ -967,8 +916,7 @@ The dashboard allows an admin with superuser access to:
   | 404 page                                                | Entering incorrect address results in 404 page                                                                                                                                 | 404 page is displayed                                                                      | Pass       |
   | Console                                                 | No errors displayed in console                                                                                                                                                 | No errors displayed                                                                        | Pass       |
     
-
-- #### Browser and device compatibility
+#### Browser and device compatibility
 
   The above features were tested on the following browsers and devices:
 
@@ -985,8 +933,33 @@ The dashboard allows an admin with superuser access to:
 
 ### Bugs and fixes
 
-(Bugs and fixes details)
+#### Overlapping cards using Masonry layout
 
+I first applied the Masonry layout by simply adding ```data-masonry='{"percentPosition": true }'``` to the ```.row``` wrapper, following the guidance in [Bootstrap documentation](https://getbootstrap.com/docs/5.3/examples/masonry/). However this would occasionally result in the cards overlapping if the images did not load before the layout was set.
+
+- **Fix**: Following the guidance in the [Masonry documentation](https://masonry.desandro.com/layout#imagesloaded), I added the [imagesLoaded JavaScript plugin](https://imagesloaded.desandro.com/), and applied the Masonry layout using an event trigger instead of the simple attribute method described above.
+
+#### Internal server error when show added with no duration
+
+To detect if any shows had been added, I was using a method which relied on summing the durations of the shows and checking if the sum was greater than zero. During testing, a user added a show with no duration, causing an error in the application and triggering an internal server error in the browser.
+
+- **Fix**: I altered the method for checking if shows exist, using the dates and stages of shows instead of their durations, and setting a variable ```shows_exist``` to ```True``` or ```False```:
+
+  ```
+  show_stages = []
+  artists = list(mongo.db.artists.find())
+  shows = ["show1", "show2", "show3"]
+  for artist in artists:
+      for show in shows:
+          if artist[f"{show}_start"] > datetime(1900, 1, 1):
+              if artist[f"{show}_stage"] != "":
+                  show_stage = artist[f"{show}_stage"]
+                  show_stages.append(show_stage)
+  if len(show_stages) > 0:
+      shows_exist = True
+  else:
+      shows_exist = False
+  ```
 
 ## Technologies Used
 
