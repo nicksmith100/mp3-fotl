@@ -971,34 +971,37 @@ To detect if any shows had been added, I was using a method which relied on summ
 - [JavaScript](https://www.w3schools.com/js/)
   - Adding interactive elements
 - [Python](https://www.w3schools.com/python/)
-  - Providing backend application to provide website information 
-
+  - Providing backend application
+- [Jinja](https://jinja.palletsprojects.com/en/3.1.x/)
+  - Templating language for page templates
+ 
 ### Frameworks
 - [Bootstrap 5.3](https://getbootstrap.com/docs/5.3/getting-started/introduction/)
   - Overall layout and styling, and specific components as described above
+- [Flask](https://flask.palletsprojects.com/en/3.0.x/)
+  - Providing backend application and page routing
 
 ### Libraries
 - [jQuery](https://jquery.com/)
-  - Show and hide functionality
-- [jQuery UI](https://jqueryui.com/)
-  - Autocomplete on search form
+  - Facilitating JavaScript functionality, in particular event listeners
 - [Google Fonts](https://fonts.google.com)
-  - Exo and Oswald fonts
+  - Dancing Script and Noto Serif fonts
 - [Bootstrap icons](https://icons.getbootstrap.com/)
-  - Icons on main menu buttons
+  - Icons on navigation items, social media links, buttons and form elements
 
 ### APIs
-(Provide any APIs here)
+- [Google Maps API](https://developers.google.com/maps)
+  - Embedded map on Home page
 
 ### Platforms
-- [Github](https://github.com/)
-  - Storing code
-- [Gitpod](https://gitpod.io/)
-  - IDE used for project development
 - [MongoDB](https://mongodb.com/)
   - Used for hosting database
 - [Heroku](https://heroku.com/)
   - Deployment
+- [Github](https://github.com/)
+  - Storing code
+- [Gitpod](https://gitpod.io/)
+  - IDE used for project development
 
 ### Other Tools
 - [Figma](https://www.figma.com/)
@@ -1009,13 +1012,10 @@ To detect if any shows had been added, I was using a method which relied on summ
   - Website favicon
 - [Am I Responsive](https://ui.dev/amiresponsive)
   - Montage of different devices displaying the site
-- [Canva](https://www.canva.com/)
-  - Creation of main logo
 - [Unsplash](https://unsplash.com/)
-  - 404 image
+  - Images on Home, 403, 404, 500 pages
 - [Fix the photo](https://fixthephoto.com/uk/online-gimp.html)
   - Image editing
-  
 
 ## Deployment
 
