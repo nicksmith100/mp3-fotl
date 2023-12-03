@@ -505,7 +505,7 @@ The website is divided between public-facing pages which provide information to 
   ![Flash message - logout](readme_images/logout.png)<br>
   ![Flash message - artist updated](readme_images/artist_updated.png)
     
-  </details>
+  </details><br>
 
 - **403 (Forbidden)**: A 403 (Forbidden) error is displayed in the event that a user tries to browse to a page that they are not authorised for. The 403 page includes an image of a person holding their hand to the camera to indicate that access is denied, together with the message "Sorry, this area is for crew only! Please select an item from the navigation menu above." 
 
@@ -523,7 +523,7 @@ While all admin pages are fully responsive, screenshots below are shown in deskt
           
     ![Subheader)](readme_images/subheader.png)
 
-    </details>
+    </details><br>
         
 - **Login**: Includes a simple login form with username and password, and an email link if the user has forgotten their password. The backend application puts the user in session if the username and password are correct, or alerts the user with a flash message otherwise. If an event start date has been provided (see below) and it is in the past, the user is directed to the Key Info page (since an event in the past indicates that the key information requires updating). Otherwise the user is directed to the Artists page.
 
@@ -531,7 +531,7 @@ While all admin pages are fully responsive, screenshots below are shown in deskt
           
     ![Login form](readme_images/login.png)
 
-    </details>
+    </details><br>
 
 - **Key Info**: Provides a form allowing key information about the festival to be submitted by admins and saved in the database, in particular:
   - Start date
